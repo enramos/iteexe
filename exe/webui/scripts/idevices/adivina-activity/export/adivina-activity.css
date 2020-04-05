@@ -745,3 +745,6 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     }
 }
 p.adivinaDivInstructions{margin:0;font-weight:bold;text-align:center;height:32px}
+.adinaIdevice .adivina-extra-content{
+	margin-top:1.7em;
+} 

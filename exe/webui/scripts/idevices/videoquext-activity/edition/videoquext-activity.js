@@ -67,7 +67,6 @@ var $exeDevice = {
         "msgAuthor": _("Author"),
         "msgOnlySaveAuto": _("Your score will be saved after each question. You can only play once."),
         "msgSaveAuto": _("Your score will be automatically saved after each question."),
-        "msgYouScore": _("Your score"),
         "msgSeveralScore": _("You can save the score as many times as you want"),
         "msgYouLastScore": _("The last score saved is"),
         "msgActityComply": _("You have already done this activity."),
@@ -248,7 +247,7 @@ var $exeDevice = {
             $exeDevice.questionsGame.push($exeDevice.getCuestionDefault());
             $exeDevice.active = $exeDevice.questionsGame.length - 1;
             $exeDevice.showVideoReproductor();
-            $('#vquextNumberQuestion').text($exeDevice.questionsGame.length - 1);
+            $('#vquextNumberQuestion').text($exeDevice.questionsGame.length);
             $('#vquextENumQuestions').text($exeDevice.questionsGame.length);
         }
     },
@@ -339,6 +338,8 @@ var $exeDevice = {
         $('#vquextNumberQuestion').text(i + 1);
         $("input.vquext-Number[name='vqxnumber'][value='" + p.numberOptions + "']").prop("checked", true)
         $("input.vquext-ESolution[name='vqxsolution'][value='" + p.solution + "']").prop("checked", true);
+        $("input.vquext-Times[name='vqxtime'][value='" + p.time + "']").prop("checked", true);
+
         //$exeDevice.createPointsVideo();
 
     },
@@ -604,6 +605,7 @@ var $exeDevice = {
                             </div>\
                         </div>\
                     </fieldset>\
+                    '+$exeAuthoring.iDevice.common.getTextFieldset("after")+'\
                 </div>\
 				' + $exeAuthoring.iDevice.gamification.itinerary.getTab() + '\
 				' + $exeAuthoring.iDevice.gamification.scorm.getTab() + '\
@@ -676,6 +678,8 @@ var $exeDevice = {
             if (instructions.length == 1) $("#eXeGameInstructions").val(instructions.html());
              // i18n
             $exeAuthoring.iDevice.gamification.common.setLanguageTabValues(dataGame.msgs);
+            var textAfter = $(".vquext-extra-content",wrapper);
+            if (textAfter.length == 1)  $("#eXeIdeviceTextAfter").val(textAfter.html());
             $exeDevice.updateFieldGame(dataGame);
         }
     },
@@ -751,6 +755,11 @@ var $exeDevice = {
         html += '<div class="vquext-DataGame">' + json + '</div>';
         html += linksImages;
         html += '</div>';
+           // Get the optional text
+        var textAfter = tinymce.editors[1].getContent();
+        if (textAfter!="") {
+            html += '<div class="vquext-extra-content">'+textAfter+'</div>';
+        }
         return html;
     },
     validateQuestion: function () {
@@ -871,12 +880,15 @@ var $exeDevice = {
         $exeDevice.updateFieldGame(game);
         var instructions = game.instructionsExe || game.instructions;
         tinymce.editors[0].setContent(unescape(instructions));
+        var textAfter = game.textAfter || '';
+        tinyMCE.get('eXeIdeviceTextAfter').setContent(unescape(textAfter));
         $('.exe-form-tabs li:first-child a').click();
     },
     validateData: function () {
         var clear = $exeDevice.removeTags
         instructions = $('#eXeGameInstructions').text(),
             instructionsExe = escape(tinyMCE.get('eXeGameInstructions').getContent()),
+            textAfter = escape(tinyMCE.get('eXeIdeviceTextAfter').getContent()),
             showMinimize = $('#vquextEShowMinimize').is(':checked'),
             answersRamdon= $('#vquextEAnswersRamdon').is(':checked'),
             optionsRamdon = false,
@@ -940,7 +952,8 @@ var $exeDevice = {
             'isScorm': scorm.isScorm,
             'textButtonScorm': scorm.textButtonScorm,
             'repeatActivity': scorm.repeatActivity,
-            'title': ''
+            'title': '',
+            'textAfter':textAfter
         }
         return data;
     },

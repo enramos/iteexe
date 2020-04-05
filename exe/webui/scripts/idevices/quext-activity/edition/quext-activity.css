@@ -222,26 +222,22 @@
   }
 
   #quextIdeviceForm .quext-EOption0 {
-    background-color: #fbd2d6;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border: 1px solid #ff0000;
   }
 
   #quextIdeviceForm .quext-EOption1 {
-    background-color: #dfe3f1;
-    background-color: #f9f9f9;
+     background-color: #ffffff;
     border: 1px solid #5877c6;
   }
 
   #quextIdeviceForm .quext-EOption2 {
-    background-color: #caede8;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border: 1px solid #2a9315;
   }
 
   #quextIdeviceForm .quext-EOption3 {
-    background-color: #fcf4d3;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border: 1px solid #f3d55a;
   }
 
@@ -303,7 +299,7 @@
   #quextIdeviceForm .quext-EText {
     width: 100%;
     height: 100%;
-    background: #f9f9f9;
+    background: #ffffff;
     position: absolute;
     left: 0;
     top: 0;
@@ -403,7 +399,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 10px;
     z-index: 20000;
     display: none;
@@ -415,7 +411,7 @@
     position: absolute;
     right: 0;
     top: 10px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 10px;
     z-index: 20000;
     display: flex;
@@ -518,7 +514,7 @@
     box-sizing: border-box;
     width: 100%;
     height: 100%;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border: 1px solid #071717;
     margin: 0;
     padding: 0;

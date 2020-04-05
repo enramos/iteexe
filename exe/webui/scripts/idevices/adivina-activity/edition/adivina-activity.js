@@ -126,6 +126,7 @@ var $exeDevice = {
                                 ' + this.getDataWordClone(false,0) + '\
                             </div>\
                     </fieldset>\
+                    '+$exeAuthoring.iDevice.common.getTextFieldset("after")+'\
                 </div>\
 				' + $exeAuthoring.iDevice.gamification.itinerary.getTab() + '\
 				' + $exeAuthoring.iDevice.gamification.scorm.getTab()+ '\
@@ -173,6 +174,9 @@ var $exeDevice = {
             if (instructions.length == 1) $("#eXeGameInstructions").val(instructions.html());
             // i18n
             $exeAuthoring.iDevice.gamification.common.setLanguageTabValues(dataGame.msgs);
+             // Text after
+             var textAfter = $(".adivina-extra-content",wrapper);
+             if (textAfter.length==1) $("#eXeIdeviceTextAfter").val(textAfter.html());
         }
     },
     save: function () {
@@ -196,6 +200,12 @@ var $exeDevice = {
         html += '<div class="adivina-DataGame">' + json + '</div>';
         html += linksImages;
         html += '</div>';
+    // Get the optional text
+        var textAfter = tinymce.editors[1].getContent();
+        if (textAfter!="") {
+			html += '<div class="adivina-extra-content">'+textAfter+'</div>';
+		}
+
         return html;
     },
     createlinksImage: function (wordsGame) {
@@ -209,6 +219,7 @@ var $exeDevice = {
     validateData: function () {
         var clear = $exeDevice.removeTags,
             instructions = tinymce.editors[0].getContent(),
+            textAfter = tinymce.editors[1].getContent(),
             showMinimize = $('#adivinaShowMinimize').is(':checked'),
             optionsRamdon = $('#adivinaOptionsRamdon').is(':checked'),
             showSolution = $('#adivinaShowSolution').is(':checked'),
@@ -319,7 +330,8 @@ var $exeDevice = {
             'wordsGame': wordsGame,
             'isScorm': scorm.isScorm,
 			'textButtonScorm': scorm.textButtonScorm,
-			'repeatActivity':scorm.repeatActivity
+            'repeatActivity':scorm.repeatActivity,
+            'textAfter':escape(textAfter)
         }
         return data;
     },
@@ -574,7 +586,9 @@ var $exeDevice = {
             return;
         }
         $exeDevice.updateFieldGame(game);
+        var tAfter=game.textAfter || "";
         tinymce.editors[0].setContent(game.instructions);
+        tinymce.editors[1].setContent(unescape(tAfter));
         $('.exe-form-tabs li:first-child a').click();
     },
     isJsonString: function (str) {
