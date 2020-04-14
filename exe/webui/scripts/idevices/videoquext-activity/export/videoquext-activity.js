@@ -326,20 +326,29 @@ var $eXeVideoQuExt = {
                     <a href="#"  class="vquext-Option4 vquext-Options" id="vquextOption4-' + instance + '"></a>\
                 </div>\
             </div>\
-            <div class="vquext-VideoIntroContainer" id="vquextVideoIntroContainer-' + instance + '">\
-                <a href="#" class="vquext-LinkVideoIntroShow" id="vquextLinkVideoIntroShow-' + instance + '" title="' + msgs.msgVideoIntro + '">\
-                    <strong><span class="sr-av">' + msgs.msgVideoIntro + ':</span></strong>\
-                    <div class="exeQuextIcons exeQuextIcons-Video"></div>\
+            <div class="vquext-ReloadContainer" id="vquextVideoReloadContainer-' + instance + '">\
+                <a href="#" class="vquext-LinkReload" id="vquextReeload-' + instance + '" title="Reload">\
+                    <strong><span class="sr-av">Reload video:</span></strong>\
+                    <div class="vquext-Reload vquext-IconReload"></div>\
+                </a>\
+                <a href="#" class="vquext-LinkPauseVideo" id="vquextPauseVideo-' + instance + '" title="Pause Video">\
+                    <strong><span class="sr-av">Pause Video:</span></strong>\
+                    <div class=" exeQuextIcons exeQuextIcons-PauseVideo"></div>\
+                </a>\
+                <a href="#" class="vquext-LinkPreview" id="vquextPreview-' + instance + '" title="Preview Questions">\
+                    <strong><span class="sr-av">Previews questions:</span></strong>\
+                    <div class="exeQuextIcons exeQuextIcons-Preview"></div>\
                 </a>\
             </div>\
-            <div class="vquext-VideoIntroDiv" id="vquextVideoIntroDiv-' + instance + '">\
-                <div class="vquext-VideoIntro" id="vquextVideoIntro-' + instance + '"></div>\
-                <input type="button" class="vquext-VideoIntroClose" id="vquextVideoIntroClose-' + instance + '" value="' + msgs.msgClose + '" />\
+            <div class="vquext-previewQuestionsDiv" id="vquextpreviewQuestionsDiv-' + instance + '">\
+                <p class="vquext-PreviewQuestionsTitle">Questions</p>\
+                <strong><span class="sr-av">Previews questions:</span></strong>\
+                <input type="button" class="vquext-previewQuestionsClose" id="vquextpreviewQuestionsClose-' + instance + '" value="' + msgs.msgClose + '" />\
             </div>\
         </div>\
     </div>\
-    ' + this.addButtonScore(instance);
-        return html;
+    ' + this.addButtonScore(instance)
+    return html;
     },
     addButtonScore: function (instance) {
         var mOptions = $eXeVideoQuExt.options[instance];
@@ -410,6 +419,7 @@ var $eXeVideoQuExt = {
             });
             $('#vquextStarGame-' + i).text(mOptions.msgs.msgStartGame);
             $('#vquextStarGame-' + i).css('color', $eXeVideoQuExt.borderColors.red);
+
         }
     },
     loadYoutubeApi: function () {
@@ -477,9 +487,37 @@ var $eXeVideoQuExt = {
         $('#vquextSendScore-' + instance).click(function (e) {
             e.preventDefault();
             $eXeVideoQuExt.sendScore(false, instance);
-            return true;
+        });
+        $('#vquextReeload-' + instance).click(function (e) {
+            e.preventDefault();
+            $eXeVideoQuExt.reloadQuestion(instance);
+
+        });
+        $('#vquextPreview-' + instance).click(function (e) {
+            e.preventDefault();
+            $eXeVideoQuExt.previewQuestions(instance);
+
         });
 
+        $('#vquextPauseVideo-' + instance).click(function (e) {
+            e.preventDefault();
+            var pause=$('#vquextPauseVideo-'+instance).find('div').hasClass('exeQuextIcons-PauseVideo');
+            $eXeVideoQuExt.pauseVideoQuestion(instance,pause);
+
+        });
+        $('#vquextpreviewQuestionsClose-' + instance).click(function (e) {
+            e.preventDefault();
+            $('#vquextpreviewQuestionsDiv-' + instance).slideUp();
+
+        });
+        $('#vquextPreview-' + instance).hide();
+        $('#vquextReeload-' + instance).hide();
+        $('#vquextPauseVideo-' + instance).hide();
+        $('#vquextVideoReloadContainer-' + instance).hide();
+        if(mOptions.previewQuestions){
+            $('#vquextVideoReloadContainer-' + instance).show();
+            $('#vquextPreview-' + instance).show();
+        }
         $('#vquextGamerOver-' + instance).hide();
         $('#vquextCodeAccessDiv-' + instance).hide();
         $('#vquextVideo-' + instance).hide();
@@ -559,6 +597,48 @@ var $eXeVideoQuExt = {
         $('meta[name=author]').attr('content', mOptions.author);
         $('#vquextShowClue-' + instance).hide();
         mOptions.gameOver = false;
+    },
+    pauseVideoQuestion:function (instance, pause){
+            var mOptions = $eXeVideoQuExt.options[instance]; 
+            if (mOptions.stateReproduction>0) return;
+            var $this= $('#vquextPauseVideo-' + instance).find('div');
+            if(pause){
+                $this.removeClass('exeQuextIcons-PauseVideo');
+                $this.addClass('exeQuextIcons-PlayVideo');
+                $eXeVideoQuExt.stopVideo(instance);
+            }else{
+                $this.addClass('exeQuextIcons-PauseVideo');
+                $this.removeClass('exeQuextIcons-PlayVideo');
+                $eXeVideoQuExt.playVideo(instance);
+            }
+    },
+    previewQuestions: function(instance){
+        var mOptions = $eXeVideoQuExt.options[instance];
+        $('#vquextpreviewQuestionsDiv-' + instance).find('.vquext-prevQuestP').remove();
+        for (var i=0;i<mOptions.questionsGame.length;i++){
+            $('#vquextpreviewQuestionsDiv-' + instance).append('<p class="vquext-prevQuestP">'+(i+1)+'.- '+mOptions.questionsGame[i].quextion+'</p>');
+        }
+        $('#vquextpreviewQuestionsDiv-' + instance).slideToggle();
+    },
+    reloadQuestion: function(instance){
+        var mOptions = $eXeVideoQuExt.options[instance];
+        if (mOptions.stateReproduction>1) return;
+        $eXeVideoQuExt.pauseVideoQuestion(instance,false);
+        pointVideo=mOptions.activeQuestion>0?mOptions.questionsGame[mOptions.activeQuestion-1].pointVideo: mOptions.startVideoQuExt;
+        mOptions.player.seekTo(pointVideo+1);
+        mOptions.stateReproduction = 0;
+        $eXeVideoQuExt.clearQuestions(instance);
+        if (mOptions.activeQuestion < mOptions.questionsGame.length) {
+            $eXeVideoQuExt.showQuestion(mOptions.activeQuestion, instance);
+        } else {
+            $('#vquextVideo-' + instance).show();
+            $('#vquextCover-' + instance).hide();
+                $eXeVideoQuExt.muteVideo(false, instance);
+        }
+
+        $eXeVideoQuExt.playVideo(instance);
+        mOptions.counter = $eXeVideoQuExt.getTimeSeconds(mOptions.questionsGame[mOptions.activeQuestion].time);
+        $eXeVideoQuExt.uptateTime(0,instance);
     },
     maximizeMultimedia: function (maximize, instance) {
         var css = {
@@ -717,6 +797,21 @@ var $eXeVideoQuExt = {
         if (window.innerWidth > 560) {
             $('#vquextProgressBar-' + instance).show();
         }
+        if(mOptions.reloadQuestion || mOptions.previewQuestions || mOptions.pauseVideo){
+            $('#vquextVideoReloadContainer-' + instance).show();
+            if(mOptions.previewQuestions){
+                $('#vquextPreview-' + instance).show();
+            }
+            if(mOptions.reloadQuestion){
+                $('#vquextReeload-' + instance).show();
+            }
+            if(mOptions.pauseVideo ){
+                $('#vquextPauseVideo-' + instance).show();
+            }
+        }
+        
+
+
         mOptions.hits = 0;
         mOptions.errors = 0;
         mOptions.score = 0;
@@ -836,6 +931,7 @@ var $eXeVideoQuExt = {
         var mOptions = $eXeVideoQuExt.options[instance];
         mOptions.gameStarted = false;
         mOptions.gameActived = false;
+        $('#vquextVideoReloadContainer-' + instance).hide();
         clearInterval(mOptions.counterClock);
         $('#vquextVideo-' + instance).hide();
         $('#vquextProgressBar-' + instance).hide();

@@ -117,6 +117,9 @@ var $exeDevice = {
                                 <label for="adivinaPercentageShow">' + _("Percentage of letters to show (%)") + ':\
                                 <input type="number" name="adivinaPercentageShow" id="adivinaPercentageShow" value="35" min="0" max="100" step="5" /> </label>\
                             </p>\
+                            <p>\
+								<label for="adivinaStyleGame"><input type="checkbox" id="adivinaStyleGame"> ' + _("Classic style") + ' </label>\
+                            </p>\
                         </div>\
                     </fieldset>\
                     <fieldset class="exe-fieldset">\
@@ -221,6 +224,7 @@ var $exeDevice = {
             instructions = tinymce.editors[0].getContent(),
             textAfter = tinymce.editors[1].getContent(),
             showMinimize = $('#adivinaShowMinimize').is(':checked'),
+            styleGame = $('#adivinaStyleGame').is(':checked'),
             optionsRamdon = $('#adivinaOptionsRamdon').is(':checked'),
             showSolution = $('#adivinaShowSolution').is(':checked'),
             timeShowSolution = parseInt(clear($('#adivinaTimeShowSolution').val())),
@@ -331,7 +335,8 @@ var $exeDevice = {
             'isScorm': scorm.isScorm,
 			'textButtonScorm': scorm.textButtonScorm,
             'repeatActivity':scorm.repeatActivity,
-            'textAfter':escape(textAfter)
+            'textAfter':escape(textAfter),
+            "styleGame":styleGame
         }
         return data;
     },
@@ -537,6 +542,7 @@ var $exeDevice = {
     updateFieldGame: function (game) {
         $exeAuthoring.iDevice.gamification.itinerary.setValues(game.itinerary);
         $('#adivinaShowMinimize').prop('checked', game.showMinimize);
+        $('#adivinaStyleGame').prop('checked', game.styleGame);
         $('#adivinaOptionsRamdon').prop('checked', game.optionsRamdon);
         $('#adivinaUseLives').prop('checked', game.useLives);
         $('#adivinaNumberLives').val(game.numberLives);

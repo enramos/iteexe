@@ -22,6 +22,8 @@ var $exeDevice = {
     timeVideoFocus: 0,
     durationVideo:0,
     timeVIFocus:0,
+    changesSaved:false,
+    inEdition:true,
     ci18n: {
         "msgReady": _("Ready?"),
         "msgStartGame": _("Click here to start"),
@@ -263,7 +265,6 @@ var $exeDevice = {
             $exeDevice.showQuestion($exeDevice.active);
             $('#vquextENumQuestions').text($exeDevice.questionsGame.length);
             $('#vquextNumberQuestion').text($exeDevice.active + 1);
-            
         }
 
     },
@@ -489,6 +490,11 @@ var $exeDevice = {
                                 <label for="vquextEShowSolution"><input type="checkbox" checked id="vquextEShowSolution">' + _("Show solutions") + '. </label>\
                                 <label for="vquextETimeShowSolution">' + _("Show solution time (seconds)") + ' <input type="number" name="vquextETimeShowSolution" id="vquextETimeShowSolution" value="3" min="1" max="9" /> </label>\
                             </p>\
+                            <p>\
+                                <label for="vquextEReloadQuestion"><input type="checkbox" id="vquextEReloadQuestion">' + _("Reload question") + '. </label>\
+                                <label for="vquextEPreviewQuestions"><input type="checkbox" id="vquextEPreviewQuestions">' + _("Preview questions") + '. </label>\
+                                <label for="vquextEPauseVideo"><input type="checkbox" id="vquextEPauseVideo">' + _("Pause video") + '. </label>\
+                            </p>\
                         </div>\
                     </fieldset>\
                     <fieldset class="exe-fieldset">\
@@ -689,6 +695,9 @@ var $exeDevice = {
         $('#vquextEShowMinimize').prop('checked', game.showMinimize);
         $('#vquextEQuestionsRamdon').prop('checked', game.optionsRamdon);
         $('#vquextEAnswersRamdon').prop('checked', game.answersRamdon);
+        $('#vquextEReloadQuestion').prop('checked', game.reloadQuestion);
+        $('#vquextEPreviewQuestions').prop('checked', game.previewQuestions);
+        $('#vquextEPauseVideo').prop('checked', game.pauseVideo);
         $('#vquextEUseLives').prop('checked', game.useLives);
         $('#vquextENumberLives').val(game.numberLives);
         $('#vquextEVideoIntro').val(game.idVideoQuExt);
@@ -738,6 +747,7 @@ var $exeDevice = {
         if (!dataGame) {
             return false;
         }
+        $exeDevice.changesSaved=true;
         var fields = this.ci18n,
             i18n = fields;
         for (var i in fields) {
@@ -760,6 +770,7 @@ var $exeDevice = {
         if (textAfter!="") {
             html += '<div class="vquext-extra-content">'+textAfter+'</div>';
         }
+    
         return html;
     },
     validateQuestion: function () {
@@ -885,12 +896,15 @@ var $exeDevice = {
         $('.exe-form-tabs li:first-child a').click();
     },
     validateData: function () {
-        var clear = $exeDevice.removeTags
-        instructions = $('#eXeGameInstructions').text(),
+        var clear = $exeDevice.removeTags,
+            instructions = $('#eXeGameInstructions').text(),
             instructionsExe = escape(tinyMCE.get('eXeGameInstructions').getContent()),
             textAfter = escape(tinyMCE.get('eXeIdeviceTextAfter').getContent()),
             showMinimize = $('#vquextEShowMinimize').is(':checked'),
             answersRamdon= $('#vquextEAnswersRamdon').is(':checked'),
+            reloadQuestion=$('#vquextEReloadQuestion').is(':checked'),
+            previewQuestions=$('#vquextEPreviewQuestions').is(':checked'),
+            pauseVideo=$('#vquextEPauseVideo').is(':checked'),
             optionsRamdon = false,
             showSolution = $('#vquextEShowSolution').is(':checked'),
             timeShowSolution = parseInt(clear($('#vquextETimeShowSolution').val())),
@@ -953,6 +967,9 @@ var $exeDevice = {
             'textButtonScorm': scorm.textButtonScorm,
             'repeatActivity': scorm.repeatActivity,
             'title': '',
+            'reloadQuestion':reloadQuestion,
+            'previewQuestions':previewQuestions,
+            'pauseVideo':pauseVideo,
             'textAfter':textAfter
         }
         return data;
