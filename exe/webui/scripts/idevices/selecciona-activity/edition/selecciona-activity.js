@@ -695,7 +695,7 @@ var $exeDevice = {
             html = '\
 			<div id="seleccionaIdeviceForm">\
 				<div class="exe-form-tab" title="' + _('General settings') + '">\
-                ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_("Choose the right answer")) + '\
+                ' + $exeAuthoring.iDevice.gamification.instructions.getFieldset(_("Elija las respuestas correctas y haga clic sobre el botón Responder")) + '\
                     <fieldset class="exe-fieldset exe-fieldset-closed">\
                         <legend><a href="#">' + _("Options") + '</a></legend>\
                         <div>\

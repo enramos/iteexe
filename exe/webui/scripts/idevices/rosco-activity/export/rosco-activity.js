@@ -17,7 +17,7 @@ var $eXeRosco = {
 		height: 360
 	},
 	colors: {
-		black: "#1c1b1b",
+		black: "#f9f9f9",
 		blue: '#5877c6',
 		green: '#00a300',
 		red: '#b3092f',
@@ -111,15 +111,34 @@ var $eXeRosco = {
 		$eXeRosco.loadGame();
 
 	},
+	Decrypt: function (str) {
+		if (!str) str = "";
+		str = (str == "undefined" || str == "null") ? "" : str;
+		str = unescape(str)
+		try {
+			var key = 146;
+			var pos = 0;
+			ostr = '';
+			while (pos < str.length) {
+				ostr = ostr + String.fromCharCode(key ^ str.charCodeAt(pos));
+				pos += 1;
+			}
+
+			return ostr;
+		} catch (ex) {
+			return '';
+		}
+	},
 	loadGame: function () {
 		$eXeRosco.options = [];
 		$('.rosco-IDevice').each(function (i) {
-			var dl = $(".rosco-DataGame", this);
-			var imagesLink = $('.rosco-LinkImages', this);
-			var option = $eXeRosco.loadDataGame(dl, imagesLink);
+			var version = $(".rosco-version", this).eq(0).text(),
+				dl = $(".rosco-DataGame", this),
+				imagesLink = $('.rosco-LinkImages', this),
+				option = $eXeRosco.loadDataGame(dl, imagesLink, version);
 			$eXeRosco.options.push(option);
-			$eXeRosco.letters=option.letters;
-			$eXeRosco.radiusLetter=16+ Math.floor((27-option.letters.length)/3);
+			$eXeRosco.letters = option.letters;
+			$eXeRosco.radiusLetter = 16 + Math.floor((27 - option.letters.length) / 3);
 			$eXeRosco.angleSize = 2 * Math.PI / option.letters.length;
 			var rosco = $eXeRosco.createInterfaceRosco(i);
 			dl.before(rosco).remove();
@@ -150,9 +169,12 @@ var $eXeRosco = {
 		return false;
 	},
 
-	loadDataGame: function (data, imgsLink) {
-		var json = data.text(),
-			mOptions = $eXeRosco.isJsonString(json);
+	loadDataGame: function (data, imgsLink, version) {
+		var json = data.text();
+		if (version == 1) {
+			json = $eXeRosco.Decrypt(json);
+		}
+		var mOptions = $eXeRosco.isJsonString(json);
 		mOptions.gameOver = false;
 		imgsLink.each(function (index) {
 			mOptions.wordsGame[index].url = $(this).attr('href');
@@ -251,7 +273,7 @@ var $eXeRosco = {
 		var html = message;
 		if (big) {
 			html = '<a href="#">' + message + '</a>';
-			$('#roscoAnswerButtons-' + instance).css("visibility","hidden");
+			$('#roscoAnswerButtons-' + instance).css("visibility", "hidden");
 		}
 		$('#roscoPStartWith-' + instance).html(html);
 	},
@@ -484,7 +506,7 @@ var $eXeRosco = {
 		if (mOptions.gameStarted) {
 			return;
 		}
-		$('#roscoAnswerButtons-' + instance).css("visibility","visible");
+		$('#roscoAnswerButtons-' + instance).css("visibility", "visible");
 		mOptions.obtainedClue = false;
 		mOptions.hits = 0;
 		mOptions.solucion = '';
@@ -763,7 +785,7 @@ var $eXeRosco = {
 			mOptions = $eXeRosco.options[instance];
 		while (end) {
 			numActiveWord++;
-			if (numActiveWord > $eXeRosco.letters.length-1) {
+			if (numActiveWord > $eXeRosco.letters.length - 1) {
 				if (mOptions.activeGameSpin < mOptions.numberTurns) {
 					if (mOptions.answeredWords >= mOptions.validWords) {
 						end = false
@@ -844,14 +866,14 @@ var $eXeRosco = {
 		var percentageHits = (mOptions.hits / mOptions.validWords) * 100;
 		mOptions.answeredWords++;
 		$('#roscotPHits-' + instance).text(mOptions.hits);
-		$('#roscotPErrors-' + instance).text(mOptions.errors);		
+		$('#roscotPErrors-' + instance).text(mOptions.errors);
 		var timeShowSolution = mOptions.showSolution ? mOptions.timeShowSolution * 1000 : 1000;
-		var clue=false;
+		var clue = false;
 		if (mOptions.itinerary.showClue && percentageHits >= mOptions.itinerary.percentageClue) {
 			if (!mOptions.obtainedClue) {
 				mOptions.obtainedClue = true;
 				timeShowSolution = 4000;
-				clue=true;
+				clue = true;
 				$('#roscoPShowClue-' + instance).show();
 				$('#roscoPShowClue-' + instance).text(mOptions.msgs.msgInformation + ': ' + mOptions.itinerary.clueGame);
 			}
@@ -898,7 +920,7 @@ var $eXeRosco = {
 			porTextoPalabraY = posTextoAnimoY + 30;
 			posTextoAnimoX = xCenter - ctxt.measureText(mAnimo).width / 2;
 			$eXeRosco.wrapText(ctxt, mAnimo + ': ' + mOptions.itinerary.clueGame, xMessage + 13, yMessage - 32, 257, 24);
-			$('#roscoPSolution-' + instance).css("color", lColor).text(mAnimo +': '+ mOptions.itinerary.clueGame);
+			$('#roscoPSolution-' + instance).css("color", lColor).text(mAnimo + ': ' + mOptions.itinerary.clueGame);
 			return;
 		}
 		ctxt.fillText(mAnimo, posTextoAnimoX, posTextoAnimoY);
@@ -941,7 +963,7 @@ var $eXeRosco = {
 					'color': mFontColor
 				});
 				var ctxt = mOptions.ctxt,
-					angle = ($eXeRosco.angleSize * (iNumber + $eXeRosco.letters.length -6)) % $eXeRosco.letters.length,
+					angle = ($eXeRosco.angleSize * (iNumber + $eXeRosco.letters.length - 6)) % $eXeRosco.letters.length,
 					radiusLetter = $eXeRosco.radiusLetter,
 					xCenter = $eXeRosco.mcanvas.width / 2,
 					yCenter = $eXeRosco.mcanvas.height / 2,
@@ -1062,7 +1084,7 @@ var $eXeRosco = {
 			letter = "";
 		for (var i = 0; i < $eXeRosco.letters.length; i++) {
 			letter = $eXeRosco.letters.charAt(i);
-			var angle = ($eXeRosco.angleSize * (i + $eXeRosco.letters.length-6)) % $eXeRosco.letters.length,
+			var angle = ($eXeRosco.angleSize * (i + $eXeRosco.letters.length - 6)) % $eXeRosco.letters.length,
 				yPoint = yCenter + radius * Math.sin(angle),
 				xPoint = xCenter + radius * Math.cos(angle),
 				font = $eXeRosco.getFontSizeLetters();
@@ -1085,27 +1107,28 @@ var $eXeRosco = {
 			ctxt.closePath();
 		}
 	},
-	getFontSizeLetters: function(){
-		var mFont="20px",
-		fontS=' bold %1 sans-serif ';
-		if($eXeRosco.letters.length<18){
-			mFont="24px"
-		}if($eXeRosco.letters.length<24){
-			mFont="22px"
-		}else if($eXeRosco.letters.length<32){
-			mFont="20px"
-		}else if($eXeRosco.letters.length<36){
-			mFont="16px"
-		}else if($eXeRosco.letters.length<40){
-			mFont="14px"
-		}else if($eXeRosco.letters.length<44){
-			mFont="12px"
-		}else if($eXeRosco.letters.length<50){
-			mFont="10px"
-		}else if($eXeRosco.letters.length<100){
-			mFont="8px"
+	getFontSizeLetters: function () {
+		var mFont = "20px",
+			fontS = ' bold %1 sans-serif ';
+		if ($eXeRosco.letters.length < 18) {
+			mFont = "24px"
 		}
-		fontS= fontS.replace('%1', mFont);
+		if ($eXeRosco.letters.length < 24) {
+			mFont = "22px"
+		} else if ($eXeRosco.letters.length < 32) {
+			mFont = "20px"
+		} else if ($eXeRosco.letters.length < 36) {
+			mFont = "16px"
+		} else if ($eXeRosco.letters.length < 40) {
+			mFont = "14px"
+		} else if ($eXeRosco.letters.length < 44) {
+			mFont = "12px"
+		} else if ($eXeRosco.letters.length < 50) {
+			mFont = "10px"
+		} else if ($eXeRosco.letters.length < 100) {
+			mFont = "8px"
+		}
+		fontS = fontS.replace('%1', mFont);
 		return fontS;
 
 	},

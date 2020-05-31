@@ -11,6 +11,7 @@ var $exeDevice = {
 	title: _("A-Z Quiz Game"),
 	iDevicePath: "/scripts/idevices/rosco-activity/edition/",
 	msgs: {},
+	roscoVersion:1,
 	ci18n: {
 		"msgReady": _("Ready?"),
 		"msgStartGame": _("Click here to start"),
@@ -209,7 +210,11 @@ var $exeDevice = {
 		if (originalHTML != '') {
 			var wrapper = $("<div></div>");
 			wrapper.html(originalHTML);
-			var json = $('.rosco-DataGame', wrapper).text();
+			var json = $('.rosco-DataGame', wrapper).text(),
+				version=$('.rosco-version', wrapper).text();
+			if (version.length==1){
+					json=$exeDevice.Decrypt(json);
+			}
 			var dataGame = $exeDevice.isJsonString(json);
 			var $imagesLink = $('.rosco-LinkImages', wrapper);
 			$imagesLink.each(function (index) {
@@ -222,7 +227,7 @@ var $exeDevice = {
 			$exeAuthoring.iDevice.gamification.common.setLanguageTabValues(dataGame.msgs);
             // Text after
             var textAfter = $(".rosco-extra-content",wrapper);
-            if (textAfter.length==1) $("#eXeIdeviceTextAfter").val(textAfter.html());			
+            if (textAfter.length==1) $("#eXeIdeviceTextAfter").val(textAfter.html());
 		}
 	},
 	clickImage: function (img, epx, epy) {
@@ -339,6 +344,41 @@ var $exeDevice = {
 			'height': mData.h + 'px'
 		});
 	},
+	Encrypt :function (str) {
+        if (!str) str = "";
+        str = (str == "undefined" || str == "null") ? "" : str;
+        try {
+            var key = 146;
+            var pos = 0;
+            ostr = '';
+            while (pos < str.length) {
+                ostr = ostr + String.fromCharCode(str.charCodeAt(pos) ^ key);
+                pos += 1;
+            }
+            return escape(ostr);
+        } catch (ex) {
+            return '';
+        }
+    },
+
+    Decrypt: function (str) {
+        if (!str) str = "";
+        str = (str == "undefined" || str == "null") ? "" : str;
+        str=unescape(str)
+        try {
+            var key = 146;
+            var pos = 0;
+            ostr = '';
+            while (pos < str.length) {
+                ostr = ostr + String.fromCharCode(key ^ str.charCodeAt(pos));
+                pos += 1;
+            }
+
+            return ostr;
+        } catch (ex) {
+            return '';
+        }
+    },
 	save: function () {
 		var dataGame = this.validateData();
 		if (!dataGame) {
@@ -353,9 +393,11 @@ var $exeDevice = {
 		dataGame.msgs = i18n;
 		var json = JSON.stringify(dataGame),
 			divContent = "";
+		json=$exeDevice.Encrypt(json);
 		if (dataGame.instructions != "") divContent = '<div class="rosco-instructions">' + dataGame.instructions + '</div>';
 		var linksImages = $exeDevice.createlinksImage(dataGame.wordsGame);
 		html = '<div class="rosco-IDevice">';
+		html += '<div class="rosco-version js-hidden">' + $exeDevice.roscoVersion + '</div>';
 		html += divContent;
 		html += '<div class="rosco-DataGame">' + json + '</div>';
 		html += linksImages;
@@ -363,9 +405,8 @@ var $exeDevice = {
 		// Get the optional text
 		var textAfter = tinymce.editors[1].getContent();
 		if (textAfter!="") {
-			html += '<div class="rosco-extra-content">'+textAfter+'</div>';            
+			html += '<div class="rosco-extra-content">'+textAfter+'</div>';
 		}
-		
 		return html;
 	},
 	createlinksImage: function (wordsGame) {
