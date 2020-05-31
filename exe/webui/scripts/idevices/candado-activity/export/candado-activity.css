@@ -41,7 +41,7 @@
     font-weight: bold;
 }
 
-.candado-Instructions {
+.candado-Instructiones, .candado-FeedRetro {
     max-width: 1000px;
     width: 90%;
     margin: 3px auto;
@@ -119,7 +119,9 @@
     height: 34px;
     margin-right: 5px;
 }
-
+.candado-FeedRetro{
+    display: none;
+}
 .exeQuextIcons34-Time {
     background: url(exeQuextIcons34.png) no-repeat 0 -34px;
 }

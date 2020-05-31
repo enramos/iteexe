@@ -3,7 +3,7 @@
  * Released under Attribution-ShareAlike 4.0 International License.
  * Author: Manuel Narváez Martínez
  * Graphic design: Ana María Zamora Moreno, Francisco Javier Pulido
- * Testers: Ricardo Málaga Floriano, Francisco Muñoz de la Peña
+ * Testers: Francisco Muñoz de la Peña
  * Translator: Antonio Juan Delgado García
  * License: http://creativecommons.org/licenses/by-sa/4.0/
  */
