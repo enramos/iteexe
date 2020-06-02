@@ -156,6 +156,27 @@
   
   }
 
+  #quextIdeviceForm #quextEScoreQuestion, #quextIdeviceForm label[for=quextEScoreQuestion]{
+    display: none;
+  }
+
+  #quextIdeviceForm .quext-ESolutionQuExt{
+    width: 97%;
+    height: 20px;
+    margin: 10px auto;
+    padding: 0 3px;
+    background: transparent;
+    font-weight: bolder;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+  }
+  #quextIdeviceForm .quext-ESolutionQuExt p{
+    margin-right: 3px;
+    font-weight: bolder;
+  }
+
   #quextIdeviceForm .quext-EInputVideo {
     display: none;
   }

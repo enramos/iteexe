@@ -102,8 +102,6 @@
     display: none;
     z-index: 20000;
     overflow: hidden;
-    
-
 }
 
 .selecciona-LinkVideoIntroShow{
@@ -133,7 +131,7 @@
     display: none;
 }
 .selecciona-ShowClue p{
-    font-size:13px;
+    font-size:16px;
     color:#5877c6;
     font-weight: bold;
     margin: 5px auto;
@@ -908,3 +906,29 @@ div:-moz-full-screen .exeSeleccionaIcons-FullScreen{background:url(exeSelecciona
 .selecciona-extra-content{
 	margin-top:1.7em;
 }
+.selecciona-parpadea {
+    animation-name: selecciona-parpadeo;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-name:selecciona-parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 5;
+  }
+  @-moz-keyframes selecciona-parpadeo{
+    0% { font-size: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  @-webkit-keyframes selecciona-parpadeo {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+  }
+  @keyframes selecciona-parpadeo {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }

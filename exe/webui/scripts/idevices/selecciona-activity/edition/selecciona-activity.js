@@ -133,13 +133,6 @@ var $exeDevice = {
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     },
-    loadMathAjax: function () {
-
-        var tag = document.createElement('script');
-        tag.src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML";
-        var firstScriptTag = document.getElementsByTagName('script')[0];
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    },
     youTubeReady: function () {
         $("#seleccionaMediaVideo").prop("disabled", false);
         $exeDevice.player = new YT.Player('seleccionaEVideo', {
@@ -442,8 +435,6 @@ var $exeDevice = {
         $exeDevice.checkQuestions(p.solution);
         $("input.selecciona-Times[name='slctime'][value='" + p.time + "']").prop("checked", true);
         $("input.selecciona-TypeSelect[name='slctypeselect'][value='" + p.typeSelect + "']").prop("checked", true);
-        MathJax.t
-
     },
     checkQuestions: function (solution) {
         $("input.selecciona-ESolution[name='slcsolution']").prop("checked", false);
@@ -905,7 +896,6 @@ var $exeDevice = {
 			';
         var field = $("textarea.jsContentEditor").eq(0)
         field.before(html);
-        $exeDevice.loadMathAjax();
         $exeDevice.loadYoutubeApi();
         $exeAuthoring.iDevice.tabs.init("seleccionaIdeviceForm");
         $exeAuthoring.iDevice.gamification.scorm.init();
@@ -996,10 +986,9 @@ var $exeDevice = {
             $exeDevice.selectsGame = dataGame.selectsGame;
             var instructions = $(".selecciona-instructions", wrapper);
             if (instructions.length == 1) tinyMCE.get('eXeGameInstructions').setContent(instructions.html());
+            // i18n
             $exeAuthoring.iDevice.gamification.common.setLanguageTabValues(dataGame.msgs);
-            var textAfter = $(".selecciona-extra-content",wrapper);
-            if (textAfter.length == 1) tinyMCE.get('eXeIdeviceTextAfter').setContent(textAfter.html());
-
+             // Text after
             var textAfter = $(".selecciona-extra-content",wrapper);
             if (textAfter.length == 1) tinyMCE.get('eXeIdeviceTextAfter').setContent(textAfter.html());
 

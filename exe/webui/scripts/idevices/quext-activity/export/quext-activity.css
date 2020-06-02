@@ -87,7 +87,7 @@
     display: none;
 }
 .quext-ShowClue p{
-    font-size:13px;
+    font-size:14px;
     color:#5877c6;
     font-weight: bold;
     margin: 5px auto;
@@ -836,3 +836,34 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
 .quext-extra-content{
 	margin-top:1.7em;
 } 
+.quext-parpadea {
+  
+    animation-name: quext-parpadeo;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-name:quext-parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 5;
+  }
+  @-moz-keyframes quext-parpadeo{  
+    0% { font-size: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  
+  @-webkit-keyframes quext-parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+  }
+  
+  @keyframes quext-parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+
+

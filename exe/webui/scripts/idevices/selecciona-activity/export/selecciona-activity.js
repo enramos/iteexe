@@ -77,7 +77,6 @@ var $eXeSelecciona = {
             $eXeSelecciona.initialScore = $eXeSelecciona.previousScore;
         }
     },
-  
     loadJSCSSFile: function (filename, filetype){
         if (filetype=="js"){ //if filename is a external JavaScript file
             var fileref=document.createElement('script')
@@ -158,7 +157,7 @@ var $eXeSelecciona = {
                         if (!mOptions.repeatActivity) {
                             $('#seleccionaSendScore-' + instance).hide();
                         }
-                        $('#seleccionaRepeatActivity-' + instance).text(mOptions.msgs.msgSaveScoreButton + ': ' + score)
+                        $('#seleccionaRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore + ': ' + score)
                         $('#seleccionaRepeatActivity-' + instance).show();
                     }
                 } else {
@@ -222,7 +221,6 @@ var $eXeSelecciona = {
         var firstScriptTag = document.getElementsByTagName('script')[0];
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     },
-
     createInterfaceSelecciona: function (instance) {
         var html = '',
             path = $eXeSelecciona.idevicePath,
@@ -293,7 +291,7 @@ var $eXeSelecciona = {
             </div>\
             <div class="selecciona-ShowClue" id="seleccionaShowClue-' + instance + '">\
                 <div class="sr-av">' + msgs.msgClue + ':</div>\
-                <p class="selecciona-PShowClue" id="seleccionaPShowClue-' + instance + '"></p>\
+                <p class="selecciona-PShowClue selecciona-parpadea" id="seleccionaPShowClue-' + instance + '"></p>\
             </div>\
             <div class="selecciona-Multimedia" id="seleccionaMultimedia-' + instance + '">\
                 <img class="selecciona-Cursor" id="seleccionaCursor-' + instance + '" src="' + path + 'seleccionaCursor.gif" alt="Cursor" />\
@@ -646,9 +644,6 @@ var $eXeSelecciona = {
         $('#seleccionaButtonAnswer-' + instance).on('click touchstart', function (e) {
             $eXeSelecciona.answerQuestion(instance);
         });
-
-
-
     },
     changeQuextion: function (instance,button) {
         var mOptions = $eXeSelecciona.options[instance];
@@ -988,7 +983,7 @@ var $eXeSelecciona = {
         }
         if (mOptions.isScorm === 1) {
             if (mOptions.repeatActivity || $eXeSelecciona.initialScore === '') {
-                var score = ((mOptions.hits * 10) / mOptions.numberQuestions).toFixed(2);
+                var score = ((mOptions.scoreGame * 10) / mOptions.scoreTotal).toFixed(2);
                 $eXeSelecciona.sendScore(true, instance);
                 $('#seleccionaRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore + ': ' + score);
                 $eXeSelecciona.initialScore = score;
@@ -1024,6 +1019,7 @@ var $eXeSelecciona = {
         mOptions.activeSilent=(q.type==2) &&(q.soundVideo==1)  && (q.tSilentVideo>0) && (q.silentVideo>=q.iVideo) && (q.iVideo<q.fVideo);
         var endSonido=parseInt(q.silentVideo)+parseInt(q.tSilentVideo);
         mOptions.endSilent=endSonido>q.fVideo?q.fVideo: endSonido;
+        $('#seleccionaAuthor-'+instance).text('');
         if (mQuextion.type === 1) {
             $('#seleccionaImagen-'+instance).prop('src', mQuextion.url)
                 .on('load', function () {
@@ -1083,7 +1079,7 @@ var $eXeSelecciona = {
         $eXeSelecciona.drawQuestions(instance);
         if (mOptions.isScorm === 1) {
             if (mOptions.repeatActivity || $eXeSelecciona.initialScore === '') {
-                var score = ((mOptions.hits * 10) / mOptions.numberQuestions).toFixed(2);
+                var score = ((mOptions.scoreGame * 10) / mOptions.scoreTotal).toFixed(2);
                 $eXeSelecciona.sendScore(true,instance);
                 $('#seleccionaRepeatActivity-'+instance).text(mOptions.msgs.msgYouScore + ': ' + score);
 
@@ -1227,14 +1223,15 @@ var $eXeSelecciona = {
             }
             obtainedPoints=mOptions.selectsGame[mOptions.activeQuestion].customScore *obtainedPoints;
             mOptions.scoreGame+=mOptions.selectsGame[mOptions.activeQuestion].customScore;
-            console.log(obtainedPoints,mOptions.scoreGame);
+
             message = $eXeSelecciona.getRetroFeedMessages(true, instance) + ' ' + obtainedPoints + ' '+mOptions.msgs.mgsPoints;            type = 2;
         } else {
             mOptions.errors++;
             if (mOptions.useLives) {
                 mOptions.livesLeft--;
                 $eXeSelecciona.updateLives(instance);
-                message = $eXeSelecciona.getRetroFeedMessages(false, instance)+ ' ' +mOptions.msgs.msgLoseLive;            } else {
+                message = $eXeSelecciona.getRetroFeedMessages(false, instance)+ ' ' +mOptions.msgs.msgLoseLive;            
+            } else {
                 obtainedPoints = -330 * mOptions.selectsGame[mOptions.activeQuestion].customScore ;
                 message = $eXeSelecciona.getRetroFeedMessages(false, instance)  + ' ' +mOptions.msgs.msgLoseT;
             }
