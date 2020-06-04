@@ -1464,7 +1464,7 @@ var $exeDevice = {
                 $(this).val(1);
             }
         });
-        $('#seleccionaIdeviceForm').on('dblclick', ' #seleccionaEImage', function () {
+        $('#seleccionaIdeviceForm').on('dblclick', '#seleccionaEImage', function () {
             $('#seleccionaECursor').hide();
             $('#seleccionaEXImage').val(0);
             $('#seleccionaEYImage').val(0);

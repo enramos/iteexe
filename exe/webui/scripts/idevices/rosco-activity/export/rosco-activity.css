@@ -354,13 +354,14 @@
 .rosco-TypeDefinition p {
     font-weight: bold;
     font-size: 20px;
-    color: #1c1b1b
+    color: #1c1b1b;
+    text-align: center;
 }
 
 .rosco-TypeDefinition p a {
     font-weight: bold;
     font-size: 20px;
-    color: #b3092f
+    color: #b3092f;
 }
 
 .rosco-Definition {

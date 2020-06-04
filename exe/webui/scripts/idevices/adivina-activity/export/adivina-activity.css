@@ -154,7 +154,7 @@
 }
 
 .adivina-Question {
-    background-color: white;
+    background-color: transparent;
     width: 100%;
     margin: 0px auto;
     margin-bottom: 10px;
@@ -203,19 +203,17 @@
     border: 1px solid black;
     padding: 5px;
     border-radius: 10px;
-    background-color: #ffffff;
-    display: block;
+   display: block;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .adivina-GameContainer-classic {
     position: relative;
-    background-color: white;
+    background-color: transparent;
     width: 100%;
     margin: 10px auto;
     border: 0px solid black;
     padding: 5px;
     border-radius: 10px;
-    background-color: #ffffff;
     display: block;
 }
 
@@ -358,7 +356,7 @@
 .adivina-GameOver {
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: transparent;
     position: absolute;
     left: 0;
     top: 0;
@@ -436,7 +434,6 @@
 .adivina-GameContainer input[type=button], .adivina-GetScore input[type=button]  {
     width: 100px;
     height: 30px;
-
     background: white;
     border: 2px solid #5877c6;
     border-radius: 6px;
@@ -516,7 +513,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: transparent;
     width: 100%;
 }
 
@@ -528,23 +525,64 @@
 .adivina-GameContainer:-webkit-full-screen {
     width: 100%;
     height: 100vh;
+    background-color:white;
 }
 
 .adivina-GameContainer:-moz-full-screen {
     width: 100%;
     height: 100vh;
+    background-color:white;
 }
 
 .adivina-GameContainer:-ms-full-screen {
     width: 100%;
     height: 100vh;
+    background-color:white;
 }
 
 .adivina-GameContainer:-o-full-screen {
     width: 100%;
     height: 100vh;
+    background-color:white;
 }
 
+
+.adivina-GameContainer-classic:-webkit-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+.adivina-GameContainer-classic:-moz-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+.adivina-GameContainer-classic:-ms-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+.adivina-GameContainer-classic:-o-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+
+
+.adivina-GameContainer-classic {
+    position: relative;
+    background-color: transparent;
+    width: 100%;
+    margin: 10px auto;
+    border: 0px solid black;
+    padding: 5px;
+    border-radius: 10px;
+    display: block;
+}
 .adivina-GameContainer:-webkit-full-screen .adivina-Letter {
     font-size: 24px;
     width: 30px;
@@ -671,47 +709,47 @@
 
 
 .exeQuextIcons-classic-Hit {
-    background: url(exeQuextIcons-classic.png) no-repeat 0 0;
+    background: url(exeQuextIcons.png) no-repeat 0 0;
 }
 .exeQuextIcons-classic-Error {
-    background: url(exeQuextIcons-classic.png) no-repeat -26px 0;
+    background: url(exeQuextIcons.png) no-repeat -26px 0;
 }
 .exeQuextIcons-classic-Score {
-    background: url(exeQuextIcons-classic.png) no-repeat -52px 0;
+    background: url(exeQuextIcons.png) no-repeat -52px 0;
  }
 
 .exeQuextIcons-classic-Time{
-    background: url(exeQuextIcons-classic.png) no-repeat 0 -26px;
+    background: url(exeQuextIcons.png) no-repeat 0 -26px;
 }
 .exeQuextIcons-classic-OneRound {
-    background: url(exeQuextIcons-classic.png) no-repeat -52px -26px;
+    background: url(exeQuextIcons.png) no-repeat -52px -26px;
     margin-right: 3px;
 }
 .exeQuextIcons-classic-TwoRounds {
-    background: url(exeQuextIcons-classic.png) no-repeat -78px -26px;
+    background: url(exeQuextIcons.png) no-repeat -78px -26px;
     margin-right: 3px;
 }
 
 .exeQuextIcons-classic-Life {
- background: url(exeQuextIcons-classic.png) no-repeat -78px 0;
+ background: url(exeQuextIcons.png) no-repeat -78px 0;
 }
 
 .exeQuextIcons-classic-Number {
- background: url(exeQuextIcons-classic.png) no-repeat -26px -26px;
+ background: url(exeQuextIcons.png) no-repeat -26px -26px;
 }
 
 .exeQuextIcons-classic-Minimize {
-    background: url(exeQuextIcons-classic.png) no-repeat 0 -52px;
+    background: url(exeQuextIcons.png) no-repeat 0 -52px;
     margin-right: 5px;
 
 }
 
 .exeQuextIcons-classic-Maximize{
-    background: url(exeQuextIcons-classic.png) no-repeat -216px 0;
+    background: url(exeQuextIcons.png) no-repeat -216px 0;
 }
 
 .exeQuextIcons-classic-FullScreen{
-    background: url(exeQuextIcons-classic.png) no-repeat 0 -78px;
+    background: url(exeQuextIcons.png) no-repeat 0 -78px;
 }
 
 
@@ -867,3 +905,34 @@ p.adivinaDivInstructions{margin:0;font-weight:bold;text-align:center;height:32px
 .adinaIdevice .adivina-extra-content{
 	margin-top:1.7em;
 } 
+
+.adivina-PShowClue{
+    display: none;
+}
+
+.adivina-parpadea {
+    animation-name: adivina-parpadeo;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: 8;
+
+    -webkit-animation-name:adivina-parpadeo;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: 8;
+  }
+  @-moz-keyframes adivina-parpadeo{
+    0% { font-size: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }
+  @-webkit-keyframes adivina-parpadeo {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+     100% { opacity: 1.0; }
+  }
+  @keyframes adivina-parpadeo {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+  }

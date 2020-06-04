@@ -13,6 +13,7 @@ var $exeDevice = {
     iDevicePath: "/scripts/idevices/adivina-activity/edition/",
     msgs: {},
     active: 0,
+    adivinaVersion:1,
     ci18n: {
         "msgReady": _("Ready?"),
         "msgStartGame": _("Click here to start"),
@@ -167,7 +168,11 @@ var $exeDevice = {
             var wrapper = $("<div></div>");
             wrapper.html(originalHTML);
             var json = $('.adivina-DataGame', wrapper).text(),
-                dataGame = $exeDevice.isJsonString(json),
+            version=$('.adivina-version', wrapper).text();
+            if (version.length==1){
+                json=$exeDevice.Decrypt(json);
+            }
+            var dataGame = $exeDevice.isJsonString(json),
                 $imagesLink = $('.adivina-LinkImages', wrapper);
             $imagesLink.each(function (index) {
                 dataGame.wordsGame[index].url = $(this).attr('href');
@@ -180,6 +185,40 @@ var $exeDevice = {
              // Text after
              var textAfter = $(".adivina-extra-content",wrapper);
              if (textAfter.length==1) $("#eXeIdeviceTextAfter").val(textAfter.html());
+        }
+    },
+    Encrypt :function (str) {
+        if (!str) str = "";
+        str = (str == "undefined" || str == "null") ? "" : str;
+        try {
+            var key = 146;
+            var pos = 0;
+            ostr = '';
+            while (pos < str.length) {
+                ostr = ostr + String.fromCharCode(str.charCodeAt(pos) ^ key);
+                pos += 1;
+            }
+            return escape(ostr);
+        } catch (ex) {
+            return '';
+        }
+    },
+    Decrypt: function (str) {
+        if (!str) str = "";
+        str = (str == "undefined" || str == "null") ? "" : str;
+        str=unescape(str)
+        try {
+            var key = 146;
+            var pos = 0;
+            ostr = '';
+            while (pos < str.length) {
+                ostr = ostr + String.fromCharCode(key ^ str.charCodeAt(pos));
+                pos += 1;
+            }
+
+            return ostr;
+        } catch (ex) {
+            return '';
         }
     },
     save: function () {
@@ -196,9 +235,11 @@ var $exeDevice = {
         dataGame.msgs = i18n;
         var json = JSON.stringify(dataGame),
             divContent = "";
+        json=$exeDevice.Encrypt(json);
         if (dataGame.instructions != "") divContent = '<div class="adivina-instructions">' + dataGame.instructions + '</div>';
         var linksImages = $exeDevice.createlinksImage(dataGame.wordsGame);
         var html = '<div class="adivina-IDevice">';
+        html += '<div class="adivina-version js-hidden">' + $exeDevice.adivinaVersion + '</div>';
         html += divContent;
         html += '<div class="adivina-DataGame">' + json + '</div>';
         html += linksImages;
@@ -474,6 +515,10 @@ var $exeDevice = {
         $('.adivina-Questions').on('click', 'img.adivinaHomeImageEdition', function (e) {
             $exeDevice.clickImage(this, e.pageX, e.pageY);
         });
+
+        $('.adivina-Questions').on('dblclick', 'img.adivinaHomeImageEdition', function () {
+            $exeDevice.clickImage(this, 0, 0);
+        });
         $('#adivinaTimeQuestion').on('keyup', function () {
             var v = this.value;
             v = v.replace(/\D/g, '');
@@ -518,6 +563,7 @@ var $exeDevice = {
             this.value = this.value > 100 ? 100 : this.value;
             this.value = this.value < 0 ? 0 : this.value;
         });
+
         if (window.File && window.FileReader && window.FileList && window.Blob) {
 			$('#eXeGameExportImport').show();
 			$('#eXeGameImportGame').on('change', function (e) {
@@ -682,8 +728,12 @@ var $exeDevice = {
         }
     },
     clickImage: function (img, epx, epy) {
-        var $cursor = $(img).siblings('.adivinaCursorEdition'),
-            $x = $(img).parent().siblings('.adivinaBarEdition').find('.adivinaXImageEdition'),
+        var $cursor = $(img).siblings('.adivinaCursorEdition');
+        if(epx==0 && epy==0){
+            $cursor.hide();
+            return;
+        }
+        var $x = $(img).parent().siblings('.adivinaBarEdition').find('.adivinaXImageEdition'),
             $y = $(img).parent().siblings('.adivinaBarEdition').find('.adivinaYImageEdition'),
             posX = epx - $(img).offset().left,
             posY = epy - $(img).offset().top,

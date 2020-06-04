@@ -990,12 +990,18 @@ var $eXeRosco = {
 	},
 
 	checkWord: function (word, answord) {
-		if (word.indexOf('|') == -1) {
-			return $.trim(word.toUpperCase()) == $.trim(answord.toUpperCase());
+
+		var sWord=$.trim(word).replace(/\s+/g, " ").toUpperCase().replace(/\.$/,"").replace(/\,$/,"").replace(/\;$/,""),
+				sAnsWord=$.trim(answord).replace(/\s+/g, " ").toUpperCase().replace(/\.$/,"").replace(/\,$/,"").replace(/\;$/,"");
+				sWord=$.trim(sWord);
+				sAnsWord=$.trim(sAnsWord);
+		if (sWord.indexOf('|') == -1) {
+			return sWord == sAnsWord;
 		}
-		var words = word.split('|');
+		var words = sWord.split('|');
 		for (var i = 0; i < words.length; i++) {
-			if ($.trim(words[i]).toUpperCase() == $.trim(answord.toUpperCase())) {
+			var mword=$.trim(words[i]).replace(/.$/,"").replace(/,$/,"").replace(/;$/,"");
+			if ( mword == sAnsWord) {
 				return true;
 			}
 		}

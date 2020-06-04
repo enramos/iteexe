@@ -231,8 +231,12 @@ var $exeDevice = {
 		}
 	},
 	clickImage: function (img, epx, epy) {
-		var $cursor = $(img).siblings('.roscoCursorEdition'),
-			$x = $(img).parent().siblings('.roscoBarEdition').find('.roscoXImageEdition'),
+		var $cursor = $(img).siblings('.roscoCursorEdition');
+		if(epx==0 && epy==0){
+            $cursor.hide();
+            return;
+        }
+		var $x = $(img).parent().siblings('.roscoBarEdition').find('.roscoXImageEdition'),
 			$y = $(img).parent().siblings('.roscoBarEdition').find('.roscoYImageEdition'),
 			posX = epx - $(img).offset().left,
 			posY = epy - $(img).offset().top,
@@ -713,6 +717,9 @@ var $exeDevice = {
 		$('.roscoHomeImageEdition').on('click', function (e) {
 			$exeDevice.clickImage(this, e.pageX, e.pageY);
 		});
+		$('.roscoWordMutimediaEdition').on('dblclick', 'img.roscoHomeImageEdition', function () {
+            $exeDevice.clickImage(this, 0, 0);
+        });
 		$('#roscoDuration').on('keyup', function () {
 			var v = this.value;
 			v = v.replace(/\D/g, '');

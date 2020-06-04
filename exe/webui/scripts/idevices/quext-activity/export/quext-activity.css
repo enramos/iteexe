@@ -56,8 +56,6 @@
     display: none;
     z-index: 20000;
     overflow: hidden;
-    
-
 }
 
 .quext-LinkVideoIntroShow{
@@ -841,26 +839,26 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     animation-name: quext-parpadeo;
     animation-duration: 1s;
     animation-timing-function: linear;
-    animation-iteration-count: infinite;
+    animation-iteration-count: 5;
 
     -webkit-animation-name:quext-parpadeo;
     -webkit-animation-duration: 1s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: 5;
   }
-  @-moz-keyframes quext-parpadeo{  
+  @-moz-keyframes quext-parpadeo{
     0% { font-size: 1.0; }
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
   }
   
-  @-webkit-keyframes quext-parpadeo {  
+  @-webkit-keyframes quext-parpadeo {
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
      100% { opacity: 1.0; }
   }
   
-  @keyframes quext-parpadeo {  
+  @keyframes quext-parpadeo {
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
