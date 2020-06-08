@@ -82,11 +82,11 @@ var $exeDevice = {
                                      <div id="divCandadoInstructions">\
                                     <label for="candadoEDescription" class="sr-av">'+_('Instructions')+'":</label>\
                                     <textarea id="candadoEDescription" class="exe-html-editor"\></textarea>\
-                                    </div>\
-                                    <div id="divCandadoFeebBack">\
+                                </div>\
+                                <div id="divCandadoFeebBack">\
                                     <label for="candadoEFeedBack" class="sr-av">'+_('Feedback')+'":</label>\
-                                    <textarea id="candadoEFeedBack" class="exe-html-editor"\></textarea>\
-                                    </div>\
+                                    <textarea  id="candadoEFeedBack" class="exe-html-editor"\></textarea>\
+                                </div>\
                                 </div>\
                                 <div class="candado-EOptions">\
                                         <label for="candadoEDSolution">' + msgs.msgCodeAccess + ': <input type="text" id="candadoEDSolution" /></label>\

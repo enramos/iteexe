@@ -364,6 +364,8 @@ var $eXeRosco = {
 		$('#roscoBtnAnswer-' + instance).prop('disabled', true);
 		$('#roscoBtnPass-' + instance).prop('disabled', true);
 		$('#roscoEdAnswer-' + instance).prop('disabled', true);
+		$('#roscoHomeImage-' + instance).hide();
+	  $('#roscoCursor-' + instance).hide();
 		if (mOptions.itinerary.showCodeAccess) {
 			$('#roscoAnswerButtons-' + instance).hide();
 			$('#roscoCodeAccess-' + instance).show();
@@ -634,7 +636,7 @@ var $eXeRosco = {
 		var whidthText = ctxt.measureText(texto).width,
 			xText = xCenter - whidthText / 2,
 			yText = yMessage;
-		ctxt.fillStyle = $eXeRosco.colors.white;;
+		ctxt.fillStyle = 'transparent';
 		ctxt.fillRect(xMessage, yMessage, wText, 30);
 		ctxt.textAlig = "center";
 		ctxt.textBaseline = 'top';
@@ -679,6 +681,9 @@ var $eXeRosco = {
 			$Image = $('#roscoHomeImage-' + instance),
 			$Author = $('#roscoAuthor-' + instance);
 		$Image.attr('alt', 'No image');
+		$cursor.hide();
+		$Image.hide();
+		$noImage.hide();
 		if ($.trim(url).length == 0) {
 			$cursor.hide();
 			$Image.hide();

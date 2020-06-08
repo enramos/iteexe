@@ -121,7 +121,7 @@ var $eXeAdivina = {
                 mOption = $eXeAdivina.loadDataGame(dl, imagesLink, version),
                 msg = mOption.msgs.msgPlayStart;
             $eXeAdivina.options.push(mOption);
-            var adivina = mOption.styleGame ? $eXeAdivina.createInterfaceAdivinaClassic(i) : $eXeAdivina.createInterfaceAdivina(i);
+            var adivina = $eXeAdivina.createInterfaceAdivina(i);
             dl.before(adivina).remove();
             $('#adivinaGameMinimize-' + i).hide();
             $('#adivinaGameContainer-' + i).hide();
@@ -181,122 +181,7 @@ var $eXeAdivina = {
         } catch (e) {}
         return false;
     },
-    createInterfaceAdivinaClassic: function (instance) {
-        var html = '',
-            path = $eXeAdivina.idevicePath,
-            msgs = $eXeAdivina.options[instance].msgs,
-            html = '';
-        html += '<div class="adivina-MainContainer">\
-        <div class="adivina-GameMinimize" id="adivinaGameMinimize-' + instance + '">\
-            <a href="#" class="adivina-LinkMaximize" id="adivinaLinkMaximize-' + instance + '" title="' + msgs.msgMaximize + '"><img src="' + path + "adivinaIcon-classic.png" + '" class="adivina-Icons adivina-IconMinimize"  alt="' + msgs.msgMaximize + '">\
-            <div class="adivina-MessageMaximize-classic" id="adivinaMessageMaximize-' + instance + '"></div></a>\
-        </div>\
-        <div class="adivina-GameContainer-classic" id="adivinaGameContainer-' + instance + '">\
-            <div class="adivina-GameScoreBoard">\
-                <div class="adivina-GameScores">\
-                    <a href="#" class="adivina-LinkMinimize" id="adivinaLinkMinimize-' + instance + '" title="' + msgs.msgMinimize + '">\
-                        <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
-                        <div class="exeQuextIcons exeQuextIcons-classic-Minimize"></div>\
-                    </a>\
-                    <div class="exeQuext-ResultGame">\
-						<strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
-						<div class="exeQuextIcons exeQuextIcons-classic-Hit"></div>\
-					    <p  id="adivinaPHits-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-classic-Error"></div>\
-                        <p id="adivinaPErrors-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-classic-Score"></div>\
-                        <p id="adivinaPScore-' + instance + '">0</p>\
-                    </div>\
-                </div>\
-                <div class="adivina-LifesGame" id="adivinaLifesGame-' + instance + '">\
-                    <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div  class="exeQuextIcons exeQuextIcons-classic-Life"></div>\
-                    <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div  class="exeQuextIcons exeQuextIcons-classic-Life"></div>\
-                    <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div  class="exeQuextIcons exeQuextIcons-classic-Life"></div>\
-                    <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div  class="exeQuextIcons exeQuextIcons-classic-Life"></div>\
-                    <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div  class="exeQuextIcons exeQuextIcons-classic-Life"></div>\
-                </div>\
-                <div class="adivina-NumberLifesGame" id="adivinaNumberLivesGame-' + instance + '">\
-                    <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div  class="exeQuextIcons exeQuextIcons-classic-Life"></div>\
-                    <p id="adivinaPLifes-' + instance + '">0</p>\
-                </div>\
-                <div class="adivina-TimeNumber">\
-					<div  class="adivina-TimeQuestion">\
-						<strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
-						<div class="exeQuextIcons  exeQuextIcons-classic-Time"></div>\
-						<p  id="adivinaPTime-' + instance + '">00:00</p>\
-                    </div>\
-                    <div  class="exeQuext-ResultGame">\
-						<strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
-						<div class="exeQuextIcons  exeQuextIcons-classic-Number"></div>\
-						<p  id="adivinaPNumber-' + instance + '">0</p>\
-					</div>\
-                        <a href="#" class="adivina-LinkFullScreen" id="adivinaLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
-						    <strong><span class="sr-av">' + msgs.msgFullScreen + ':</span></strong>\
-							<div class="exeQuextIcons exeQuextIcons-classic-FullScreen" id="adivinaFullScreen-' + instance + '"></div>\
-						</a>\
-				</div>\
-            </div>\
-            <div class="adivina-ShowClue" id="adivinaShowClue-' + instance + '">\
-                <div class="sr-av">' + msgs.msgClue + ':</div>\
-                <p class="adivina-PShowClue adivina-parpadea" id="adivinaPShowClue-' + instance + '"></p>\
-           </div>\
-            <div class="adivina-Multimedia" id="adivinaMultimedia-' + instance + '">\
-                <img src="' + path + 'adivinaCursor.gif" class="adivina-Cursor" alt="Cursor" id="adivinaCursor-' + instance + '" /> \
-                <img src="" class="adivina-Image" alt="' + msgs.msgNoImage + '" id="adivinaImage-' + instance + '" />\
-                <img src="' + path + 'adivinaHome-classic.png" class="adivina-NoImage" alt="' + msgs.msgNoImage + '" id="adivinaNoImage-' + instance + '" /> \
-                <div class="adivina-GameOver" id="adivinaGamerOver-' + instance + '">\
-                    <div class="adivina-TextClueGGame" id="adivinaTextClueGGame-' + instance + '"></div>\
-                    <div class="adivina-DataImageGameOver">\
-                         <img src="' + path + 'adivinaGameWon-classic.png" class="adivina-HistGGame" id="adivinaHistGGame-' + instance + '" alt="' + msgs.mgsAllQuestions + '"/> \
-                         <img src="' + path + 'adivinaGameLost-classic.png" class="adivina-LostGGame"  id="adivinaLostGGame-' + instance + '" alt="' + msgs.msgLostLives + '"/> \
-                        <div class="adivina-DataGame" id="adivinaDataGame-' + instance + '">\
-                            <p id="adivinaOverScore-' + instance + '">Score: 0</p>\
-                            <p id="adivinaOverHits-' + instance + '">Hists: 0</p>\
-                            <p id="adivinaOverErrors-' + instance + '">Errors: 0</p>\
-                        </div>\
-                    </div>\
-                </div>\
-            </div>\
-            <div class="adivina-AutorLicence" id="adivinaAutorLicence-' + instance + '">\
-                <div class="sr-av">' + msgs.msgAuthor + ':</div>\
-                <p id="adivinaPAuthor-' + instance + '"></p>\
-            </div>\
-            <div class="adivina-Question" id="adivinaQuestion-' + instance + '">\
-                <div class="sr-av">' + msgs.msgAnswer + ':</div>\
-                <div class="adivina-Prhase" id="adivina-Phrase-' + instance + '"></div>\
-                <div class="sr-av">' + msgs.msgQuestion + ':</div>\
-                <div class="adivina-Definition-classic" id="adivinaDefinition-' + instance + '"></div>\
-                <div class="adivina-DivReply" id="adivinaDivResponder-' + instance + '">\
-                    <input type="button" class="adivina-Button" value="' + msgs.msgMoveOne + '" id="adivinaBtnMoveOn-' + instance + '">\
-                    <label class="sr-av">' + msgs.msgIndicateWord + ':</label><input type="text" value="" class="adivina-EdReply" id="adivinaEdAnswer-' + instance + '" autocomplete="false">\
-                    <input type="button" class="adivina-Button" value="' + msgs.msgReply + '" id="adivinaBtnReply-' + instance + '">\
-                </div>\
-            </div>\
-            <div class="adivina-CodeAccessDiv" id="adivinaCodeAccessDiv-' + instance + '">\
-                <div class="adivina-MessageCodeAccessE" id="adivinaMesajeAccesCodeE-' + instance + '"></div>\
-                <div class="adivina-DataCodeAccessE">\
-                    <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="adivina-CodeAccessE" id="adivinaCodeAccessE-' + instance + '">\
-                    <input type="button" class="adivina-CodeAccessButton" id="adivinaCodeAccessButton-' + instance + '" value="' + msgs.msgSubmit + '"/>\
-                </div>\
-            </div>\
-        </div>\
-    </div>\
-    ' + this.addButtonScore(instance);
-        return html;
-    },
-    createInterfaceAdivina: function (instance) {
+       createInterfaceAdivina: function (instance) {
         var html = '',
             path = $eXeAdivina.idevicePath,
             msgs = $eXeAdivina.options[instance].msgs,
@@ -938,9 +823,8 @@ var $eXeAdivina = {
     },
     updateLives: function (instance) {
         var mOptions = $eXeAdivina.options[instance],
-            classIconLife = mOptions.styleGame ? '.exeQuextIcons-Life' : '.exeQuextIcons-classic-Life';
+            classIconLife = '.exeQuextIcons-Life';
         $('#adivinaPLifes-' + instance).text(mOptions.livesLeft);
-
         $('#adivinaLifesGame-' + instance).find(classIconLife).each(function (index) {
             $(this).hide();
             if (mOptions.useLives) {

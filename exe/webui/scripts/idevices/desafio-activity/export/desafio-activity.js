@@ -3,8 +3,6 @@
  * Released under Attribution-ShareAlike 4.0 International License.
  * Author: Manuel Narváez Martínez
  * Graphic design: Ana María Zamora Moreno, Francisco Javier Pulido
- * Testers: Ricardo Málaga Floriano, Francisco Muñoz de la Peña
- * Translator: Antonio Juan Delgado García
  * License: http://creativecommons.org/licenses/by-sa/4.0/
  */
 var $eXeDesafio = {
@@ -128,18 +126,18 @@ var $eXeDesafio = {
                     } else {
                         $eXeDesafio.previousScore = score;
                         $eXeDesafio.mScorm.set("cmi.core.score.raw", score);
-                        message = $eXeDesafio.userName !== '' ? $eXeDesafio.userName + ', tu puntuación es :' + score : 'Tu puntuación es : ' + score;
+                        message = $eXeDesafio.userName !== '' ? $eXeDesafio.userName +  ', ' +mOptions.msgs.msgYouScore +': ' + score : mOptions.msgs.msgYouScore +': ' + score;
                         if (!mOptions.repeatActivity) {
                             $('#desafioSendScore-' + instance).hide();
                         }
-                        $('#desafioRepeatActivity-' + instance).text(mOptions.msgs.msgSaveScoreButton + ': ' + score)
+                        $('#desafioRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore + ': ' + score)
                         $('#desafioRepeatActivity-' + instance).show();
                     }
                 } else {
                     $eXeDesafio.previousScore = score;
                     score = score === "" ? 0 : score;
                     $eXeDesafio.mScorm.set("cmi.core.score.raw", score);
-                    $('#desafioRepeatActivity-' + instance).text('Tu puntuación es : ' + score)
+                    $('#desafioRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore+': ' + score)
                     $('#desafioRepeatActivity-' + instance).show();
                     message = "";
                 }
@@ -156,13 +154,10 @@ var $eXeDesafio = {
     loadGame: function () {
         $eXeDesafio.options = [];
         $eXeDesafio.activities.each(function (i) {
-            var dl = $(".desafio-DataGame", this),
-                mOption = $eXeDesafio.loadDataGame(dl),
+            var version=$(".desafio-version", this).eq(0).text(),
+                dl = $(".desafio-DataGame", this),
+                mOption = $eXeDesafio.loadDataGame(dl,version),
                 msg = mOption.msgs.msgPlayStart;
-            mOption.desafioDescription = $(".desafio-Description", this).eq(0).html();
-            $('.desafio-ChallengeDescription', this).each(function (i) {
-                mOption.challengesGame[i].description = $(this).html();
-            })
             $eXeDesafio.options.push(mOption);
             var desafio = $eXeDesafio.createInterfaceQuExt(i);
             dl.before(desafio).remove();
@@ -176,8 +171,16 @@ var $eXeDesafio = {
                 $('#desafioGameContainer-' + i).show();
             }
             $('#desafioMessageMaximize-' + i).text(msg);
+            
+            $('#desafioDescription-' + i).append($(".desafio-EDescription", this));
+            $('.desafio-ChallengeDescription', this).each(function () {
+                $('#desafioFeedBacks-' + i).append($(this));
+            });
+            $('#desafioDescription-' + i).hide();
+            $('#desafioFeedBacks-' + i).hide();
             $eXeDesafio.addEvents(i);
         });
+
 
     },
     createInterfaceQuExt: function (instance) {
@@ -194,65 +197,58 @@ var $eXeDesafio = {
                     <div class="desafio-GameScoreBoard">\
                         <div class="desafio-GameChallenges" id="desafioGameChallenges-' + instance + '">\
                             <a href="#" class="desafio-LinkDesafio" id="desafioDesafio-' + instance + '" title="Desafio">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgDesafio + ':</span></strong>\
                                 <div class="desafio-GameDesafio"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="0" id="desafioLink0-' + instance + '" title="Reto 1">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C0"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="1" id="desafioLink1-' + instance + '" title="Reto 2">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C1"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="2" id="desafioLink2-' + instance + '" title="Reto 3">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C2"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="3" id="desafioLink3-' + instance + '" title="Reto 4">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C3"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="4"  id="desafioLink4-' + instance + '" title="Reto 5">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C4"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="5"  id="desafioLink5-' + instance + '" title="Reto 6">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C5"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="6" id="desafioLink6-' + instance + '" title="Reto 7">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C6"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="7"  id="desafioLink7-' + instance + '" title="Reto 8">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C7"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="8" id="desafioLink8-' + instance + '" title="Reto 9">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C8"></div>\
                             </a>\
                             <a href="#" class="desafio-LinkChallenge" data-number="9" id="desafioLink9-' + instance + '" title="Reto 10">\
-                                <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
+                                <strong><span class="sr-av">' + msgs.msgChallenge + ':</span></strong>\
                                 <div class="exeQuextRetos exeQuextRetos-C9"></div>\
                             </a>\
                         </div>\
                         <div class="desafio-TimeNumber">\
-                            <div class="desafio-TimeQuestion">\
                                 <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
                                 <div class="exeQuextIcons34  exeQuextIcons34-Time"></div>\
-                                <p id="desafioPTime-' + instance + '">00:00</p>\
-                            </div>\
-                            <a href="#" class="desafio-LinkMinimize" id="desafioLinkMinimize-' + instance + '" title="Minimizar">\
+                                <p id="desafioPTime-' + instance + '">00:00:00</p>\
+                                <a href="#" class="desafio-LinkMinimize" id="desafioLinkMinimize-' + instance + '" title="Minimizar">\
                                 <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
                                 <div class="exeQuextIcons34 exeQuextIcons34-Minimize"></div>\
-                            </a>\
-                            <a href="#" class="desafio-LinkFullScreen" id="desafioLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
-                                <strong><span class="sr-av">' + msgs.msgFullScreen + ':</span></strong>\
-                                <div class="exeQuextIcons34 exeQuextIcons34-FullScreen" id="desafioFullScreen-' + instance + '">\
-                                </div>\
-                            </a>\
+                                </a>\
                         </div>\
                     </div>\
                     <div class="desafio-ShowClue" id="desafioShowClue-' + instance + '">\
@@ -265,23 +261,24 @@ var $eXeDesafio = {
                         <img src="' + path + 'desafioHome.png" class="desafio-Images" id="desafioCover-' + instance + '" alt="' + msgs.msImage + '" />\
                         <div class="desafio-GameOver" id="desafioGamerOver-' + instance + '">\
                             <div class="desafio-TextClueGGame" id="desafioTextClueGGame-' + instance + '"></div>\
+                            <div class="desafio-SolvedChallenges">\
+                                    <p id="desafioOverScore-' + instance + '">Score: 0</p>\
+                                </div>\
                             <div class="desafio-DataImageGameOver">\
                                 <img src="' + path + 'quextGameWon.png" class="desafio-HistGGame" id="desafioHistGGame-' + instance + '" alt="' + msgs.mgsAllQuestions + '" />\
                                 <img src="' + path + 'quextGameLost.png" class="desafio-LostGGame" id="desafioLostGGame-' + instance + '"  alt="' + msgs.msgLostLives + '" />\
-                                <div class="desafio-DataGame" id="desafioDataGame-' + instance + '">\
-                                    <p id="desafioOverScore-' + instance + '">Score: 0</p>\
-                                </div>\
                             </div>\
                         </div>\
                     </div>\
                     <div class="desafio-Title" id="desafioTitle-' + instance + '"></div>\
                     <div class="desafio-Description" id="desafioDescription-' + instance + '"></div>\
+                    <div class="desafio-FeedBacks" id="desafioFeedBacks-' + instance + '"></div>\
                     <div class="desafio-MessageInfo" id="desafioMessageInfo-' + instance + '">\
                     <div class="sr-av">Information</div>\
                     <p id="desafioPInformation-' + instance + '"></p>\
                     </div>\
                     <div class="desafio-SolutionDiv" id="desafioSolutionDiv-' + instance + '">\
-                        <label>Solution:<input type="text" class="desafio-Solution"  id="desafioSolution-' + instance + '"></label>\
+                        <label>' + msgs.mgsSolution + ':<input type="text" class="desafio-Solution"  id="desafioSolution-' + instance + '"></label>\
                         <input type="button" class="desafio-SolutionButton" id="desafioSolutionButton-' + instance + '"   value="' + msgs.msgSubmit + '" />\
                     </div>\
                     <div class="desafio-CodeAccessDiv" id="desafioCodeAccessDiv-' + instance + '">\
@@ -292,12 +289,12 @@ var $eXeDesafio = {
                         </div>\
                     </div>\
                     <div class="desafio-StartGameDiv" id="desafioStartGameDiv-' + instance + '">\
-                        <a href="#" class="desafio-StartGame"  id="desafioStartGame-' + instance + '" title="Comenzar">Pulsa aquí para comenzar</a>\
+                        <a href="#" class="desafio-StartGame"  id="desafioStartGame-' + instance + '" title="' + msgs.Play + '">' + msgs.msgStartGame + '</a>\
                     </div>\
                     <div class="desafio-DateDiv" id="desafioDateDiv-' + instance + '">\
-                        <p class="desafio-Date"  id="desafioDate-' + instance + '">Fecha:</p>\
-                        <a href="#" class="desafio-LinkReboot" id="desafioRebootButton-' + instance + '" title="Reiniciar">\
-                            <strong><span class="sr-av">Reiniciar:</span></strong>\
+                        <p class="desafio-Date"  id="desafioDate-' + instance + '">'+msgs.msgDate+':</p>\
+                        <a href="#" class="desafio-LinkReboot" id="desafioRebootButton-' + instance + '" title="' + msgs.msgReboot + '">\
+                            <strong><span class="sr-av">' + msgs.msgReboot + ':</span></strong>\
                                 <div class="desafio-RebootImg exeDesafio-IconReboot"></div>\
                         </a>\
                     </div>\
@@ -355,9 +352,48 @@ var $eXeDesafio = {
         fB = +'</div>';
         return butonScore;
     },
-    loadDataGame: function (data) {
-        var json = data.text(),
-            mOptions = $eXeDesafio.isJsonString(json);
+    Decrypt: function (str) {
+        if (!str) str = "";
+        str = (str == "undefined" || str == "null") ? "" : str;
+        str=unescape(str)
+        try {
+            var key = 146;
+            var pos = 0;
+            ostr = '';
+            while (pos < str.length) {
+                ostr = ostr + String.fromCharCode(key ^ str.charCodeAt(pos));
+                pos += 1;
+            }
+
+            return ostr;
+        } catch (ex) {
+            return '';
+        }
+    },
+    checkWord: function (word, answord) {
+        var sWord = $.trim(word).replace(/\s+/g, " ").toUpperCase().replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, ""),
+            sAnsWord = $.trim(answord).replace(/\s+/g, " ").toUpperCase().replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, "");
+        sWord = $.trim(sWord);
+        sAnsWord = $.trim(sAnsWord);
+        if (sWord.indexOf('|') == -1) {
+            return sWord == sAnsWord;
+        }
+        var words = sWord.split('|');
+        for (var i = 0; i < words.length; i++) {
+            var mword = $.trim(words[i]).replace(/.$/, "").replace(/,$/, "").replace(/;$/, "");
+            if (mword == sAnsWord) {
+                return true;
+            }
+        }
+        return false;
+    },
+
+    loadDataGame: function (data,version) {
+        var json = data.text();
+        if (version==1 || !json.startsWith('{')){
+            json=$eXeDesafio.Decrypt(json);
+        }
+        var mOptions = $eXeDesafio.isJsonString(json);
         mOptions.gameOver = false;
         mOptions.numberQuestions = mOptions.challengesGame.length;
         mOptions.typeQuestion = 0;
@@ -497,8 +533,9 @@ var $eXeDesafio = {
             };
         });
         $('#desafioRebootButton-' + instance).on('click touchstart', function (e) {
+        
             e.preventDefault();
-            if (window.confirm("Esto reiniciará el juego y modificará su hora de inicio. ¿Deseas continuar?")) {
+            if (window.confirm(mOptions.msgs.msgDesafioReboot)) {
                 $eXeDesafio.rebootGame(instance);
             }
 
@@ -514,11 +551,7 @@ var $eXeDesafio = {
             if (dstate) return;
             $eXeDesafio.answerChallenge(instance);
         });
-        $("#desafioLinkFullScreen-" + instance).on('click touchstart', function (e) {
-            e.preventDefault();
-            var element = document.getElementById('desafioGameContainer-' + instance);
-            $eXeDesafio.toggleFullscreen(element, instance);
-        });
+
         $('#desafioInstructions-' + instance).text(mOptions.instructions);
         $('#desafioPNumber-' + instance).text(mOptions.numberQuestions);
         if (mOptions.itinerary.showCodeAccess) {
@@ -527,14 +560,6 @@ var $eXeDesafio = {
             $('#desafioCodeAccessDiv-' + instance).show();
             $('#desafioStartGameDiv-' + instance).hide();
         }
-        $(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange", function (e) {
-            var fullScreenElement =
-                document.fullscreenElement ||
-                document.msFullscreenElement ||
-                document.mozFullScreenElement ||
-                document.webkitFullscreenElement;
-            $eXeDesafio.maximizeMultimedia(typeof fullScreenElement != "undefined", instance);
-        });
         $('#desafioInstruction-' + instance).text(mOptions.instructions);
         $('#desafioSendScore-' + instance).attr('value', mOptions.textButtonScorm);
         $('#desafioSendScore-' + instance).hide();
@@ -577,7 +602,7 @@ var $eXeDesafio = {
     },
     showDesafio: function (instance) {
         var mOptions = $eXeDesafio.options[instance],
-            message = '¡Genial! Has completado todos los retos. Resuelve ahora este desafío',
+            message = mOptions.msgs.msgChallengesAllCompleted,
             type = 2;
         mOptions.typeQuestion = 0;
         mOptions.activeChallenge = 0;
@@ -585,7 +610,8 @@ var $eXeDesafio = {
         $('#desafioSolution-' + instance).val('');
         $("#desafioSolutionDiv-" + instance).show();
         $('#desafioTitle-' + instance).text(mOptions.desafioTitle);
-        $('#desafioDescription-' + instance).html(mOptions.desafioDescription);
+        $('#desafioDescription-' + instance).show();
+        $('#desafioFeedBacks-' + instance).hide();
         for (var i = 0; i < mOptions.stateChallenges.length; i++) {
             if (i < mOptions.challengesGame.length) {
                 var mc = mOptions.stateChallenges[i];
@@ -595,7 +621,7 @@ var $eXeDesafio = {
                         type = 1;
                         $("#desafioSolution-" + instance).prop('readonly', true);
                         $("#desafioSolutionDiv-" + instance).hide();
-                        message = 'Debes completar todos los retos antes de resolver el desafío';
+                        message = mOptions.msgs.msgCompleteAllChallenged;
                     } else {
                         mc.state = 2
                     }
@@ -605,15 +631,15 @@ var $eXeDesafio = {
         $eXeDesafio.showMessage(type, message, instance);
         $eXeDesafio.changeImageButtonState(instance, mOptions.typeQuestion);
 
+
     },
     showChallenge: function (number, instance) {
         var mOptions = $eXeDesafio.options[instance],
             solution = mOptions.challengesGame[number].solution,
-            description = mOptions.challengesGame[number].description,
             title = mOptions.challengesGame[number].title,
             solved = mOptions.stateChallenges[number].solved,
             type = 0,
-            message = 'Resuelve este reto  e indica su solución';
+            message = mOptions.msgs.msgWriteChallenge;
         if (mOptions.stateChallenges[number].state == 0) {
             return;
         };
@@ -624,23 +650,29 @@ var $eXeDesafio = {
         mOptions.stateChallenges[number].state = 3;
         $('#desafioSolution-' + instance).prop('readonly', false);
         $('#desafioTitle-' + instance).text(title);
-        $('#desafioDescription-' + instance).html(description);
+        $('#desafioFeedBacks-' + instance).show();
+        var $chs=$('#desafioFeedBacks-' + instance).children('div');
+        $chs.hide();
+        $chs.eq(number).show();
+ 
+        $('#desafioDescription-' + instance).hide();
         $('#desafioSolution-' + instance).val('');
         if (solved == 1) {
             $('#desafioSolution-' + instance).val(solution);
             $("#desafioSolution-" + instance).prop('readonly', true);
             type = 1;
-            message = 'Ya has completado este reto';
+            message = mOptions.msgs.msgSolvedChallenge;
         }
         $eXeDesafio.showMessage(type, message, instance);
         $eXeDesafio.changeImageButtonState(instance, mOptions.typeQuestion);
+
     },
 
     saveDataStorage: function (instance) {
         var mOptions = $eXeDesafio.options[instance];
         if (mOptions.desafioDate == "") {
             mOptions.desafioDate = $eXeDesafio.getActualFullDate();
-            $('#desafioDate-' + instance).text('Inicio desafio: ' + mOptions.desafioDate);
+            $('#desafioDate-' + instance).text(mOptions.msgs.msgStartTime+': ' + mOptions.desafioDate);
         }
 
         var data = {
@@ -808,7 +840,7 @@ var $eXeDesafio = {
         $desafioTextClueGGame.hide();
         switch (parseInt(type)) {
             case 0:
-                message = $eXeDesafio.getRetroFeedMessages(true, instance) + ' Has resuelto el desafío. Pulsa sobre el botón reiniciar para una nueva partida';
+                message = $eXeDesafio.getRetroFeedMessages(true, instance) + ' ' +mOptions.msgs.msgDesafioSolved;
                 $desafioHistGGame.show();
                 if (mOptions.itinerary.showClue) {
                     if (mOptions.obtainedClue) {
@@ -823,7 +855,7 @@ var $eXeDesafio = {
                 break;
             case 1:
                 mtype = 1;
-                message = '¡Lo siento! Tu tiempo ha finalizado y no has resuelto el desafío. Pulsa sobre el botón reiniciar para intentarlo de nuevo';
+                message = mOptions.msgs.msgEndTimeRestart;
                 $desafioLostGGame.show();
                 if (mOptions.itinerary.showClue) {
                     if (mOptions.obtainedClue) {
@@ -847,25 +879,9 @@ var $eXeDesafio = {
         }
         $('#desafioShowClue-' + instance).hide();
         $eXeDesafio.showMessage(mtype, message, instance);
-        $desafioOverPoint.text('Retos completados: ' + $eXeDesafio.getSolvedChallenges(instance));
+        $desafioOverPoint.text(msgs.msgChallengesCompleted + ': ' + mOptions.solvedsChallenges.length );
         $desafioGamerOver.show();
         $('#desafioDescription-' + instance).hide();
-
-    },
-    getSolvedChallenges: function (instance) {
-        var mOptions = $eXeDesafio.options[instance],
-            $buttonChalleng = $('#desafioGameChallenges-' + instance).find('.desafio-LinkChallenge'),
-            numSolved = 0;
-
-        $buttonChalleng.each(function (i) {
-            if (i < mOptions.challengesGame.length) {
-                var solved = parseInt($(this).data('solved'))
-                if (solved == 1) {
-                    numSolved++;
-                }
-            }
-        });
-        return numSolved;
 
     },
     reloadGame: function (instance, dataDesafio) {
@@ -880,17 +896,14 @@ var $eXeDesafio = {
         mOptions.desafioSolved = dataDesafio.desafioSolved;
         mOptions.stateChallenges = dataDesafio.stateChallenges;
         mOptions.solvedsChallenges=dataDesafio.solvedsChallenges;
-        console.log('estados',mOptions.stateChallenges)
-        console.log('solucionados',mOptions.solvedsChallenges)
-        console.log('activo',mOptions.activeChallenge)
-        $('#desafioDate-' + instance).text('Inicio desafio: ' + dataDesafio.desafioDate);
+        $('#desafioDate-' + instance).text( mOptions.msgs.msgStartTime+ ': ' + dataDesafio.desafioDate);
         var ds = dataDesafio.desafioSolved ? 0 : 1;
         if (mOptions.endGame) {
-            var message = 'Has resuelto el desafío. Pulsa sobre reiniciar para nueva partida',
+            var message = mOptions.msgs.msgDesafioSolved,
                 colorMessge = 2;
 
             if (!dataDesafio.desafioSolved) {
-                message = "Tu tiempo ha finalizado y no has resuelta el desafío. Pulsa sobre reiniciar para intentarlo de nuevo";
+                message = mOptions.msgs.msgEndTimeRestart;
                 colorMessge = 1;
             }
             $eXeDesafio.gameOver(ds, instance);
@@ -899,9 +912,6 @@ var $eXeDesafio = {
         } else {
             $eXeDesafio.startGame(instance, mOptions.typeQuestion, mOptions.activeChallenge);
         }
-        
-
-
     },
     startGame: function (instance, type, numberButton) {
         var mOptions = $eXeDesafio.options[instance];
@@ -924,15 +934,15 @@ var $eXeDesafio = {
         mOptions.gameStarted = false;
         $eXeDesafio.uptateTime(0, instance);
         $('#desafioGamerOver-' + instance).hide();
-
         if (type == 0) {
-            var message = 'Lee el desafío y, cuando estés listo, haz clic sobre un reto para jugar';
-            if ($eXeDesafio.getSolvedChallenges(instance) >= mOptions.challengesGame.length) {
-                var message = 'Has resuelto todos los retos. Completa ahora el desafío';
+            var message = mOptions.msgs.msgReadTime;
+            if (mOptions.solvedsChallenges.length >= mOptions.challengesGame.length) {
+                var message = mOptions.msgs.msgChallengesAllCompleted;
             }
+            console.log('Estoy aquí', type);
             $eXeDesafio.showDesafio(instance);
             $eXeDesafio.showMessage(2, message, instance);
-        } else if (type == 1) {
+       } else if (type == 1) {
             $eXeDesafio.showChallenge(numberButton, instance);
 
         }
@@ -956,9 +966,10 @@ var $eXeDesafio = {
         $('#desafioPTime-' + instance).text(mTime);
     },
     getTimeToString: function (iTime) {
+        var mHours = Math.floor(parseInt(iTime) / 3600);
         var mMinutes = parseInt(iTime / 60) % 60;
         var mSeconds = iTime % 60;
-        return (mMinutes < 10 ? "0" + mMinutes : mMinutes) + ":" + (mSeconds < 10 ? "0" + mSeconds : mSeconds);
+        return (mHours < 10 ? "0" + mHours : mHours) + ":" + (mMinutes < 10 ? "0" + mMinutes : mMinutes) + ":" + (mSeconds < 10 ? "0" + mSeconds : mSeconds);
     },
     gameOver: function (type, instance) {
         var mOptions = $eXeDesafio.options[instance];
@@ -969,7 +980,11 @@ var $eXeDesafio = {
         $('#desafioDescription-' + instance).hide();
         $('#desafioSolutionDiv-' + instance).hide();
         $('#desafioMultimedia-' + instance).show();
-        var message = type === 0 ? "!Genial! Has resuelto este desafío. Pulsa reiniciar para nueva partida" : "!Lo siento! El tiempo ha finalizado.  Pulsa reiniciar para nueva partida";
+        $('#desafioCover-' + instance).hide();
+        $('#desafioImagen-' + instance).hide();
+        $('#desafioFeedBacks-' + instance).hide();
+
+        var message = type === 0 ? mOptions.msgs.msgDesafioSolved : mOptions.msgs.msgEndTime;
         $eXeDesafio.showMessage(2, message, instance);
         $eXeDesafio.showScoreGame(type, instance);
         //$('#desafioStartGame-' + instance).text(mOptions.msgs.msgNewGame);
@@ -1009,48 +1024,46 @@ var $eXeDesafio = {
             return;
         }
         if (mOptions.typeQuestion == 0) {
-            solution = ((mOptions.desafioSolution).toUpperCase()).replace(/\s+/g, " ").trim()
-            if (answord == solution) {
-                message = $eXeDesafio.getRetroFeedMessages(true, instance) + 'Has resuelto este desafío. Eres el mejor';
+            if ($eXeDesafio.checkWord(mOptions.desafioSolution,answord)) {
+                message = $eXeDesafio.getRetroFeedMessages(true, instance) +  mOptions.msgs.msgDesafioSolved1;
                 typeMessage = 1;
                 mOptions.desafioSolved = true;
                 $eXeDesafio.saveDataStorage(instance);
                 $eXeDesafio.gameOver(0, instance);
                 return;
             } else {
-                message = $eXeDesafio.getRetroFeedMessages(false, instance) + 'La solución al desafío no es correcta';
+                message = $eXeDesafio.getRetroFeedMessages(false, instance) + mOptions.msgs.msgSolutionError;
                 $('#desafioSolution-' + instance).val('');
                 typeMessage = 0;
             }
         } else {
-            solution = ((challengeGame.solution).toUpperCase()).replace(/\s+/g, " ").trim()
-            if (answord == solution) {
+              if ($eXeDesafio.checkWord(challengeGame.solution,answord)) {
                 typeMessage = 2;
                 mOptions.stateChallenges[active].solved = 1;
                 mOptions.solvedsChallenges.push(active);
                 if (mOptions.desafioType == 0) {
                     if (active < mOptions.challengesGame.length - 1) {
-                        message = $eXeDesafio.getRetroFeedMessages(true, instance) + '¡Has resuelto este reto! ¡Selecciona otro!';
+                        message = $eXeDesafio.getRetroFeedMessages(true, instance) +  mOptions.msgs.msgChallengeSolved;
                         $eXeDesafio.showChallenge(active,instance);
                     } else {
                         $eXeDesafio.showDesafio(instance);
-                        message = $eXeDesafio.getRetroFeedMessages(true, instance) + '¡Has resuelto todos los retos! ¡Completa el desafío!';
+                        message = $eXeDesafio.getRetroFeedMessages(true, instance) +  mOptions.msgs.msgChallengesAllCompleted;;
                         $('#desafioSolution-' + instance).val('');
                     }
 
                 } else if (mOptions.desafioType == 1) {
-                    if ($eXeDesafio.getSolvedChallenges(instance) >= mOptions.challengesGame.length) {
+                    if (mOptions.solvedsChallenges.length  >= mOptions.challengesGame.length) {
                         $eXeDesafio.showDesafio(instance);
-                        message = $eXeDesafio.getRetroFeedMessages(true, instance) + '¡Has resuelto todos los retos! ¡Completa el desafío!';
+                        message = $eXeDesafio.getRetroFeedMessages(true, instance) +  mOptions.msgs.msgChallengesAllCompleted; 
                         $('#desafioSolution-' + instance).val('');
                     } else {
                         $eXeDesafio.showChallenge(active,instance);
-                        message = $eXeDesafio.getRetroFeedMessages(true, instance) + '¡Has resuelto este reto! ¡Selecciona otro!';
+                        message = $eXeDesafio.getRetroFeedMessages(true, instance) + mOptions.msgs.msgChallengeSolved;
                     }
                 }
                 $eXeDesafio.saveDataStorage(instance);
             } else {
-                message = $eXeDesafio.getRetroFeedMessages(false, instance) + 'La solución no es correcta';
+                message = $eXeDesafio.getRetroFeedMessages(false, instance) + mOptions.msgs.msgSolutionCError;
                 typeMessage = 1;
                 $('#desafioSolution-' + instance).val('');
             }
@@ -1072,47 +1085,7 @@ var $eXeDesafio = {
             'font-weight': 'bold',
             'font-size': $eXeDesafio.fontSize
         });
-    },
-    exitFullscreen: function () {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        }
-    },
-    getFullscreen: function (element) {
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-        } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-        }
-    },
-    toggleFullscreen: function (element, instance) {
-        var mOptions = $eXeDesafio.options[instance],
-            alt = mOptions.msgs.msgFullScreen;
-        element = element || document.documentElement;
-        if (!document.fullscreenElement && !document.mozFullScreenElement &&
-            !document.webkitFullscreenElement && !document.msFullscreenElement) {
-            $('#desafioFullScreen-' + instance).removeClass('exeQuextIcons34-FullScreen');
-            $('#desafioFullScreen-' + instance).addClass('exeQuextIcons34-FullScreenExit');
-            alt = mOptions.msgs.msgExitFullScreen;
-            $eXeDesafio.getFullscreen(element);
-        } else {
-            $('#desafioFullScreen-' + instance).addClass('exeQuextIcons34-FullScreen');
-            $('#desafioFullScreen-' + instance).removeClass('exeQuextIcons34-FullScreenExit');
-            $eXeDesafio.exitFullscreen(element);
-        }
-        $('#desafioLinkFullScreen-' + instance).find('span').text(alt + ':')
-        $('#desafioLinkFullScreen-' + instance).attr('title', alt);
-    },
+    }
 }
 $(function () {
 

@@ -1270,7 +1270,7 @@ var $eXeVideoQuExt = {
                 } else {
                     $(this).css({
                         'border-color': '#cccccc',
-                        'background-color': '#ffffff',
+                        'background-color': 'transparent',
                         'cursor': 'default'
                     });
                 }

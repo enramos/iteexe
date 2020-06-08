@@ -303,21 +303,23 @@ var $eXeCandado = {
         }
         $eXeCandado.showMessage(typeMessage, message, instance);
     },
-    checkWord: function (answord, solution) {
-        var sSolution=$.trim(solution).replace(/\s+/g, " ").toUpperCase(),
-            sAnsWord=$.trim(answord).replace(/\s+/g, " ").toUpperCase();
-		if (sSolution.indexOf('|') == -1) {
-			return  sSolution== sAnsWord;
-		}
-		var words = sSolution.split('|');
-		for (var i = 0; i < words.length; i++) {
-			if ($.trim(words[i]) == sAnsWord) {
-				return true;
+    checkWord: function (answord,word) {
+        var sWord = $.trim(word).replace(/\s+/g, " ").toUpperCase().replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, ""),
+            sAnsWord = $.trim(answord).replace(/\s+/g, " ").toUpperCase().replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, "");
+        sWord = $.trim(sWord);
+        sAnsWord = $.trim(sAnsWord);
+        if (sWord.indexOf('|') == -1) {
+            return sWord == sAnsWord;
+        }
+        var words = sWord.split('|');
+        for (var i = 0; i < words.length; i++) {
+            var mword = $.trim(words[i]).replace(/.$/, "").replace(/,$/, "").replace(/;$/, "");
+            if (mword == sAnsWord) {
+                return true;
             }
-
-		}
-		return false;
-	},
+        }
+        return false;
+    },
     getRetroFeedMessages: function (iHit, instance) {
         var msgs = $eXeCandado.options[instance].msgs;
         var sMessages = iHit ? msgs.msgSuccesses : msgs.msgFailures;

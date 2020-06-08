@@ -139,7 +139,7 @@
 .quext-GameOver {
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background: transparent;
     position: absolute;
     left: 0;
     top: 0;
@@ -208,17 +208,13 @@
 }
 .quext-GameContainer {
     position: relative;
-    max-width: 1000px;
-    background-color: white;
+    max-width: 750px;
     width: 90%;
     margin: 5px auto;
     min-width: 300px;
-    border: 1px solid black;
     padding: 5px;
     border-radius: 10px;
-    background-color: #ffffff;
-    display: block;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: traparent;
     display:none;
 }
 
@@ -442,7 +438,6 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
 }
 
 .quextGameScores {
-    width: 100px;
     height: 30px;
     margin: 0 3px;
     display: flex;
@@ -488,7 +483,7 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
 .quext-Protector {
     width: 100%;
     height: 100%;
-    background: #ffffff;
+    background-color: transparent;
     position: absolute;
     left: 0;
     top: 0;
@@ -613,6 +608,30 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     color: white;
     border: 1px solid #000;
     font-weight: bold;
+}
+
+.quext-GameContainer:-webkit-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+.quext-GameContainer:-moz-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+.quext-GameContainer:-ms-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
+}
+
+.quext-GameContainer:-o-full-screen {
+    width: 100%;
+    height: 100vh;
+    background-color:white;
 }
 
 

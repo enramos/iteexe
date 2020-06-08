@@ -1407,7 +1407,7 @@ var $eXeSelecciona = {
                 css = {
                     'border-color': '#777777',
                     'border-size': '1',
-                    'background-color': '#ffffff',
+                    'background-color': 'transparent',
                     'cursor': 'pointer',
                     'color': '#777777'
                 };
