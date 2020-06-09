@@ -422,7 +422,7 @@ var $exeDevice = {
         });
         $('#quextNumberQuestion').text(i + 1);
         $('#quextEScoreQuestion').val(1);
-        if (p.customScore) {
+        if (typeof(p.customScore)!="undefined") {
             $('#quextEScoreQuestion').val(p.customScore);
         }
         $("input.quext-Number[name='qxnumber'][value='" + p.numberOptions + "']").prop("checked", true)
@@ -1048,7 +1048,7 @@ var $exeDevice = {
         html += divContent;
         html += '<div class="quext-version js-hidden">' + $exeDevice.quextVersion + '</div>';
         html += '<div class="quext-DataGame">' + $exeDevice.Encrypt(json) + '</div>';
-       // html += linksImages;
+        html += linksImages;
         html += '</div>';
 
         // Get the optional text
@@ -1106,9 +1106,8 @@ var $exeDevice = {
         p.author = $('#quextEAuthor').val();
         p.alt = $('#quextEAlt').val();
         p.customScore = parseFloat($('#quextEScoreQuestion').val());
-        if (p.type == 1) {
-            p.url = $('#quextEURLImage').val().trim();
-        } else if (p.type == 2) {
+        p.url = $('#quextEURLImage').val().trim();
+        if (p.type == 2) {
             p.url = $exeDevice.getIDYoutube($('#quextEURLYoutube').val().trim()) ? $('#quextEURLYoutube').val() : '';
 
         }
@@ -1161,11 +1160,13 @@ var $exeDevice = {
         var html = '';
         for (var i = 0; i < questionsGame.length; i++) {
             var linkImage = '<a href="' + questionsGame[i].url + '" class="js-hidden quext-LinkImages">' + i + '</a>';
-            if( questionsGame[i].url && questionsGame[i].url.length==0){
-				linkImage='<a href="1" class="js-hidden quext-LinkImages">' + i + '</a>';
+  
+            if( questionsGame[i].url.length<10){
+                linkImage='<a href="#" class="js-hidden quext-LinkImages">' + i + '</a>';
 			}
             html += linkImage;
         }
+
         return html;
     },
     exportGame: function () {
@@ -1253,6 +1254,7 @@ var $exeDevice = {
         var questionsGame = $exeDevice.questionsGame;
         for (var i = 0; i < questionsGame.length; i++) {
             mquestion = questionsGame[i]
+            mquestion.customScore=typeof(mquestion.customScore)=="undefined"?1:mquestion.customScore;
             if (mquestion.quextion.length == 0) {
                 $exeDevice.showMessage($exeDevice.msgs.msgECompleteQuestion);
                 return false;

@@ -426,7 +426,7 @@ var $exeDevice = {
         });
         $('#seleccionaNumberQuestion').text(i + 1);
         $('#seleccionaEScoreQuestion').val(1);
-        if(p.customScore){
+         if (typeof(p.customScore)!="undefined") {
             $('#seleccionaEScoreQuestion').val(p.customScore);
         }
 
@@ -1131,11 +1131,9 @@ var $exeDevice = {
         p.author = $('#seleccionaEAuthor').val();
         p.alt = $('#seleccionaEAlt').val();
         p.customScore = parseFloat($('#seleccionaEScoreQuestion').val());
-        if (p.type == 1) {
-            p.url = $('#seleccionaEURLImage').val().trim();
-        } else if (p.type == 2) {
+        p.url = $('#seleccionaEURLImage').val().trim();
+        if (p.type == 2) {
             p.url = $exeDevice.getIDYoutube($('#seleccionaEURLYoutube').val().trim()) ? $('#seleccionaEURLYoutube').val() : '';
-
         }
         p.soundVideo = $('#seleccionaECheckSoundVideo').is(':checked') ? 1 : 0;
         p.imageVideo = $('#seleccionaECheckImageVideo').is(':checked') ? 1 : 0;
@@ -1190,8 +1188,8 @@ var $exeDevice = {
         var html = '';
         for (var i = 0; i < selectsGame.length; i++) {
             var linkImage = '<a href="' + selectsGame[i].url + '" class="js-hidden selecciona-LinkImages">' + i + '</a>';
-            if( selectsGame[i].url && selectsGame[i].url.length==0){
-				linkImage='<a href="1" class="js-hidden selecciona-LinkImages">' + i + '</a>';
+            if(selectsGame[i].url.length<10){
+				linkImage='<a href="#" class="js-hidden selecciona-LinkImages">' + i + '</a>';
 			}
             
             html += linkImage;
@@ -1283,6 +1281,7 @@ var $exeDevice = {
         var selectsGame = $exeDevice.selectsGame;
         for (var i = 0; i < selectsGame.length; i++) {
             mquestion = selectsGame[i]
+            mquestion.customScore=typeof(mquestion.customScore)=="undefined"?1:mquestion.customScore;
             if (mquestion.quextion.length == 0) {
                 $exeDevice.showMessage($exeDevice.msgs.msgECompleteQuestion);
                 return false;

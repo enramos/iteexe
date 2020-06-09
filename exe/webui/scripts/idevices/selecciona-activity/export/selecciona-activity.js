@@ -399,11 +399,9 @@ var $eXeSelecciona = {
             if(mOptions.selectsGame[index].url.length<10){
                 mOptions.selectsGame[index].url="";
             }
-            
         });
         mOptions.scoreTotal=0;
         for (var i=0;i< mOptions.selectsGame.length;i++){
-
             if(mOptions.customScore){
                 mOptions.scoreTotal +=mOptions.selectsGame[i].customScore;
             }else{

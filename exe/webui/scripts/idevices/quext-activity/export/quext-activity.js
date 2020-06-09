@@ -398,7 +398,6 @@ var $eXeQuExt = {
         });
         mOptions.scoreTotal=0;
         for (var i=0;i< mOptions.questionsGame.length;i++){
-
             if(mOptions.customScore){
                 mOptions.scoreTotal +=mOptions.questionsGame[i].customScore;
             }else{
