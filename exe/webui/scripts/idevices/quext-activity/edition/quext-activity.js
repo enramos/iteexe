@@ -951,6 +951,9 @@ var $exeDevice = {
                 $imagesLink = $('.quext-LinkImages', wrapper);
             $imagesLink.each(function (index) {
                 dataGame.questionsGame[index].url = $(this).attr('href');
+                if(dataGame.questionsGame[index].url.length<10){
+					dataGame.questionsGame[index].url="";
+				}
             });
             $exeDevice.active = 0;
             for (var i = 0; i < dataGame.questionsGame.length; i++) {
@@ -1045,7 +1048,7 @@ var $exeDevice = {
         html += divContent;
         html += '<div class="quext-version js-hidden">' + $exeDevice.quextVersion + '</div>';
         html += '<div class="quext-DataGame">' + $exeDevice.Encrypt(json) + '</div>';
-        html += linksImages;
+       // html += linksImages;
         html += '</div>';
 
         // Get the optional text
@@ -1158,6 +1161,9 @@ var $exeDevice = {
         var html = '';
         for (var i = 0; i < questionsGame.length; i++) {
             var linkImage = '<a href="' + questionsGame[i].url + '" class="js-hidden quext-LinkImages">' + i + '</a>';
+            if( questionsGame[i].url && questionsGame[i].url.length==0){
+				linkImage='<a href="1" class="js-hidden quext-LinkImages">' + i + '</a>';
+			}
             html += linkImage;
         }
         return html;

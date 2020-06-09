@@ -396,6 +396,10 @@ var $eXeSelecciona = {
         mOptions.scoreGame=0;
         imgsLink.each(function (index) {
             mOptions.selectsGame[index].url = $(this).attr('href');
+            if(mOptions.selectsGame[index].url.length<10){
+                mOptions.selectsGame[index].url="";
+            }
+            
         });
         mOptions.scoreTotal=0;
         for (var i=0;i< mOptions.selectsGame.length;i++){

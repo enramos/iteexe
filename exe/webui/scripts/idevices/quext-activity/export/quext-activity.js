@@ -392,6 +392,9 @@ var $eXeQuExt = {
         mOptions.scoreGame=0;
         imgsLink.each(function (index) {
             mOptions.questionsGame[index].url = $(this).attr('href');
+            if(mOptions.questionsGame[index].url.length<10){
+                mOptions.questionsGame[index].url="";
+            }
         });
         mOptions.scoreTotal=0;
         for (var i=0;i< mOptions.questionsGame.length;i++){

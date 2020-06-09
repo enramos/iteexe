@@ -178,6 +178,9 @@ var $eXeRosco = {
 		mOptions.gameOver = false;
 		imgsLink.each(function (index) {
 			mOptions.wordsGame[index].url = $(this).attr('href');
+			if(mOptions.wordsGame[index].url.length<10){
+				 mOptions.wordsGame[index].url="";
+			}
 		});
 
 		return mOptions;

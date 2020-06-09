@@ -976,6 +976,9 @@ var $exeDevice = {
                 $imagesLink = $('.selecciona-LinkImages', wrapper);
             $imagesLink.each(function (index) {
                 dataGame.selectsGame[index].url = $(this).attr('href');
+                if(dataGame.selectsGame[index].url.length<10){
+					dataGame.selectsGame[index].url="";
+				}
             });
             $exeDevice.active = 0;
             for (var i = 0; i < dataGame.selectsGame.length; i++) {
@@ -1187,6 +1190,10 @@ var $exeDevice = {
         var html = '';
         for (var i = 0; i < selectsGame.length; i++) {
             var linkImage = '<a href="' + selectsGame[i].url + '" class="js-hidden selecciona-LinkImages">' + i + '</a>';
+            if( selectsGame[i].url && selectsGame[i].url.length==0){
+				linkImage='<a href="1" class="js-hidden selecciona-LinkImages">' + i + '</a>';
+			}
+            
             html += linkImage;
         }
         return html;

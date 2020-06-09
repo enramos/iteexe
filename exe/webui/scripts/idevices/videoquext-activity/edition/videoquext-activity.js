@@ -811,12 +811,10 @@ var $exeDevice = {
             divContent = "";
         var instructions = tinyMCE.get('eXeGameInstructions').getContent();
         if (instructions != "") divContent = '<div class="vquext-instructions">' + instructions + '</div>';
-        var linksImages = $exeDevice.createlinksImage(dataGame.questionsGame);
         var html = '<div class="vquext-IDevice">';
         html += divContent;
         html += '<div class="vquext-version js-hidden">' + $exeDevice.quextVersion + '</div>';
         html += '<div class="vquext-DataGame">' + $exeDevice.Encrypt(json) + '</div>';
-        html += linksImages;
         html += '</div>';
         // Get the optional text
         var textAfter = tinymce.editors[1].getContent();
@@ -890,14 +888,6 @@ var $exeDevice = {
         }
         return message;
 
-    },
-    createlinksImage: function (questionsGame) {
-        var html = '';
-        for (var i = 0; i < questionsGame.length; i++) {
-            var linkImage = '<a href="' + questionsGame[i].url + '" class="js-hidden vquext-LinkImages">' + i + '</a>';
-            html += linkImage;
-        }
-        return html;
     },
     exportGame: function () {
         if (!$exeDevice.validateQuestion()) {

@@ -173,6 +173,9 @@ var $exeDevice = {
                 $imagesLink = $('.adivina-LinkImages', wrapper);
             $imagesLink.each(function (index) {
                 dataGame.wordsGame[index].url = $(this).attr('href');
+				if(dataGame.wordsGame[index].url.length<10){
+					dataGame.wordsGame[index].url="";
+				}
             });
             $exeDevice.updateFieldGame(dataGame);
             var instructions = $(".adivina-instructions", wrapper);
@@ -253,6 +256,9 @@ var $exeDevice = {
         var html = '';
         for (var i = 0; i < wordsGame.length; i++) {
             var linkImage = '<a href="' + wordsGame[i].url + '" class="js-hidden adivina-LinkImages">' + i + '</a>';
+            if(wordsGame[i].url.length==0){
+				linkImage='<a href="#" class="js-hidden adivina-LinkImages">' + i + '</a>';
+			}
             html += linkImage;
         }
         return html;
