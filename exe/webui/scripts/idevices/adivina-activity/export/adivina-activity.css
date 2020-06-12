@@ -1,6 +1,3 @@
-.adivina-GameMinimize a:link, .adivina-GameMinimize a:link, .adivina-GameMinimize a:visited, .adivina-GameMinimize a:focus {
-    color: #b3092f;
-}
 
 .adivina-MainContainer a:link, .adivina-MainContainer a:link, .adivina-MainContainer a:visited, .adivina-MainContainer a:focus {
     text-decoration: none;
@@ -18,7 +15,7 @@
 
 
 .adivina-LinkMaximize {
-    font: normal 14pt arial, sans-serif;
+    font: normal 1.2rem arial, sans-serif;
     width: 300px;
     padding: 0;
     display: flex;
@@ -33,7 +30,7 @@
     text-align: left;
     color: #b3092f;
     font-weight: bold;
-    font-size: 13pt;
+    font-size: 1rem;
     margin: 10px auto;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -42,14 +39,6 @@
     -ms-user-select: none;
     user-select: none;
     cursor: pointer;
-}
-
-.adivina-sr-av {
-    position: absolute;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    clip: rect(0, 0, 0, 0);
-    height: 0
 }
 .adivina-Prhase {
     width: 95%;
@@ -73,7 +62,7 @@
 
 .adivina-Letter {
     border: 1px solid #555555;
-    font-size: 20px;
+    font-size: 1.3rem;
     font-weight: 600;
     width: 24px;
     height: 32px;
@@ -97,11 +86,10 @@
     margin: 7px auto;
     text-align: center;
     min-height: 40px;
-    font-size: 16px;
+    font-size: 1.1rem;
     color: #3f3f3f;
     font-weight: 600;
 }
-
 
 
 .adivina-Definition a {
@@ -109,19 +97,14 @@
     color: #b3092f;
     cursor: pointer;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 1.1rem;
     z-index: 30000;
     text-decoration: none;
     text-align: center;
 }
 
 
-.adivina-Question {
-    background-color: transparent;
-    width: 100%;
-    margin: 0px auto;
-    margin-bottom: 10px;
-}
+
 
 .adivina-Letter.blue {
     color: #5877c6;
@@ -135,7 +118,6 @@
     color: #b3092f;
 }
 
-
 .adivina-GameContainer .adivina-Letter.blue {
     color: #071717;
 }
@@ -143,7 +125,6 @@
 
 .adivina-MainContainer {
     max-width: 750px;
-    min-width: 300px;
     width: 90%;
     margin: 10px auto;
     display: block;
@@ -172,11 +153,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    align-content: center;
 }
 
 .adivina-GameScoreBoard p {
-    font-size: 16px;
+    font-size: 1.2rem;
     font-weight: bold;
     line-height: 26px;
     width: 20px;
@@ -220,7 +200,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-right: 5px;
+    margin-right: 4px;
 }
 
 .adivina-TimeQuestion p {
@@ -228,13 +208,7 @@
     text-align: left;
 }
 
-.adivina-ResultsGame {
-    display: flex;
-    width: 50px;
-    height: 26px;
-    justify-content: space-between;
-    align-items: center;
-}
+
 
 .adivina-Icons {
     width: 24px;
@@ -257,7 +231,7 @@
     width: 100%;
     line-height: 20px;
     text-align: center;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: normal;
     color: #444444;
 }
@@ -324,7 +298,7 @@
 }
 
 .adivina-DataImageGameOver p {
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -340,7 +314,7 @@
     text-align: center;
     margin-bottom: 10px;
     color: #b3092f;
-    font-size: 16px;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
@@ -349,7 +323,7 @@
     margin-right: 10px;
     margin-left: 5px;
     text-align: center;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -358,15 +332,8 @@
     width: 100%;
     margin-bottom: 5px;
 }
-.adivina-ShowClue p{
-    font-size: 14px;
-    color:#5877c6;
-    font-weight: bold;
-    margin: 5px auto;
-    text-align: center;
-}
-.adivina-DataCodeAccessE label {
-    font-size: 14px;
+.adivina-DataCodeAccessE  label {
+    font-size: 1rem;
     font-weight: bold;
 }
 
@@ -376,7 +343,7 @@
     background: white;
     border: 2px solid #5877c6;
     border-radius: 6px;
-    font-size: 14px;
+    font-size: 0.8rem;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     color: #1c1b1b;
@@ -388,8 +355,8 @@
 .adivina-GetScore input[type=button]  {
     min-width: 90px;
     width: auto;
-   
 }
+
 .adivina-GameContainer input[type=button]:hover, .adivina-GetScore input[type=button]:hover {
     background-color: #5877c6;
     color: white;
@@ -406,7 +373,7 @@
 }
 .adivina-RepeatActivity{
     color: #b3092f;
-    font-size:12px;
+    font-size:0.9rem;
     font-weight: bold;
     text-align: center;
 }
@@ -423,7 +390,7 @@
 .adivina-TextClueGGame {
     width: 100%;
     min-height: 18px;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
     color: #00a300;
@@ -432,7 +399,7 @@
 .adivina-HistGGame, .adivina-LostGGame {
     width: 45%;
     height: 80%;
-    margin-right: 30px;
+    margin-right: 15px;
 }
 
 
@@ -441,7 +408,7 @@
     min-width: 300px;
     height: 30px;
     line-height: 20px;
-    font-size: 16px;
+    font-size: 1.1rem;
     font-weight: 600;
     text-align: center;
     padding: 0;
@@ -485,28 +452,28 @@
     background-color:white;
 }
 .adivina-GameContainer:-webkit-full-screen .adivina-Letter {
-    font-size: 24px;
+    font-size: 1.6rem;
     width: 30px;
     height: 38px;
     line-height: 38px;
 }
 
 .adivina-GameContainer:-moz-full-screen .adivina-Letter {
-    font-size: 24px;
+    font-size: 1.6rem;
     width: 30px;
     height: 38px;
     line-height: 38px;
 }
 
 .adivina-GameContainer:-ms-full-screen .adivina-Letter {
-    font-size: 24px;
+    font-size: 1.6rem;
     width: 30px;
     height: 38px;
     line-height: 38px;
 }
 
 .adivina-GameContainer:-o-full-screen .adivina-Letter {
-    font-size: 24px;
+    font-size: 1.6rem;
     width: 30px;
     height: 38px;
     line-height: 38px;
@@ -529,19 +496,19 @@
 }
 
 .adivina-GameContainer:-webkit-full-screen .adivina-Definition a {
-    font-size: 22px;
+    font-size: 1.5rem;
 }
 
 .adivina-GameContainer:-moz-full-screen .adivina-Definition a {
-    font-size: 22px;
+    font-size: 1.5rem;
 }
 
 .adivina-GameContainer:-ms-full-screen .adivina-Definition a {
-    font-size: 22px;
+    font-size: 1.5rem;
 }
 
 .adivina-GameContainer:-o-full-screen .adivina-Definition a {
-    font-size: 22px;
+    font-size: 1.5rem;
 }
 
 .exeQuext-ResultGame {
@@ -554,14 +521,17 @@
 
 .exeQuext-ResultGame p {
     width: 30px;
+    height: 100%;
+    padding: 0;
     text-align: center;
+
 
 }
 
 .exeQuextIcons {
     width: 26px;
     height: 26px;
-    margin-right: 5px;
+    margin-right: 0px;
 }
 
 .exeQuextIcons-Hit {
@@ -651,121 +621,30 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     margin-right: 6px;
 }
 
-@media (max-width: 560px) {
-    .adivina-GameContainer {
-        width: 95%;
-        margin: 5px auto;
-        min-width: 300px;
-        padding: 2px;
-        border-radius: 7px;
-    }
-    .adivina-Multimedia {
-        width: 400px;
-        height: 225px;
-    }
-    .adivina-NumberLifesGame {
-        display: none;
-    }
-    .adivina-GameScores {
-        width: 95px;
-        height: 164px;
-        margin: 0 3px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .adivina-TimeNumber {
-        width: 180px;
-        height: 16px;
-        margin: 0 1px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .adivina-ResultsGame p {
-        line-height: 16px;
-        width: 3px;
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-    }
-    .adivina-AutorLicence {
-        height: 12px;
-        font-size: 10px;
-    }
-    .adivina-AutorLicence p {
-        height: 12px;
-        font-size: 12px;
-        color: #555555;
-    }
-    .adivina-Icons {
-        width: 16px;
-        height: 16px;
-        margin-right: 2px;
-    }
-}
 
-@media (max-width:401px) {
-    .adivina-GameContainer {
-        width: 100%;
-        margin: 0px auto;
-        min-width: 300px;
-        padding: 0px;
-        border-radius: 7px;
-    }
-    .adivina-Multimedia {
-        width: 300px;
-        height: 168px;
-    }
-    .adivina-TimeNumber {
-        width: 115px;
-        height: 14px;
-        margin: 0 1px;
-    }
-    .adivina-LifesGame {
-        display: none
-    }
-    .adivina-NumberLifesGame {
-        width: 26px;
-        height: 26px;
-        margin: 0 1px;
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .adivina-NumberLifesGame p {
-        line-height: 14px;
-        width: 3px;
-        font-size: 12px;
-    }
-    .adivina-ResultsGame p {
-        line-height: 14px;
-        width: 3px;
-        font-size: 12px;
-    }
-    .adivina-GameScores {
-        width: 95px;
-        height: 164px;
-        margin: 0 3px;
-    }
-    .adivina-Icons {
-        width: 14px;
-        height: 14px;
-        margin-right: 2px;
-    }
-    .adivina-AutorLicence {
-        height: 8px;
-        font-size: 10px;
-    }
-}
+
+
 p.adivinaDivInstructions{margin:0;font-weight:bold;text-align:center;height:32px}
 .adinaIdevice .adivina-extra-content{
 	margin-top:1.7em;
-} 
+}
 
 .adivina-PShowClue{
     display: none;
+    font-size: 1.1rem;
+    color:#5877c6;
+    font-weight: bold;
+    margin: 5px auto;
+    text-align: center;
+}
+
+.adivina-OverScore{
+    font-size: 0.8rem;
+}
+
+
+.adivina-instructions p{
+    font-size: 1rem;
 }
 
 .adivina-parpadea {
@@ -794,3 +673,261 @@ p.adivinaDivInstructions{margin:0;font-weight:bold;text-align:center;height:32px
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
   }
+
+
+
+@media (max-width: 450px) {
+    .adivina-IDevice{
+        padding: 0;
+    }
+    .adivina-MainContainer{
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .exeQuextIcons-Time{
+        margin: 0;
+        margin-right: 3px;
+    }
+    .adivina-LinkMinimize{
+        display: none;
+    }
+    .adivina-GameContainer {
+        width: 100%;
+        margin: 0px auto;
+        min-width: 200px;
+        padding: 0px;
+        border-radius: 0px;
+    }
+    .adivina-Multimedia {
+        width: 220px;
+        height: 123px;
+        min-height: 123px;
+        margin-bottom: 3px;
+    }
+    .adivina-GameScoreBoard {
+        width: 100%;
+        margin: 0px auto;
+        height: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    .adivina-GameScores {
+        width: 110px;
+        height: 15px;
+        margin: 0 1px;
+    }
+
+    .adivina-HistGGame, .adivina-LostGGame {
+        margin-right: 3px;
+    }
+    .adivina-GameScoreBoard p {
+        font-size: 0.8rem;
+        line-height: 20px;
+        width: 14px;
+        text-align: center;
+        margin: 0;
+    }
+ 
+    .adivina-LifesGame {
+        display: none;
+    } 
+    .adivina-NumberLifesGame {
+        display: flex;
+        width: 28px;
+        height: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    .adivina-NumberLifesGame p {
+        width: 10px;
+        height: 18px;
+        text-align: center;
+    }
+    .adivina-TimeNumber {
+        width: 95px;
+        height:15px;
+        margin: 0 1px;
+     }
+    .adivina-MessageCodeAccessE {
+        width: 100%;
+        margin: 1px auto;
+        text-align: center;
+        font-size: 0.7rem;
+    }
+    .adivina-TimeQuestion {
+        width: 55px;
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 3px;
+    }
+
+    .adivina-TimeQuestion p {
+        width: 40px;
+        text-align: center;
+    }
+    
+    .adivina-Prhase {
+        width: 100%;
+        margin: 0 auto;
+        min-height: 30px;
+    }
+    .adivina-Definition {
+        width: 100%;
+        margin: 3px auto;
+        min-height: 25px;
+    }
+    .adivina-Definition{
+        font-size: 0.8rem;
+    }
+    .adivina-Definition a {
+        font-size: 0.8rem;
+    }
+    .adivina-EdReply{
+        margin: 0 2px;
+        min-width: 60px;
+        width: 80px;
+        font-size: 0.8rem;
+        margin: 1px;
+     }
+    .adivina-GameContainer input[type=button], .adivina-GetScore input[type=button]  {
+        width: 80px;
+        height: 30px;
+        border-radius: 4px;
+        font-size: 0.6rem;
+    }
+    p.adivinaDivInstructions{
+        width: 100%;
+        font-size: 0.7rem;
+        margin: 0px auto;
+    }
+    .adivina-LinkFullScreen{
+        display:none;
+    }
+    .adivina-AutorLicence {
+        height: 14px;
+        margin-bottom: 3px;
+    }
+    .adivina-instructions p{
+        font-size: 0.7rem;
+    }
+    .adivina-AutorLicence p {
+        line-height: 14px;
+        font-size: 0.7rem;
+    }
+
+    .exeQuextIcons {
+        width: 15px;
+        height: 15px;
+        margin-right: 0px;
+    }
+    .exeQuextIcons-Life {
+        background: url(exeQuextIcons13.png) no-repeat -45px 0px;
+    }
+
+    .exeQuextIcons-Hit {
+        background: url(exeQuextIcons13.png) no-repeat 0 0;
+    }
+    .exeQuextIcons-Error {
+        background: url(exeQuextIcons13.png) no-repeat -15px 0px ;
+    }
+    .exeQuextIcons-Score {
+        background: url(exeQuextIcons13.png) no-repeat -31px 0px;
+     }
+    .exeQuextIcons-Time{
+        background: url(exeQuextIcons13.png) no-repeat 0 -15px;
+
+    }
+    .exeQuextIcons-Number {
+     background: url(exeQuextIcons13.png) no-repeat -15px -15px;
+    }
+
+
+
+
+    .adivina-DivReply {
+        margin: 0px;
+        display: flex;
+        justify-content:  center;
+        align-items: center;
+        background-color: transparent;
+        width: 100%;
+      }
+    .adivina-DataCodeAccessE {
+        width: 100%;
+        margin-bottom: 3px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+   .adivina-DataCodeAccessE label{
+        display: none;
+    }
+    .adivina-CodeAccessE {
+        margin-right: 2px;
+        margin-left: 1px;
+        width: 120px;
+
+        font-size: 0.8rem;
+    }
+    .exeQuext-ResultGame {
+        display: flex;
+        width: 30px;
+        height: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    .exeQuext-ResultGame  {
+        display: flex;
+        width: 30px;
+        height: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    .exeQuext-ResultGame p {
+        width: 15px;
+        line-height: 15px;
+        padding: 0;
+        text-align: center;
+    }
+    .exeQuext-ResultGameScore{
+        width: 45px;
+    }
+    .exeQuext-ResultGameScore p{
+        width: 30px;
+        text-align: left;
+        margin-left: 3px;
+    }
+    .adivina-Letter {
+        font-size: 0.7rem;
+        font-weight: 600;
+        width: 14px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 2px;
+        margin: 1px;
+    }
+    .adivina-TextClueGGame {
+        min-height: 14px;
+        font-size: 0.7rem;
+    }
+    .adivina-DataGame p{
+        font-size: 0.6rem;
+    }
+    .adivina-PShowClue{
+        font-size: 0.8rem;
+    }
+    .adivina-RepeatActivity{
+        font-size:0.6rem;
+
+    }
+    .adivina-GetScore{
+        width: 100%;
+     }
+
+}
+

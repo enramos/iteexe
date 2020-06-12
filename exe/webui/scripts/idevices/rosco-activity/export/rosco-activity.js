@@ -233,7 +233,7 @@ var $eXeRosco = {
 					<div class="rosco-Letters" id="roscoLetters-' + instance + '">' + aLetters + '</div>\
 					<div class="rosco-ShowClue" id="roscoShowClue-' + instance + '">\
 						<div class="sr-av">' + msgs.msgClue + ':</div>\
-						<p class="rosco-PShowClue" id="roscoPShowClue-' + instance + '"></p>\
+						<p class="rosco-PShowClue rosco-parpadea" id="roscoPShowClue-' + instance + '"></p>\
 			   		</div>\
 					<div class="rosco-Image" id="roscoImage-' + instance + '">\
 						<img src="' + path + 'roscoCursor.gif" class="rosco-Cursor" alt="Cursor" id="roscoCursor-' + instance + '"/> \
@@ -1008,7 +1008,7 @@ var $eXeRosco = {
 		}
 		var words = sWord.split('|');
 		for (var i = 0; i < words.length; i++) {
-			var mword=$.trim(words[i]).replace(/.$/,"").replace(/,$/,"").replace(/;$/,"");
+			var mword=$.trim(words[i]).replace(/\.$/,"").replace(/\,$/,"").replace(/\;$/,"");
 			if ( mword == sAnsWord) {
 				return true;
 			}
