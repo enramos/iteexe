@@ -1147,7 +1147,7 @@ var $eXeVideoQuExt = {
         }
         var words = sWord.split('|');
         for (var i = 0; i < words.length; i++) {
-            var mword = $.trim(words[i]).replace(/.$/, "").replace(/,$/, "").replace(/;$/, "");
+            var mword = $.trim(words[i]).replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, "");
             if (mword == sAnsWord) {
                 return true;
             }
