@@ -121,6 +121,7 @@ var $exeDevice = {
         msgs.msgWriteText = _("You have to type a text in the editor");
         msgs.msgSilentPoint = _("El valor del punto de inicio del silencio debe ser mayor que el punto de inicio del vídeo y menor que el fin del mismo");
         msgs.msgTypeChoose = _("En las preguntas tipo Ordena debes marcar todas las respuestas en el orden adecuado");
+        msgs.msgTimeFormat=_("Los tiempos deben tener el siguiente formato: hh:mm:ss");
 
 
     },
@@ -783,14 +784,14 @@ var $exeDevice = {
                                     <div class="selecciona-EInputOptionsVideo" id="seleccionaEInputOptionsVideo">\
                                         <div>\
                                             <label for="seleccionaEInitVideo">' + _("Start") + ':</label>\
-                                            <input id="seleccionaEInitVideo" type="text" value="00:00:00" readonly />\
+                                            <input id="seleccionaEInitVideo" type="text" value="00:00:00" maxlength="8" />\
                                             <label for="seleccionaEEndVideo">' + _("End") + ':</label>\
-                                            <input id="seleccionaEEndVideo" type="text" value="00:00:00" readonly />\
+                                            <input id="seleccionaEEndVideo" type="text" value="00:00:00" maxlength="8" />\
                                             <button class="selecciona-EVideoTime" id="seleccionaEVideoTime" type="button">00:00:00</button>\
                                         </div>\
                                         <div>\
                                             <label for="seleccionaESilenceVideo">' + _("Silence") + ':</label>\
-                                            <input id="seleccionaESilenceVideo" type="text" value="00:00:00" pattern="([01]?[0-9]|2[0-3])(:[0-5][0-9]){2}" required="required" readonly placeholder="hh:mm:ss" />\
+                                            <input id="seleccionaESilenceVideo" type="text" value="00:00:00" maxlength="8"" />\
                                             <label for="seleccionaETimeSilence">' + _("Time (s)") + ':</label>\
                                             <input type="number" name="seleccionaETimeSilence" id="seleccionaETimeSilence" value="0" min="0" max="120" /> \
                                         </div>\
@@ -921,6 +922,10 @@ var $exeDevice = {
             }
         });
 
+    },
+    validTime: function (time) {
+        var reg = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
+        return (time.length == 8 && reg.test(time))
     },
     initQuestions: function () {
         $('#seleccionaEInputOptionsImage').css('display', 'flex');
@@ -1170,7 +1175,11 @@ var $exeDevice = {
             message = msgs.msgEStartEndIncorrect;
         } else if (p.type == 3 && p.eText.length == 0) {
             message = msgs.msgWriteText;
-        } else if (p.type == 2 && p.tSilentVideo > 0 && (p.silentVideo < p.iVideo || p.silentVideo >= p.fVideo)) {
+        } else if (p.type == 2 && !$exeDevice.validTime($('#seleccionaEInitVideo').val()) || !$exeDevice.validTime($('#seleccionaEEndVideo').val())) {
+            message = $exeDevice.msgs.msgTimeFormat
+        }else if (p.type == 2 && p.tSilentVideo > 0 && !$exeDevice.validTime($('#seleccionaESilenceVideo').val())) {
+            message = msgs.msgTimeFormat;
+        }else if (p.type == 2 && p.tSilentVideo > 0  && (p.silentVideo < p.iVideo || p.silentVideo >= p.fVideo)) {
             message = msgs.msgSilentPoint;
         }
 
@@ -1359,7 +1368,21 @@ var $exeDevice = {
             var marcado = $(this).is(':checked');
             $('#seleccionaENumberLives').prop('disabled', !marcado);
         });
+        $('#seleccionaEInitVideo, #seleccionaEEndVideo, #seleccionaESilenceVideo').on('focusout', function () {
+            if (!$exeDevice.validTime(this.value)) {
+                $(this).css({
+                    'background-color': 'red',
+                    'color': 'white'
+                });
+            }
+        });
+        $('#seleccionaEInitVideo, #seleccionaEEndVideo, #seleccionaESilenceVideo').on('click', function () {
+            $(this).css({
+                'background-color': 'white',
+                'color': '#2c6d2c'
+            });
 
+        });
        
         $('#seleccionaShowCodeAccess').on('change', function () {
             var marcado = $(this).is(':checked');
@@ -1537,6 +1560,7 @@ var $exeDevice = {
                     break;
             }
             $timeV.val($('#seleccionaEVideoTime').text());
+            $timeV.css({'background-color':'white','color':'#2c6d2c'});
         });
         $('#seleccionaEVIStart').css('color', '#2c6d2c');
         $('#seleccionaEVIStart').on('click', function (e) {

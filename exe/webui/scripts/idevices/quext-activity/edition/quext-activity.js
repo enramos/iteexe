@@ -118,6 +118,7 @@ var $exeDevice = {
         msgs.msgEStartEndIncorrect = _("The video end value must be higher than the start one");
         msgs.msgWriteText = _("You have to type a text in the editor");
         msgs.msgSilentPoint = _("El valor del punto de inicio del silencio debe ser mayor que el punto de inicio del vídeo y menor que el fin del mismo");
+        msgs.msgTimeFormat=_("Los tiempos deben tener el siguiente formato: hh:mm:ss");
 
 
     },
@@ -422,7 +423,7 @@ var $exeDevice = {
         });
         $('#quextNumberQuestion').text(i + 1);
         $('#quextEScoreQuestion').val(1);
-        if (typeof(p.customScore)!="undefined") {
+        if (typeof (p.customScore) != "undefined") {
             $('#quextEScoreQuestion').val(p.customScore);
         }
         $("input.quext-Number[name='qxnumber'][value='" + p.numberOptions + "']").prop("checked", true)
@@ -754,14 +755,14 @@ var $exeDevice = {
                                     <div class="quext-EInputOptionsVideo" id="quextEInputOptionsVideo">\
                                         <div>\
                                             <label for="quextEInitVideo">' + _("Start") + ':</label>\
-                                            <input id="quextEInitVideo" type="text" value="00:00:00" readonly />\
+                                            <input id="quextEInitVideo" type="text" value="00:00:00"  maxlength="8"  />\
                                             <label for="quextEEndVideo">' + _("End") + ':</label>\
-                                            <input id="quextEEndVideo" type="text" value="00:00:00" readonly />\
+                                            <input id="quextEEndVideo" type="text" value="00:00:00"  maxlength="8" />\
                                             <button class="quext-EVideoTime" id="quextEVideoTime" type="button">00:00:00</button>\
                                         </div>\
                                         <div>\
                                             <label for="quextESilenceVideo">' + _("Silence") + ':</label>\
-                                            <input id="quextESilenceVideo" type="text" value="00:00:00" pattern="([01]?[0-9]|2[0-3])(:[0-5][0-9]){2}" required="required" readonly placeholder="hh:mm:ss" />\
+                                            <input id="quextESilenceVideo" type="text" value="00:00:00"  required="required"  maxlength="8" />\
                                             <label for="quextETimeSilence">' + _("Time (s)") + ':</label>\
                                             <input type="number" name="quextETimeSilence" id="quextETimeSilence" value="0" min="0" max="120" /> \
                                         </div>\
@@ -935,6 +936,10 @@ var $exeDevice = {
         p.tSilentVideo = 0;
         return p;
     },
+    validTime: function (time) {
+        var reg = /^(?:(?:([01]?\d|2[0-3]):)?([0-5]?\d):)?([0-5]?\d)$/;
+        return (time.length == 8 && reg.test(time))
+    },
     loadPreviousValues: function (field) {
 
         var originalHTML = field.val();
@@ -951,9 +956,9 @@ var $exeDevice = {
                 $imagesLink = $('.quext-LinkImages', wrapper);
             $imagesLink.each(function (index) {
                 dataGame.questionsGame[index].url = $(this).attr('href');
-                if(dataGame.questionsGame[index].url.length<10){
-					dataGame.questionsGame[index].url="";
-				}
+                if (dataGame.questionsGame[index].url.length < 10) {
+                    dataGame.questionsGame[index].url = "";
+                }
             });
             $exeDevice.active = 0;
             for (var i = 0; i < dataGame.questionsGame.length; i++) {
@@ -1129,6 +1134,7 @@ var $exeDevice = {
             }
             p.options.push(option);
         });
+
         if (p.quextion.length == 0) {
             message = msgs.msgECompleteQuestion;
         } else if (optionEmpy) {
@@ -1143,7 +1149,11 @@ var $exeDevice = {
             message = msgs.msgEStartEndIncorrect;
         } else if (p.type == 3 && p.eText.length == 0) {
             message = msgs.msgWriteText;
-        } else if (p.type == 2 && p.tSilentVideo > 0 && (p.silentVideo < p.iVideo || p.silentVideo >= p.fVideo)) {
+        } else if (p.type == 2 && !$exeDevice.validTime($('#quextEInitVideo').val()) || !$exeDevice.validTime($('#quextEEndVideo').val())) {
+            message = $exeDevice.msgs.msgTimeFormat
+        }else if (p.type == 2 && p.tSilentVideo > 0 && !$exeDevice.validTime($('#quextESilenceVideo').val())) {
+            message = msgs.msgTimeFormat;
+        }else if (p.type == 2 && p.tSilentVideo > 0  && (p.silentVideo < p.iVideo || p.silentVideo >= p.fVideo)) {
             message = msgs.msgSilentPoint;
         }
         if (message.length == 0) {
@@ -1156,14 +1166,15 @@ var $exeDevice = {
         return message;
 
     },
+
     createlinksImage: function (questionsGame) {
         var html = '';
         for (var i = 0; i < questionsGame.length; i++) {
             var linkImage = '<a href="' + questionsGame[i].url + '" class="js-hidden quext-LinkImages">' + i + '</a>';
-  
-            if( questionsGame[i].url.length<10){
-                linkImage='<a href="#" class="js-hidden quext-LinkImages">' + i + '</a>';
-			}
+
+            if (questionsGame[i].url.length < 10) {
+                linkImage = '<a href="#" class="js-hidden quext-LinkImages">' + i + '</a>';
+            }
             html += linkImage;
         }
 
@@ -1244,8 +1255,8 @@ var $exeDevice = {
             idVideo = $('#quextEVideoIntro').val(),
             endVideo = $exeDevice.hourToSeconds($('#quextEVIEnd').val()),
             startVideo = $exeDevice.hourToSeconds($('#quextEVIStart').val()),
-            itinerary = $exeAuthoring.iDevice.gamification.itinerary.getValues();
-        customScore = $('#quextECustomScore').is(':checked');
+            itinerary = $exeAuthoring.iDevice.gamification.itinerary.getValues(),
+            customScore = $('#quextECustomScore').is(':checked');
         if (!itinerary) return false;
         if (showSolution && timeShowSolution.length == 0) {
             $exeDevice.showMessage($exeDevice.msgs.msgEProvideTimeSolution);
@@ -1254,7 +1265,7 @@ var $exeDevice = {
         var questionsGame = $exeDevice.questionsGame;
         for (var i = 0; i < questionsGame.length; i++) {
             mquestion = questionsGame[i]
-            mquestion.customScore=typeof(mquestion.customScore)=="undefined"?1:mquestion.customScore;
+            mquestion.customScore = typeof (mquestion.customScore) == "undefined" ? 1 : mquestion.customScore;
             if (mquestion.quextion.length == 0) {
                 $exeDevice.showMessage($exeDevice.msgs.msgECompleteQuestion);
                 return false;
@@ -1331,6 +1342,21 @@ var $exeDevice = {
         $('#quextEUseLives').on('change', function () {
             var marcado = $(this).is(':checked');
             $('#quextENumberLives').prop('disabled', !marcado);
+        });
+        $('#quextEInitVideo, #quextEEndVideo, #quextESilenceVideo').on('focusout', function () {
+            if (!$exeDevice.validTime(this.value)) {
+                $(this).css({
+                    'background-color': 'red',
+                    'color': 'white'
+                });
+            }
+        });
+        $('#quextEInitVideo, #quextEEndVideo, #quextESilenceVideo').on('click', function () {
+            $(this).css({
+                'background-color': 'white',
+                'color': '#2c6d2c'
+            });
+
         });
 
         $('#quextShowCodeAccess').on('change', function () {
@@ -1496,6 +1522,7 @@ var $exeDevice = {
                     break;
             }
             $timeV.val($('#quextEVideoTime').text());
+            $timeV.css({'background-color':'white','color':'#2c6d2c'});
         });
         $('#quextEVIStart').css('color', '#2c6d2c');
         $('#quextEVIStart').on('click', function (e) {

@@ -790,11 +790,9 @@ var $exeDevice = {
         }
     },
     save: function () {
-        console.log('save', 1);
         if (!$exeDevice.validateQuestion()) {
             return;
         }
-        console.log('save', 2);
         var dataGame = this.validateData();
         if (!dataGame) {
             return false;
