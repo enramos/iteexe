@@ -1009,9 +1009,9 @@ var $exeDevice = {
         $('#seleccionaEUseLives').prop('checked', game.useLives);
         $('#seleccionaENumberLives').val(game.numberLives);
         $('#seleccionaEVideoIntro').val(game.idVideo);
-        $('#seleccionaShowSolutions').prop('checked', game.showSolution);
-        $('#seleccionaTimeShowSolutions').val(game.timeShowSolution)
+        $('#seleccionaEShowSolution').prop('checked', game.showSolution);
         $('#seleccionaETimeShowSolution').prop('disabled', !game.showSolution);
+        $('#seleccionaETimeShowSolution').val(game.timeShowSolution);
         $('#seleccionaENumberLives').prop('disabled', !game.useLives);
         $('#seleccionaEVIURL').val(game.idVideo);
         $('#seleccionaEVIEnd').val($exeDevice.secondsToHour(game.endVideo));
@@ -1191,7 +1191,6 @@ var $exeDevice = {
             if(selectsGame[i].url.length<10){
 				linkImage='<a href="#" class="js-hidden selecciona-LinkImages">' + i + '</a>';
 			}
-            
             html += linkImage;
         }
         return html;
@@ -1361,11 +1360,7 @@ var $exeDevice = {
             $('#seleccionaENumberLives').prop('disabled', !marcado);
         });
 
-        $('#seleccionaShowSolutions').on('change', function () {
-            var marcado = $(this).is(':checked');
-            $('#seleccionaTimeShowSolutions').prop('disabled', !marcado);
-        });
-
+       
         $('#seleccionaShowCodeAccess').on('change', function () {
             var marcado = $(this).is(':checked');
             $('#seleccionaCodeAccess').prop('disabled', !marcado);
@@ -1565,10 +1560,11 @@ var $exeDevice = {
             var marcado = $(this).is(':checked');
             $('#seleccionaNumberLives').prop('disabled', !marcado);
         });
-        $('#seleccionaShowSolution').on('change', function () {
+        $('#seleccionaEShowSolution').on('change', function () {
             var marcado = $(this).is(':checked');
-            $('#seleccionaTimeShowSolution').prop('disabled', !marcado);
+            $('#seleccionaETimeShowSolution').prop('disabled', !marcado);
         });
+
         $('.selecciona-ESolution').on('change', function (e) {
             var marcado = $(this).is(':checked'),
                 value = $(this).val();

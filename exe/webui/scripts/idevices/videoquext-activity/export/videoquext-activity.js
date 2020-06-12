@@ -985,6 +985,7 @@ var $eXeVideoQuExt = {
         $('#vquextStarGame-' + instance).show();
         $('#vquextStarGameSRAV-' + instance).show();
         $('#vquextQuestionDiv-' + instance).hide();
+        mOptions.gameOver = true;
         if (mOptions.isScorm === 1) {
             if (mOptions.repeatActivity || $eXeVideoQuExt.initialScore === '') {
                 var score = ((mOptions.hits * 10) / mOptions.numberQuestions).toFixed(2);
@@ -993,7 +994,7 @@ var $eXeVideoQuExt = {
                 $eXeVideoQuExt.initialScore = score;
             }
         }
-        mOptions.gameOver = true;
+        
     },
     drawText: function (texto, color) {},
     showQuestion: function (i, instance) {

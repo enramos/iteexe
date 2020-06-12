@@ -320,7 +320,7 @@ var $eXeSelecciona = {
             <div class="selecciona-CodeAccessDiv" id="seleccionaCodeAccessDiv-' + instance + '">\
                 <div class="selecciona-MessageCodeAccessE" id="seleccionaMesajeAccesCodeE-' + instance + '"></div>\
                 <div class="selecciona-DataCodeAccessE">\
-                    <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="selecciona-CodeAccessE"  id="seleccionaCodeAccessE-' + instance + '">\
+                    <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="selecciona-CodeAccessE"  id="seleccionaCodeAccessE-' + instance + '" readonly>\
                     <input type="button" class="selecciona-CodeAccessButton" id="seleccionaCodeAccessButton-' + instance + '"   value="' + msgs.msgSubmit + '" />\
                 </div>\
             </div>\
@@ -460,6 +460,7 @@ var $eXeSelecciona = {
                 $('#seleccionaVideoIntroContainer-' + i).css('display', 'flex');
                 $('#seleccionaVideoIntroContainer-' + i).show();
                 $('#seleccionaLinkVideoIntroShow-' + i).show();
+                $('#seleccionaCodeAccessE-'+ i).prop('readonly',false);
             }
         }
     },
@@ -979,10 +980,11 @@ var $eXeSelecciona = {
         $('#seleccionaQuestionDiv-' + instance).hide();
         $('#seleccionaAnswerDiv-' + instance).hide();
         if ($eXeSelecciona.getIDYoutube(mOptions.idVideo) !== '') {
-            $('#seleccionaVideoIntroContainer-' + i).css('display', 'flex');
-            $('#seleccionaVideoIntroContainer-' + i).show();
-            $('#seleccionaLinkVideoIntroShow-' + i).show();
+            $('#seleccionaVideoIntroContainer-' + instance).css('display', 'flex');
+            $('#seleccionaVideoIntroContainer-' + instance).show();
+            $('#seleccionaLinkVideoIntroShow-' + instance).show();
         }
+        mOptions.gameOver = true;
         if (mOptions.isScorm === 1) {
             if (mOptions.repeatActivity || $eXeSelecciona.initialScore === '') {
                 var score = ((mOptions.scoreGame * 10) / mOptions.scoreTotal).toFixed(2);
@@ -991,7 +993,6 @@ var $eXeSelecciona = {
                 $eXeSelecciona.initialScore = score;
             }
         }
-        mOptions.gameOver = true;
     },
     drawText: function (texto, color) {},
     showQuestion: function (i,instance) {

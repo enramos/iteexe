@@ -32,7 +32,6 @@ var $eXeDesafio = {
     previousScore: '',
     initialScore: '',
     msgs: '',
-    hasSCORMbutton: false,
     fontSize: '18px',
     isInExe: false,
     init: function () {
@@ -46,111 +45,12 @@ var $eXeDesafio = {
         if ($(".QuizTestIdevice .iDevice").length > 0) this.hasSCORMbutton = true;
         if (typeof ($exeAuthoring) != 'undefined') this.isInExe = true;
         this.idevicePath = this.isInExe ? "/scripts/idevices/desafio-activity/export/" : "";
-        if ($("body").hasClass("exe-scorm")) this.loadSCORM_API_wrapper();
-        else this.enable();
-    },
-    loadSCORM_API_wrapper: function () {
-        if (typeof (pipwerks) == 'undefined') $exe.loadScript('SCORM_API_wrapper.js', '$eXeDesafio.loadSCOFunctions()');
-        else this.loadSCOFunctions();
-    },
-    loadSCOFunctions: function () {
-        if (typeof (exitPageStatus) == 'undefined') $exe.loadScript('SCOFunctions.js', '$eXeDesafio.enable()');
-        else this.enable();
-        $eXeDesafio.mScorm = scorm;
-        var callSucceeded = $eXeDesafio.mScorm.init();
-        if (callSucceeded) {
-            $eXeDesafio.userName = $eXeDesafio.getUserName();
-            $eXeDesafio.previousScore = $eXeDesafio.getPreviousScore();
-            $eXeDesafio.mScorm.set("cmi.core.score.max", 10);
-            $eXeDesafio.mScorm.set("cmi.core.score.min", 0);
-            $eXeDesafio.initialScore = $eXeDesafio.previousScore;
-        }
+        this.enable();
     },
     enable: function () {
         $eXeDesafio.loadGame();
     },
-    getUserName: function () {
-        var user = $eXeDesafio.mScorm.get("cmi.core.student_name");
-        return user
-    },
-    getPreviousScore: function () {
-        var score = $eXeDesafio.mScorm.get("cmi.core.score.raw");
-        return score;
-    },
-    endScorm: function () {
-        if ($eXeDesafio.mScorm) {
-            $eXeDesafio.mScorm.quit();
-        }
 
-    },
-    updateScorm: function (prevScore, repeatActivity, instance) {
-        var mOptions = $eXeDesafio.options[instance],
-            text = '';
-        $('#desafioSendScore-' + instance).hide();
-        if (mOptions.isScorm === 1) {
-            if (repeatActivity && prevScore !== '') {
-                text = mOptions.msgs.msgYouLastScore + ': ' + prevScore;
-            } else if (repeatActivity && prevScore === "") {
-                text = mOptions.msgs.msgSaveAuto + ' ' + mOptions.msgs.msgPlaySeveralTimes;
-            } else if (!repeatActivity && prevScore === "") {
-                text = mOptions.msgs.msgOnlySaveAuto;
-            } else if (!repeatActivity && prevScore !== "") {
-                text = mOptions.msgs.msgActityComply + ' ' + mOptions.msgs.msgYouLastScore + ': ' + prevScore;
-            }
-        } else if (mOptions.isScorm === 2) {
-            $('#desafioSendScore-' + instance).show();
-            if (repeatActivity && prevScore !== '') {
-                text = mOptions.msgs.msgYouLastScore + ': ' + prevScore;
-            } else if (repeatActivity && prevScore === '') {
-                text = mOptions.msgs.msgSeveralScore;
-            } else if (!repeatActivity && prevScore === '') {
-                text = mOptions.msgs.msgOnlySaveScore;
-            } else if (!repeatActivity && prevScore !== '') {
-                $('#desafioSendScore-' + instance).hide();
-                text = mOptions.msgs.msgActityComply + ' ' + mOptions.msgs.msgYouScore + ': ' + prevScore;
-            }
-        }
-        $('#desafioRepeatActivity-' + instance).text(text);
-        $('#desafioRepeatActivity-' + instance).fadeIn(1000);
-    },
-    sendScore: function (auto, instance) {
-        var mOptions = $eXeDesafio.options[instance],
-            message = '',
-            score = ((mOptions.hits * 10) / mOptions.numberQuestions).toFixed(2);
-        if (mOptions.gameStarted || mOptions.gameOver) {
-            if (typeof $eXeDesafio.mScorm != 'undefined') {
-                if (!auto) {
-                    $('#desafioSendScore-' + instance).show();
-                    if (!mOptions.repeatActivity && $eXeDesafio.previousScore !== '') {
-                        message = $eXeDesafio.userName !== '' ? $eXeDesafio.userName + ' ' + mOptions.msgs.msgOnlySaveScore : mOptions.msgs.msgOnlySaveScore;
-                    } else {
-                        $eXeDesafio.previousScore = score;
-                        $eXeDesafio.mScorm.set("cmi.core.score.raw", score);
-                        message = $eXeDesafio.userName !== '' ? $eXeDesafio.userName +  ', ' +mOptions.msgs.msgYouScore +': ' + score : mOptions.msgs.msgYouScore +': ' + score;
-                        if (!mOptions.repeatActivity) {
-                            $('#desafioSendScore-' + instance).hide();
-                        }
-                        $('#desafioRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore + ': ' + score)
-                        $('#desafioRepeatActivity-' + instance).show();
-                    }
-                } else {
-                    $eXeDesafio.previousScore = score;
-                    score = score === "" ? 0 : score;
-                    $eXeDesafio.mScorm.set("cmi.core.score.raw", score);
-                    $('#desafioRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore+': ' + score)
-                    $('#desafioRepeatActivity-' + instance).show();
-                    message = "";
-                }
-            } else {
-                message = mOptions.msgs.msgScoreScorm;
-            }
-
-        } else {
-            message = mOptions.msgs.msgEndGameScore;
-
-        }
-        if (!auto) alert(message);
-    },
     loadGame: function () {
         $eXeDesafio.options = [];
         $eXeDesafio.activities.each(function (i) {
@@ -300,7 +200,7 @@ var $eXeDesafio = {
                     </div>\
                 </div>\
             </div>\
-    ' + this.addButtonScore(instance);
+            '
         return html;
     },
     createArrayStateChallenges: function (type, mlength) {
@@ -323,35 +223,6 @@ var $eXeDesafio = {
 
 
 
-    addButtonScore: function (instance) {
-        var mOptions = $eXeDesafio.options[instance];
-        var butonScore = "";
-        var fB = '<div class="desafio-BottonContainer">';
-        if (mOptions.isScorm == 2) {
-            var buttonText = mOptions.textButtonScorm;
-            if (buttonText != "") {
-                if (this.hasSCORMbutton == false && ($("body").hasClass("exe-authoring-page") || $("body").hasClass("exe-scorm"))) {
-                    this.hasSCORMbutton = true;
-                    fB += '<div class="desafio-GetScore">';
-                    if (!this.isInExe) fB += '<form action="#" onsubmit="return false">';
-                    fB += '<p><input type="button" id="desafioSendScore-' + instance + '" value="' + buttonText + '" class="feedbackbutton" /> <span class="desafio-RepeatActivity" id="desafioRepeatActivity-' + instance + '"></span></p>';
-                    if (!this.isInExe) fB += '</form>';
-                    fB += '</div>';
-                    butonScore = fB;
-                }
-            }
-        } else if (mOptions.isScorm == 1) {
-            if (this.hasSCORMbutton == false && ($("body").hasClass("exe-authoring-page") || $("body").hasClass("exe-scorm"))) {
-                this.hasSCORMbutton = true;
-                fB += '<div class="desafio-GetScore">';
-                fB += '<p><span class="desafio-RepeatActivity" id="desafioRepeatActivity-' + instance + '"></span></p>';
-                fB += '</div>';
-                butonScore = fB;
-            }
-        }
-        fB = +'</div>';
-        return butonScore;
-    },
     Decrypt: function (str) {
         if (!str) str = "";
         str = (str == "undefined" || str == "null") ? "" : str;
@@ -459,7 +330,6 @@ var $eXeDesafio = {
     addEvents: function (instance) {
         var mOptions = $eXeDesafio.options[instance];
         window.addEventListener('unload', function () {
-            $eXeDesafio.endScorm();
             if (mOptions.gameStarted || mOptions.gameOver) {
                $eXeDesafio.saveDataStorage(instance);
             }
@@ -483,27 +353,14 @@ var $eXeDesafio = {
             $("#desafioGameContainer-" + instance).hide();
             $("#desafioGameMinimize-" + instance).css('visibility', 'visible').show();
         });
-        $('#desafioSendScore-' + instance).click(function (e) {
-            e.preventDefault();
-            $eXeDesafio.sendScore(false, instance);
-        });
+
         $('#desafioGamerOver-' + instance).hide();
         $('#desafioCodeAccessDiv-' + instance).hide();
         $('#desafioVideo-' + instance).hide();
         $('#desafioImagen-' + instance).hide();
         $('#desafioCursor-' + instance).hide();
         $('#desafioCover-' + instance).show();
-        $('#desafioCodeAccessButton-' + instance).on('click touchstart', function (e) {
-            e.preventDefault();
-            $eXeDesafio.enterCodeAccess(instance);
-        });
-        $('#desafioCodeAccessE-' + instance).on("keydown", function (event) {
-            if (event.which === 13 || event.keyCode === 13) {
-                $eXeDesafio.enterCodeAccess(instance);
-                return false;
-            }
-            return true;
-        });
+
 
         $('#desafioSolution-' + instance).on("keydown", function (event) {
             var dstate = $('#desafioSolution-' + instance).prop('readonly');
@@ -554,18 +411,8 @@ var $eXeDesafio = {
 
         $('#desafioInstructions-' + instance).text(mOptions.instructions);
         $('#desafioPNumber-' + instance).text(mOptions.numberQuestions);
-        if (mOptions.itinerary.showCodeAccess) {
-            $('#desafioMesajeAccesCodeE-' + instance).text(mOptions.itinerary.messageCodeAccess);
-            $('#desafioMesajeAccesCodeE-' + instance).text(mOptions.itinerary.messageCodeAccess);
-            $('#desafioCodeAccessDiv-' + instance).show();
-            $('#desafioStartGameDiv-' + instance).hide();
-        }
         $('#desafioInstruction-' + instance).text(mOptions.instructions);
-        $('#desafioSendScore-' + instance).attr('value', mOptions.textButtonScorm);
         $('#desafioSendScore-' + instance).hide();
-        if (mOptions.isScorm > 0) {
-            $eXeDesafio.updateScorm($eXeDesafio.previousScore, mOptions.repeatActivity, instance);
-        }
         document.title = mOptions.title;
         $('meta[name=author]').attr('content', mOptions.author);
         $('#desafioShowClue-' + instance).hide();
@@ -812,16 +659,6 @@ var $eXeDesafio = {
             'height': mData.h + 'px'
         });
     },
-    enterCodeAccess: function (instance) {
-        var mOptions = $eXeDesafio.options[instance];
-        if (mOptions.itinerary.codeAccess === $('#desafioCodeAccessE-' + instance).val()) {
-            $('#desafioCodeAccessDiv-' + instance).hide();
-            $eXeDesafio.startGame(instance, mOptions.typeQuestion, mOptions.activeChallenge);
-        } else {
-            $('#desafioMesajeAccesCodeE-' + instance).fadeOut(300).fadeIn(200).fadeOut(300).fadeIn(200);
-            $('#desafioCodeAccessE-' + instance).val('');
-        }
-    },
     showScoreGame: function (type, instance) {
         var mOptions = $eXeDesafio.options[instance],
             msgs = mOptions.msgs,
@@ -842,36 +679,16 @@ var $eXeDesafio = {
             case 0:
                 message = $eXeDesafio.getRetroFeedMessages(true, instance) + ' ' +mOptions.msgs.msgDesafioSolved;
                 $desafioHistGGame.show();
-                if (mOptions.itinerary.showClue) {
-                    if (mOptions.obtainedClue) {
-                        message = msgs.mgsAllQuestions;
-                        $desafioTextClueGGame.text(msgs.msgInformation + ": " + mOptions.itinerary.clueGame);
-                        $desafioTextClueGGame.show();
-                    } else {
-                        $desafioTextClueGGame.text(msgs.msgTryAgain.replace('%s', mOptions.itinerary.percentageClue));
-                        $desafioTextClueGGame.show();
-                    }
-                }
                 break;
             case 1:
                 mtype = 1;
                 message = mOptions.msgs.msgEndTimeRestart;
                 $desafioLostGGame.show();
-                if (mOptions.itinerary.showClue) {
-                    if (mOptions.obtainedClue) {
-                        $desafioTextClueGGame.text(msgs.msgInformation + ": " + mOptions.itinerary.clueGame);
-                        $desafioTextClueGGame.show();
-                    } else {
-                        $desafioTextClueGGame.text(msgs.msgTryAgain.replace('%s', mOptions.itinerary.percentageClue));
-                        $desafioTextClueGGame.show();
-                    }
-                }
                 break;
             case 2:
                 message = msgs.msgInformationLooking
                 $desafioOverPoint.hide();
                 $desafioClueGGame.show();
-                $desafioTextClueGGame.text(mOptions.itinerary.clueGame);
                 $desafioTextClueGGame.show();
                 break;
             default:
@@ -939,7 +756,6 @@ var $eXeDesafio = {
             if (mOptions.solvedsChallenges.length >= mOptions.challengesGame.length) {
                 var message = mOptions.msgs.msgChallengesAllCompleted;
             }
-            console.log('Estoy aquí', type);
             $eXeDesafio.showDesafio(instance);
             $eXeDesafio.showMessage(2, message, instance);
        } else if (type == 1) {
@@ -989,14 +805,6 @@ var $eXeDesafio = {
         $eXeDesafio.showScoreGame(type, instance);
         //$('#desafioStartGame-' + instance).text(mOptions.msgs.msgNewGame);
         //$('#desafioStartGameDiv-' + instance).show();
-        if (mOptions.isScorm === 1) {
-            if (mOptions.repeatActivity || $eXeDesafio.initialScore === '') {
-                var score = ((mOptions.hits * 10) / mOptions.numberQuestions).toFixed(2);
-                $eXeDesafio.sendScore(true, instance);
-                $('#desafioRepeatActivity-' + instance).text(mOptions.msgs.msgYouScore + ': ' + score);
-                $eXeDesafio.initialScore = score;
-            }
-        }
         mOptions.gameOver = true;
         mOptions.endGame = true;
     },

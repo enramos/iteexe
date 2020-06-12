@@ -343,19 +343,19 @@
     margin-left: .2em
   }
 
-  #desafioIdeviceFormTab3 * {
+  #desafioIdeviceFormTab1 * {
     font-size: 0.9em;
   }
 
-  #desafioIdeviceFormTab3 p:first-child {
+  #desafioIdeviceFormTab1 p:first-child {
     margin-top: 0
   }
 
-  #desafioIdeviceFormTab3 {
+  #desafioIdeviceFormTab1 {
     overflow: auto
   }
 
-  #desafioIdeviceFormTab3 .ci18n {
+  #desafioIdeviceFormTab1 .ci18n {
     width: 50%;
     float: left
   }
@@ -541,20 +541,20 @@
   }
 
   @media screen and (max-width:720px) {
-    #desafioIdeviceForm #desafioIdeviceFormTab3 .ci18n {
+    #desafioIdeviceForm #desafioIdeviceFormTab1 .ci18n {
       width: 100%;
       float: none
     }
   }
 
-  #desafioIdeviceForm #desafioIdeviceFormTab3 label {
+  #desafioIdeviceForm #desafioIdeviceFormTab1 label {
     display: block;
     font-weight: bold;
     margin-bottom: .2em;
     font-size: 0.9em
   }
 
-  #desafioIdeviceForm #desafioIdeviceFormTab3 input {
+  #desafioIdeviceForm #desafioIdeviceFormTab1 input {
     width: 300px;
     font-size: 0.9em
   }

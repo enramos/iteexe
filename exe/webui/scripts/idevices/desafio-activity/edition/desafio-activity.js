@@ -377,10 +377,7 @@ var $exeDevice = {
                         </div>\
                     </fieldset>\
                 </div>\
-				' + $exeAuthoring.iDevice.gamification.itinerary.getTab() + '\
-				' + $exeAuthoring.iDevice.gamification.scorm.getTab() + '\
-				' + $exeAuthoring.iDevice.gamification.common.getLanguageTab(this.ci18n) + '\
-				' + $exeAuthoring.iDevice.gamification.share.getTab() + '\
+    			' + $exeAuthoring.iDevice.gamification.common.getLanguageTab(this.ci18n) + '\
 		    </div>\
 			';
         var field = $("textarea.jsContentEditor").eq(0)
@@ -389,8 +386,6 @@ var $exeDevice = {
         $exeDevice.loadPreviousValues(field);
         $exeDevice.addEvents();
         $exeDevice.showDesafio();
-        $exeAuthoring.iDevice.gamification.scorm.init();
-
 
     },
     getDivChallenges: function (num) {
@@ -488,9 +483,7 @@ var $exeDevice = {
         }
     },
     updateFieldGame: function (game) {
-        $exeAuthoring.iDevice.gamification.itinerary.setValues(game.itinerary);
         $('#desafioEShowMinimize').prop('checked', game.showMinimize);
-        $exeAuthoring.iDevice.gamification.scorm.setValues(game.isScorm, game.textButtonScorm, game.repeatActivity);
         $exeDevice.showDesafio();
 
     },
@@ -620,10 +613,8 @@ var $exeDevice = {
         $exeDevice.saveChallenge();
         var instructions = $('#eXeGameInstructions').text(),
             instructionsExe = (tinyMCE.get('eXeGameInstructions').getContent()),
-            showMinimize = $('#desafioEShowMinimize').is(':checked'),
-            itinerary = $exeAuthoring.iDevice.gamification.itinerary.getValues();
-        if (!itinerary) return false;
-        if ($exeDevice.desafioTitle.length == 0) {
+            showMinimize = $('#desafioEShowMinimize').is(':checked');
+         if ($exeDevice.desafioTitle.length == 0) {
             $exeDevice.showMessage($exeDevice.msgs.msgTitleDesafio);
             return false;
         } else if ($exeDevice.desafioSolution.length == 0) {
@@ -641,7 +632,6 @@ var $exeDevice = {
                 return false;
             }
         }
-        var scorm = $exeAuthoring.iDevice.gamification.scorm.getValues();
         var data = {
             'asignatura': '',
             "author": '',
@@ -655,11 +645,7 @@ var $exeDevice = {
             'instructionsExe': instructionsExe,
             'instructions': instructions,
             'showMinimize': showMinimize,
-            'itinerary': itinerary,
             'challengesGame': challengesGame,
-            'isScorm': scorm.isScorm,
-            'textButtonScorm': scorm.textButtonScorm,
-            'repeatActivity': scorm.repeatActivity,
             'title': ''
         }
         return data;
@@ -764,7 +750,6 @@ var $exeDevice = {
         } else {
             $('#eXeGameExportImport').hide();
         }
-        $exeAuthoring.iDevice.gamification.itinerary.addEvents();
 
     },
 

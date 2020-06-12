@@ -916,6 +916,7 @@ var $eXeQuExt = {
             $('#quextVideoIntroContainer-' + instance).show();
             $('#quextLinkVideoIntroShow-' + instance).show();
         }
+        mOptions.gameOver = true;
         if (mOptions.isScorm === 1) {
             if (mOptions.repeatActivity || $eXeQuExt.initialScore === '') {
                 var score = ((mOptions.scoreGame * 10) / mOptions.scoreTotal).toFixed(2);
@@ -924,7 +925,7 @@ var $eXeQuExt = {
                 $eXeQuExt.initialScore = score;
             }
         }
-        mOptions.gameOver = true;
+        
     },
     drawText: function (texto, color) {},
     showQuestion: function (i, instance) {
