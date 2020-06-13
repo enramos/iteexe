@@ -842,7 +842,7 @@ p.adivinaDivInstructions{margin:0;font-weight:bold;text-align:center;height:32px
 
     }
     .exeQuextIcons-Number {
-     background: url(exeQuextIcons13.png) no-repeat -15px -15px;
+        background: url(exeQuextIcons13.png) no-repeat -15px -15px;
     }
 
 
@@ -918,8 +918,14 @@ p.adivinaDivInstructions{margin:0;font-weight:bold;text-align:center;height:32px
     .adivina-DataGame p{
         font-size: 0.6rem;
     }
+    .adivina-ShowClue{
+        margin-bottom: 3px;
+
+        height: 12px;
+    }
     .adivina-PShowClue{
         font-size: 0.8rem;
+        margin: 3px auto;
     }
     .adivina-RepeatActivity{
         font-size:0.6rem;

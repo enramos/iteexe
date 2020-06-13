@@ -1,6 +1,4 @@
-.quext-GameMinimize a:link, .quext-GameMinimize a:link, .quext-GameMinimize a:visited, .quext-GameMinimize a:focus {
-    color: #b3092f;
-}
+
 .quext-LinkMaximize, .quext-LinkFullScreen, .quext-LinkVideoIntroShow {
     width: 26px;
     height: 26px;
@@ -75,22 +73,20 @@
     cursor: pointer;
 }
 .quext-PShowClue{
-    width: 90%;
+    display: none;
+    font-size: 0.9rem;
+    color:#5877c6;
     margin: 5px auto;
-    min-width: 300px;
     text-align: center;
+    font-weight: bold;
 }
 
 .quext-ShowClue{
-    display: none;
+    height: 20px;
+    width: 100%;
+    margin-bottom: 5px;
 }
-.quext-ShowClue p{
-    font-size:14px;
-    color:#5877c6;
-    font-weight: bold;
-    margin: 5px auto;
-    text-align: center;
-}
+
 .quext-Cursor {
     width: 24px;
     height: 24px;
@@ -120,21 +116,18 @@
     text-align: center;
     margin-bottom: 10px;
     color: #b3092f;
-    font-size: 16px;
-    font-weight: bold;
+    font-size:  0.9rem;
 }
 
 .quext-CodeAccessE {
     margin-right: 10px;
     margin-left: 5px;
     text-align: center;
-    font-size: 14px;
-    font-weight: bold;
+    font-size:  0.9rem;
 }
 
 .quext-DataCodeAccessE label {
-    font-size: 14px;
-    font-weight: bold;
+    font-size:  0.9rem;
 }
 .quext-GameOver {
     width: 100%;
@@ -160,17 +153,17 @@
 }
 
 .quext-DataImageGameOver p {
-    font-size: 14px;
-    font-weight: bold;
+    font-size:  0.9rem;
 }
 
 .quext-TextClueGGame {
     width: 100%;
     min-height: 18px;
-    font-size: 14px;
-    font-weight: bold;
+    font-size:  0.9rem;
     text-align: center;
     color: #00a300;
+    font-weight: bold;
+    margin-bottom: 2px;
 }
 
 .quext-HistGGame, .quext-LostGGame {
@@ -186,11 +179,11 @@
 }
 
 .quext-Instructions{
-    max-width: 1000px;
+    max-width: 750px;
     width: 90%;
     margin: 3px auto;
     text-align: center;
-    font-size:12px;
+    font-size: 0.9rem;
 }
 
 .quext-MainContainer a:link, .quext-MainContainer a:link, .quext-MainContainer a:visited, .quext-MainContainer a:focus {
@@ -230,7 +223,7 @@
 
 
 .quext-GameScoreBoard p {
-    font-size: 16px;
+    font-size:  1rem;
     font-weight: bold;
     line-height: 26px;
     width: 20px;
@@ -432,8 +425,7 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     width: 100%;
     height: 12px;
     text-align: center;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 0.9rem;
     color: #383838;
 }
 
@@ -519,8 +511,7 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     width: 93%;
     min-height: 45px;
     margin: 0 auto;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 0.9rem;
     border-radius: 5px;
     padding: 5px;
     color: #1c1b1b;
@@ -539,7 +530,7 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     width: 93%;
     min-height: 45px;
     margin: 0 auto;
-    font-size: 18px;
+    font-size:  1.1rem;
     font-weight: bold;
     border-radius: 5px;
     padding: 5px;
@@ -572,8 +563,7 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     cursor: pointer;
     padding: 5px;
     box-sizing: border-box;
-    font-size: 13px;
-    font-weight: bold;
+    font-size: 0.9rem;
     color: #000000;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -594,7 +584,7 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     background-color: white;
     border: 2px solid #5877c6;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 0.9rem;
     color: #1c1b1b;
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
@@ -635,189 +625,6 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
 }
 
 
-@media (max-width: 560px) {
-    .quext-GameContainer {
-        width: 95%;
-        margin: 5px auto;
-        min-width: 300px;
-        padding: 2px;
-        border-radius: 7px;
-    }
-    .quext-Multimedia,.quext-Video .quext-EText,.quext-Images, .quext-Protector{
-        width: 400px;
-        height: 225px;
-    }
-
-    .quext-EText{
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        z-index: 1;
-       }
-    .quext-NumberLivesGame {
-        display:none;
-    }
-    .quext-GameScores {
-        width: 95px;
-        height: 164x;
-        margin: 0 3px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .quext-TimeNumber {
-        width: 110px;
-        height: 16px;
-        margin: 0 1px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .quext-ResultsGame p {
-        line-height: 16px;
-        width: 3px;
-        font-size: 12px;
-        font-weight: bold;
-        text-align: center;
-    }
-    .quext-Multimedia,.quext-Video .quext-EText,.quext-Images, .quext-Protector{
-        width: 400px;
-        height: 225px;
-    }
-    .quext-Options {
-        min-height: 50px;
-        width: 48%;
-        margin: 2px;
-        background-color: transparent;
-        border-radius: 5px;
-        padding: 7px;
-        font-size: 12px;
-        font-weight: normal;
-    }
-    .quext-Question {
-        width: 95%;
-        min-height: 30px;
-        margin: 7px auto;
-        border-radius: 0px;
-        padding: 7px;
-        font-size: 12px;
-        font-weight: normal;
-    }
-    .quext-StarGame {
-        width: 95%;
-        min-height: 30px;
-        margin: 7px auto;
-        border-radius: 0px;
-        padding: 7px;
-        font-size: 18px;
-        font-weight: normal;
-    }
-    .quext-AutorLicence {
-        height: 12px;
-        font-size:10px;
-    }
-    .quext-AutorLicence p {
-        height: 12px;
-        font-size: 12px;
-        color: #555555;
-    }
-    .quext-Icons {
-        width: 16px;
-        height: 16px;
-        margin-right: 2px;
-    }
-}
-
-@media (max-width:401px) {
-    .quext-GameContainer {
-        width: 100%;
-        margin: 0px auto;
-        min-width: 300px;
-        padding: 0px;
-        border-radius: 7px;
-    }
-    .quext-Multimedia,.quext-Video .quext-EText,.quext-Images, .quext-Protector {
-        width: 300px;
-        height: 168px;
-    }
-   
-    .quext-TimeNumber {
-        width: 115px;
-        height: 14px;
-        margin: 0 1px;
-    }
-    .quext-LivesGame {
-        display:none
-    }
-    .quext-NumberLivesGame {
-        width: 24px;
-        height: 14px;
-        margin: 0 1px;
-        font-weight: bold;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .quext-NumberLivesGame p {
-        line-height: 14px;
-        width: 3px;
-        font-size: 12px;
-    }
-    .quext-ResultsGame p {
-        line-height: 14px;
-        width: 3px;
-        font-size: 12px;
-    }
-    .quext-GameScores {
-        width: 95px;
-        height: 164x;
-        margin: 0 3px;
-    }
-
-    .quext-Icons {
-        width: 14px;
-        height: 14px;
-        margin-right: 2px;
-    }
-    .quext-Options {
-        min-height: 40px;
-        width: 48%;
-        margin: 1px;
-        background-color: transparent;
-        border-radius: 5px;
-        padding: 5px;
-        font-size: 12x;
-        font-weight: normal;
-    }
-    .quext-Question {
-        width: 95%;
-        min-height: 30px;
-        margin: 5px auto;
-        border-radius: 0px;
-        padding: 3px;
-        font-size: 12px;
-    }
-    .quext-StarGame{
-        width: 95%;
-        min-height: 30px;
-        margin: 5px auto;
-        border-radius: 0px;
-        padding: 3px;
-        font-size: 18px;
-    }
-    .quext-Icons {
-        width: 14px;
-        height: 14px;
-        margin-right: 2px;
-    }
-    .quext-AutorLicence {
-        height: 15px;
-        font-size:13px;
-    }
-
-}
-
 .quext-MainContainer a.quext-Option1 {
     background-color: #f7c4c4;
     border: 2px solid #b3092f ;
@@ -852,9 +659,9 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
 }
 .quext-extra-content{
 	margin-top:1.7em;
-} 
+}
 .quext-parpadea {
-  
+
     animation-name: quext-parpadeo;
     animation-duration: 1s;
     animation-timing-function: linear;
@@ -870,17 +677,302 @@ div:-moz-full-screen .exeQuextIcons-FullScreen{background:url(exeQuextIcons.png)
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
   }
-  
   @-webkit-keyframes quext-parpadeo {
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
      100% { opacity: 1.0; }
   }
-  
   @keyframes quext-parpadeo {
     0% { opacity: 1.0; }
     50% { opacity: 0.0; }
     100% { opacity: 1.0; }
   }
+  @media (max-width: 450px) {
+    .quext-IDevice{
+        padding: 0;
+    }
+    .quext-MainContainer{
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .exeQuextIcons-Time{
+        margin: 0;
+        margin-right: 3px;
+    }
+    .quext-LinkMinimize{
+        display: none;
+    }
+    .quext-GameContainer {
+        width: 100%;
+        margin: 0px auto;
+        min-width: 200px;
+        padding: 0px;
+        border-radius: 0px;
+    }
+    .quext-Multimedia {
+        width: 220px;
+        height: 123px;
+        min-height: 123px;
+        margin-bottom: 3px;
+    }
+    .quext-GameScoreBoard {
+        width: 100%;
+        margin: 0px auto;
+        height: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    .quext-GameScores {
+        width: 110px;
+        height: 15px;
+        margin: 0 1px;
+    }
+
+    .quext-HistGGame, .quext-LostGGame {
+        margin-right: 3px;
+    }
+    .quext-GameScoreBoard p {
+        font-size: 0.8rem;
+        line-height: 20px;
+        width: 14px;
+        text-align: center;
+        font-weight: normal;
+        margin: 0;
+    }
+    .quext-LifesGame {
+        display: none;
+    }
+    .quext-NumberLifesGame {
+        display: flex;
+        width: 28px;
+        height: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    .quext-NumberLifesGame p {
+        width: 10px;
+        height: 18px;
+        text-align: center;
+    }
+    .quext-TimeNumber {
+        width: 95px;
+        height:15px;
+        margin: 0 1px;
+     }
+    .quext-MessageCodeAccessE {
+        width: 100%;
+        margin: 1px auto;
+        text-align: center;
+        font-size: 0.7rem;
+    }
+    .quext-TimeQuestion {
+        width: 55px;
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 3px;
+    }
+    .quext-TimeQuestion p {
+        width: 40px;
+        text-align: center;
+    }
+    .quext-Prhase {
+        width: 100%;
+        margin: 0 auto;
+        min-height: 30px;
+    }
+    .quext-Definition {
+        width: 100%;
+        margin: 3px auto;
+        min-height: 25px;
+    }
+    .quext-Definition{
+        font-size: 0.8rem;
+    }
+    .quext-Definition a {
+        font-size: 0.8rem;
+    }
+    .quext-EdReply{
+        margin: 0 2px;
+        min-width: 60px;
+        width: 80px;
+        font-size: 0.8rem;
+        margin: 1px;
+     }
+     .quext-StarGame {
+        width: 100%;
+        min-height: 20px;
+        margin: 3px auto;
+        font-size: 0.8em;
+        font-weight: bold;
+        border-radius: 1px;
+        padding: 0px;
+  
+    }
+    .quext-GameContainer input[type=button], .quext-GetScore input[type=button]  {
+        width: 80px;
+        height: 30px;
+        border-radius: 4px;
+        font-size: 0.6rem;
+    }
+    p.adivinaDivInstructions{
+        width: 100%;
+        font-size: 0.7rem;
+        margin: 0px auto;
+    }
+    .quext-LinkFullScreen{
+        display:none;
+    }
+    .quext-AutorLicence {
+        height: 14px;
+        margin-bottom: 3px;
+    }
+    .quext-instructions p{
+        font-size: 0.7rem;
+    }
+    .quext-AutorLicence p {
+        line-height: 14px;
+        font-size: 0.7rem;
+    }
+
+    .exeQuextIcons {
+        width: 15px;
+        height: 15px;
+        margin-right: 0px;
+    }
+    .exeQuextIcons-Life {
+        background: url(exeQuextIcons13.png) no-repeat -45px 0px;
+    }
+
+    .exeQuextIcons-Hit {
+        background: url(exeQuextIcons13.png) no-repeat 0 0;
+    }
+    .exeQuextIcons-Error {
+        background: url(exeQuextIcons13.png) no-repeat -15px 0px ;
+    }
+    .exeQuextIcons-Score {
+        background: url(exeQuextIcons13.png) no-repeat -31px 0px;
+     }
+    .exeQuextIcons-Time{
+        background: url(exeQuextIcons13.png) no-repeat 0 -15px;
+
+    }
+    .exeQuextIcons-Number {
+     background: url(exeQuextIcons13.png) no-repeat -15px -15px;
+    }
+
+    .exeQuextIcons-Video{
+        background: url(exeQuextIcons13.png) no-repeat -45px -30px;
+    }
+    .quext-DivReply {
+        margin: 0px;
+        display: flex;
+        justify-content:  center;
+        align-items: center;
+        background-color: transparent;
+        width: 100%;
+      }
+    .quext-DataCodeAccessE {
+        width: 100%;
+        margin-bottom: 3px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+   .quext-DataCodeAccessE label{
+        display: none;
+    }
+    .quext-CodeAccessE {
+        margin-right: 2px;
+        margin-left: 1px;
+        width: 120px;
+
+        font-size: 0.8rem;
+    }
+    .exeQuext-ResultGame {
+        display: flex;
+        width: 30px;
+        height: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    .exeQuext-ResultGame  {
+        display: flex;
+        width: 30px;
+        height: 15px;
+        justify-content: center;
+        align-items: center;
+    }
+    .exeQuext-ResultGame p {
+        width: 15px;
+        line-height: 15px;
+        padding: 0;
+        text-align: center;
+    }
+    .exeQuext-ResultGameScore{
+        width: 45px;
+    }
+    .exeQuext-ResultGameScore p{
+        width: 30px;
+        text-align: left;
+        margin-left: 3px;
+    }
+    .quext-Letter {
+        font-size: 0.7rem;
+        font-weight: 600;
+        width: 14px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        border-radius: 2px;
+        margin: 1px;
+    }
+    .quext-TextClueGGame {
+        min-height: 14px;
+        font-size: 0.7rem;
+        font-weight: normal;
+    }
+    .quext-DataGame p{
+        font-size: 0.6rem;
+    }
+    .quext-ShowClue{
+        margin-bottom: 3px;
+        height: 12px;
+        width: 100%;
+    }
+    .quext-PShowClue{
+        font-size: 0.7rem;
+        margin: 3px auto;
+    }
+    .quext-RepeatActivity{
+        font-size:0.6rem;
+
+    }
+    .quext-GetScore{
+        width: 100%;
+     }
+     .quext-Question {
+        width: 95%;
+        min-height: 30px;
+        margin: 5px auto;
+        border-radius: 0px;
+        padding: 3px;
+        font-size: 0.7em;
+    }
+     .quext-Options {
+        min-height: 40px;
+        width: 48%;
+        margin: 1px;
+        border-radius: 5px;
+        padding: 3px;
+        font-size: 0.7em;
+  
+    }
+
+}
+
 
 

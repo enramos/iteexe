@@ -44,7 +44,7 @@ var $eXeQuExt = {
     msgs:'',
     youtubeLoaded: false,
     hasSCORMbutton: false,
-    fontSize:'13px',
+    fontSize:'0.9rem',
     isInExe: false,
     init: function () {
         this.activities = $('.quext-IDevice');
@@ -218,7 +218,7 @@ var $eXeQuExt = {
                         <div class="exeQuextIcons  exeQuextIcons-Error"></div>\
                         <p id="quextPErrors-' + instance + '">0</p>\
                     </div>\
-                    <div class="exeQuext-ResultGame">\
+                    <div class="exeQuext-ResultGame exeQuext-ResultGameScore">\
                         <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
                         <div class="exeQuextIcons  exeQuextIcons-Score"></div>\
                         <p id="quextPScore-' + instance + '">0</p>\
@@ -259,7 +259,7 @@ var $eXeQuExt = {
                     </a>\
                 </div>\
             </div>\
-            <div class="quext-ShowClue bb" id="quextShowClue-' + instance + '">\
+            <div class="quext-ShowClue" id="quextShowClue-' + instance + '">\
                 <div class="sr-av">' + msgs.msgClue + ':</div>\
                 <p class="quext-PShowClue quext-parpadea" id="quextPShowClue-' + instance + '"></p>\
             </div>\
@@ -298,8 +298,7 @@ var $eXeQuExt = {
             <a href="#" class="quext-StarGame" id="quextStarGame-' + instance + '">\</a>\
             <div class="quext-QuestionDiv" id="quextQuestionDiv-' + instance + '">\
                 <div class="sr-av">' + msgs.msgQuestion + ':</div>\
-                <h2 class="quext-Question" id="quextQuestion-' + instance + '">\
-                </h2>\
+                <div class="quext-Question" id="quextQuestion-' + instance + '"></div>\
                 <div class="quext-OptionsDiv" id="quextOptionsDiv-' + instance + '">\
                     <div class="sr-av">' + msgs.msgOption + ' A:</div>\
                     <a href="#" class="quext-Option1 quext-Options" id="quextOption1-' + instance + '" data-number="0"></a>\
@@ -614,7 +613,7 @@ var $eXeQuExt = {
         }
         document.title = mOptions.title;
         $('meta[name=author]').attr('content', mOptions.author);
-        $('#quextShowClue-' + instance).hide();
+        $('#quextPShowClue-' + instance).hide();
         mOptions.gameOver = false;
         $('#quextLinkVideoIntroShow-' + instance).hide();
         if ($eXeQuExt.getIDYoutube(mOptions.idVideo) !== '') {
@@ -645,7 +644,11 @@ var $eXeQuExt = {
                 "margin": "auto"
             },
             hQ = 45;
-            $eXeQuExt.fontSize="13px";
+            $eXeQuExt.fontSize="0.9rem";
+            if($('#quextGameContainer-' + instance ).width()<450){
+                $eXeQuExt.fontSize="0.7rem";
+            }
+            
 
         if (maximize) {
             var h = window.innerHeight - 365 > 750 ? 750 : window.innerHeight - 365;
@@ -659,17 +662,15 @@ var $eXeQuExt = {
             };
             p = p > 1.5 ? 1.5 : p;
             hQ = 45 * p;
-            $eXeQuExt.fontSize="16px";
+            $eXeQuExt.fontSize="1rem";
         }
         $('#quextQuestion-' + instance).css({
             "height": hQ + "px",
-            "font-size": $eXeQuExt.fontSize,
-            "font-weight": "bold"
+            "font-size": $eXeQuExt.fontSize
         });
         $('#quextOptionsDiv-' + instance + '>.quext-Options').css({
             "height": hQ + "px",
-            "font-size": $eXeQuExt.fontSize,
-            "font-weight": "bold"
+            "font-size": $eXeQuExt.fontSize
         });
         $('#quextMultimedia-' + instance).css(css);
         $eXeQuExt.refreshImageActive(instance);
@@ -791,7 +792,7 @@ var $eXeQuExt = {
             default:
                 break;
         }
-        $('#quextShowClue-' + instance).hide();
+        $('#quextPShowClue-' + instance).hide();
         $eXeQuExt.showMessage(messageColor, message, instance);
         $quextOverPoint.text(msgs.msgScore + ': ' + mOptions.score);
         $quextOverHits.text(msgs.msgHits + ': ' + mOptions.hits);
@@ -811,14 +812,17 @@ var $eXeQuExt = {
         mOptions.obtainedClue = false;
         $('#quextVideoIntroContainer-' + instance).hide();
         $('#quextLinkVideoIntroShow-' + instance).hide();
-        $('#quextShowClue-' + instance).hide();
+        $('#quextPShowClue-' + instance).hide();
         $('#quextPShowClue-' + instance).text("");
+        if($('#quextGameContainer-' + instance ).width()<450){
+            $eXeQuExt.fontSize="0.7rem";
+        }
         $('#quextQuestion-' + instance).css({
             'color': $eXeQuExt.colors.black,
             'text-align': 'center',
             'vertical-align': 'middle',
             'cursor': 'default',
-            'font-weight': 'bold',
+            'font-weight': 'normal',
             'font-size': $eXeQuExt.fontSize
         });
         $('#quextStarGame-' + instance).hide();
@@ -1092,7 +1096,7 @@ var $eXeQuExt = {
         var mOptions = $eXeQuExt.options[instance];
         if (!mOptions.gameActived) {
             return;
-        }      
+        }
         mOptions.gameActived = false;
         var message = "";
         var solution = mOptions.question.solution;
@@ -1137,8 +1141,8 @@ var $eXeQuExt = {
         if (mOptions.itinerary.showClue && percentageHits >= mOptions.itinerary.percentageClue) {
             if (!mOptions.obtainedClue) {
                 timeShowSolution = 5000;
-                message += " "+mOptions.msgs.msgUseFulInformation;
-                $('#quextShowClue-' + instance).show();
+                //message += " "+mOptions.msgs.msgUseFulInformation;
+                $('#quextPShowClue-' + instance).show();
                 $('#quextPShowClue-' + instance).text(mOptions.msgs.msgInformation+": " + mOptions.itinerary.clueGame);
                 mOptions.obtainedClue = true;
             }
@@ -1156,17 +1160,17 @@ var $eXeQuExt = {
             var reducido = (i - 3) + 'pt';
             rText = rText.replace(re, reducido)
         }
-        return rText;
     },
     showMessage: function (type, message, instance) {
         var colors = ['#555555', $eXeQuExt.borderColors.red, $eXeQuExt.borderColors.green, $eXeQuExt.borderColors.blue, $eXeQuExt.borderColors.yellow];
         color = colors[type];
-        var weight = type == 0 ? 'normal' : 'bold';
+        var weight = type == 0 ? 'normal' : 'bolder';
         $("#quextPAuthor-" + instance).text(message);
         $("#quextPAuthor-" + instance).css({
             'color': color,
             'font-weight': weight,
-            'font-size':$eXeQuExt.fontSize
+            'font-size':$eXeQuExt.fontSize,
+            'margin-botton':'2px'
         });
     },
     drawImage: function (image, mData) {
