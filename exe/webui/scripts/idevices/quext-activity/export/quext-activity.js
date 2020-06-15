@@ -44,7 +44,7 @@ var $eXeQuExt = {
     msgs:'',
     youtubeLoaded: false,
     hasSCORMbutton: false,
-    fontSize:'0.9rem',
+    fontSize:'1rem',
     isInExe: false,
     init: function () {
         this.activities = $('.quext-IDevice');
@@ -283,7 +283,7 @@ var $eXeQuExt = {
                     </div>\
                 </div>\
             </div>\
-            <div class="quext-AutorLicence" id="quextAutorLicence-' + instance + '">\
+            <div class="quext-AuthorLicence" id="quextAutorLicence-' + instance + '">\
                 <div class="sr-av">' + msgs.msgAuthor + ':</div>\
                 <p id="quextPAuthor-' + instance + '"></p>\
             </div>\
@@ -291,7 +291,10 @@ var $eXeQuExt = {
                 <div class="quext-MessageCodeAccessE" id="quextMesajeAccesCodeE-' + instance + '"></div>\
                 <div class="quext-DataCodeAccessE">\
                     <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="quext-CodeAccessE"  id="quextCodeAccessE-' + instance + '">\
-                    <input type="button" class="quext-CodeAccessButton" id="quextCodeAccessButton-' + instance + '"   value="' + msgs.msgSubmit + '" />\
+                    <a href="#" id="quextCodeAccessButton-' + instance + '" title="' + msgs.msgSubmit + '">\
+                        <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
+                        <div class="exeQuextIcons-Submit"></div>\
+                    </a>\
                 </div>\
             </div>\
             <div class="sr-av" id="quextStarGameSRAV-' + instance + '">' + msgs.msgPlayStart + ':</div>\
@@ -553,6 +556,7 @@ var $eXeQuExt = {
                 }
             });
         $('#quextCodeAccessButton-' + instance).on('click touchstart', function (e) {
+            e.preventDefault();
             $eXeQuExt.enterCodeAccess(instance);
         });
         $('#quextCodeAccessE-' + instance).on("keydown", function (event) {
@@ -644,7 +648,7 @@ var $eXeQuExt = {
                 "margin": "auto"
             },
             hQ = 45;
-            $eXeQuExt.fontSize="0.9rem";
+            $eXeQuExt.fontSize="1rem";
             if($('#quextGameContainer-' + instance ).width()<450){
                 $eXeQuExt.fontSize="0.7rem";
             }
@@ -666,7 +670,7 @@ var $eXeQuExt = {
         }
         $('#quextQuestion-' + instance).css({
             "height": hQ + "px",
-            "font-size": $eXeQuExt.fontSize
+            "font-size": $eXeQuExt.fontSize,
         });
         $('#quextOptionsDiv-' + instance + '>.quext-Options').css({
             "height": hQ + "px",
@@ -817,14 +821,6 @@ var $eXeQuExt = {
         if($('#quextGameContainer-' + instance ).width()<450){
             $eXeQuExt.fontSize="0.7rem";
         }
-        $('#quextQuestion-' + instance).css({
-            'color': $eXeQuExt.colors.black,
-            'text-align': 'center',
-            'vertical-align': 'middle',
-            'cursor': 'default',
-            'font-weight': 'normal',
-            'font-size': $eXeQuExt.fontSize
-        });
         $('#quextStarGame-' + instance).hide();
         $('#quextStarGameSRAV-' + instance).hide();
         $('#quextQuestionDiv-' + instance).show();
@@ -865,7 +861,6 @@ var $eXeQuExt = {
         $('#quextPHits-' + instance).text(mOptions.hits);
         $('#quextPErrors-' + instance).text(mOptions.errors);
         $('#quextPScore-' + instance).text(mOptions.score);
-        $('quextQuestion-' + instance).css('color', $eXeQuExt.colors.black);
         mOptions.gameStarted = true;
         $eXeQuExt.newQuestion(instance);
     },
@@ -1164,7 +1159,7 @@ var $eXeQuExt = {
     showMessage: function (type, message, instance) {
         var colors = ['#555555', $eXeQuExt.borderColors.red, $eXeQuExt.borderColors.green, $eXeQuExt.borderColors.blue, $eXeQuExt.borderColors.yellow];
         color = colors[type];
-        var weight = type == 0 ? 'normal' : 'bolder';
+        var weight = type == 0 ? 'normal' : 'normal';
         $("#quextPAuthor-" + instance).text(message);
         $("#quextPAuthor-" + instance).css({
             'color': color,

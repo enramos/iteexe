@@ -381,7 +381,7 @@
 .rosco-AnswerButtons {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     height: 24px;
     margin: 15px auto;
 }
@@ -441,17 +441,28 @@
 .rosco-AnswerEdit {
     height: 24px;
     font-size: 14px;
+    margin:2px 5px;
     text-align: center;
     vertical-align: middle;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 160px;
+    width: 210px;
+}
+
+.rosco-AccesCodeEdit {
+    height: 24px;
+    font-size: 14px;
+    margin:2px 5px;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 150px;
 }
 
 .rosco-CodeAccess {
     display: flex;
     height: 24px;
     width: 100%;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -467,6 +478,19 @@
     width: 26px;
     height: 26px;
     margin-right: 5px;
+}
+
+.exeQuextIcons-Submit{
+    background: url(exeQuExtReply.png) no-repeat;
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+}
+.exeQuextIcons-MoveOne{
+    background: url(exeQuExtMoveOn.png) no-repeat;
+    background-size: cover;
+    height: 30px;
+    width: 30px;
 }
 
 .exeQuextIcons-Hit {

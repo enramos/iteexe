@@ -321,7 +321,10 @@ var $eXeSelecciona = {
                 <div class="selecciona-MessageCodeAccessE" id="seleccionaMesajeAccesCodeE-' + instance + '"></div>\
                 <div class="selecciona-DataCodeAccessE">\
                     <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="selecciona-CodeAccessE"  id="seleccionaCodeAccessE-' + instance + '" readonly>\
-                    <input type="button" class="selecciona-CodeAccessButton" id="seleccionaCodeAccessButton-' + instance + '"   value="' + msgs.msgSubmit + '" />\
+                    <a href="#" id="seleccionaCodeAccessButton-' + instance + '" title="' + msgs.msgSubmit + '">\
+                        <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
+                        <div class="exeQuextIcons-Submit"></div>\
+                    </a>\
                 </div>\
             </div>\
             <div class="sr-av" id="seleccionaStarGameSRAV-' + instance + '">' + msgs.msgPlayStart + ':</div>\
@@ -460,8 +463,8 @@ var $eXeSelecciona = {
                 $('#seleccionaVideoIntroContainer-' + i).css('display', 'flex');
                 $('#seleccionaVideoIntroContainer-' + i).show();
                 $('#seleccionaLinkVideoIntroShow-' + i).show();
-                $('#seleccionaCodeAccessE-'+ i).prop('readonly',false);
             }
+            $('#seleccionaCodeAccessE-'+ i).prop('readonly',false);
         }
     },
     loadYoutubeApi: function () {
@@ -566,6 +569,7 @@ var $eXeSelecciona = {
                 }
             });
         $('#seleccionaCodeAccessButton-' + instance).on('click touchstart', function (e) {
+            e.preventDefault();
             $eXeSelecciona.enterCodeAccess(instance);
         });
         $('#seleccionaCodeAccessE-' + instance).on("keydown", function (event) {

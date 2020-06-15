@@ -281,17 +281,26 @@ var $eXeAdivina = {
                 <div class="adivina-Prhase" id="adivina-Phrase-' + instance + '"></div>\
                 <div class="sr-av">' + msgs.msgQuestion + ':</div>\
                 <div class="adivina-Definition" id="adivinaDefinition-' + instance + '"></div>\
-                <div class="adivina-DivReply" id="adivinaDivResponder-' + instance + '">\
-                    <input type="button" class="adivina-Button" value="' + msgs.msgMoveOne + '" id="adivinaBtnMoveOn-' + instance + '">\
-                    <label class="sr-av">' + msgs.msgIndicateWord + ':</label><input type="text" value="" class="adivina-EdReply" id="adivinaEdAnswer-' + instance + '" autocomplete="false">\
-                    <input type="button" class="adivina-Button" value="' + msgs.msgReply + '" id="adivinaBtnReply-' + instance + '">\
+                <div class="adivina-DivReply" id="adivinaDivResponder-'+ instance + '">\
+                    <a href="#" id="adivinaBtnMoveOn-' + instance + '" title="' + msgs.msgMoveOne + '">\
+                        <strong><span class="sr-av">' + msgs.msgMoveOne + '</span></strong>\
+                        <div class="exeQuextIcons-MoveOne"></div>\
+                    </a>\
+                    <input type="text" value="" class="adivina-EdReply" id="adivinaEdAnswer-0" autocomplete="false">\
+                    <a href="#" id="adivinaBtnReply-' + instance + '" title="' + msgs.msgReply + '">\
+                        <strong><span class="sr-av">' + msgs.msgReply + '</span></strong>\
+                        <div class="exeQuextIcons-Submit"></div>\
+                    </a>\
                 </div>\
             </div>\
             <div class="adivina-CodeAccessDiv" id="adivinaCodeAccessDiv-' + instance + '">\
                 <div class="adivina-MessageCodeAccessE" id="adivinaMesajeAccesCodeE-' + instance + '"></div>\
                 <div class="adivina-DataCodeAccessE">\
                     <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="adivina-CodeAccessE" id="adivinaCodeAccessE-' + instance + '">\
-                    <input type="button" class="adivina-CodeAccessButton" id="adivinaCodeAccessButton-' + instance + '" value="' + msgs.msgSubmit + '"/>\
+                    <a href="#" id="adivinaCodeAccessButton-' + instance + '" title="' + msgs.msgReply + '">\
+                    <strong><span class="sr-av">' + msgs.msgReply + '</span></strong>\
+                    <div class="exeQuextIcons-Submit"></div>\
+                    </a>\
                 </div>\
             </div>\
         </div>\
@@ -480,14 +489,16 @@ var $eXeAdivina = {
         $('#adivinaGamerOver-' + instance).hide();
         $('#adivinaCodeAccessDiv-' + instance).hide();
         $('#adivinaDefinition-' + instance).show();
-        $('#adivinaBtnMoveOn-' + instance).on('click', function () {
+        $('#adivinaBtnMoveOn-' + instance).on('click', function (e) {
+            e.preventDefault();
             $eXeAdivina.newQuestion(instance)
         });
         document.onfullscreenchange = function (event) {
             var id = event.target.id.split('-')[1];
             $eXeAdivina.refreshImageActive(id)
         };
-        $('#adivinaBtnReply-' + instance).on('click', function () {
+        $('#adivinaBtnReply-' + instance).on('click', function (e) {
+            e.preventDefault();
             $eXeAdivina.answerQuestion(instance);
         });
         $("#adivinaLinkFullScreen-" + instance).on('click touchstart', function (e) {
@@ -515,6 +526,7 @@ var $eXeAdivina = {
             $('#adivinaNumberLivesGame-' + instance).hide();
         }
         $('#adivinaCodeAccessButton-' + instance).on('click touchstart', function (e) {
+            e.preventDefault();
             $eXeAdivina.enterCodeAccess(instance);
         });
         $('#adivinaCodeAccessE-' + instance).on("keydown", function (event) {
@@ -728,6 +740,9 @@ var $eXeAdivina = {
             }
         }
         $('#adivinaDefinition-' + instance).html(html);
+        if($('#adivinaGameContainer-'+instance).width()<768){
+            $('#adivinaDivInstructions-' + instance).hide();
+        }
     },
     shuffleAds: function (arr) {
         for (var j, x, i = arr.length; i; j = parseInt(Math.random() * i), x = arr[--i], arr[i] = arr[j], arr[j] = x);

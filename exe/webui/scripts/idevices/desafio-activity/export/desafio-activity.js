@@ -32,7 +32,7 @@ var $eXeDesafio = {
     previousScore: '',
     initialScore: '',
     msgs: '',
-    fontSize: '18px',
+    fontSize: '1rem',
     isInExe: false,
     init: function () {
         this.activities = $('.desafio-IDevice');
@@ -179,7 +179,10 @@ var $eXeDesafio = {
                     </div>\
                     <div class="desafio-SolutionDiv" id="desafioSolutionDiv-' + instance + '">\
                         <label>' + msgs.mgsSolution + ':<input type="text" class="desafio-Solution"  id="desafioSolution-' + instance + '"></label>\
-                        <input type="button" class="desafio-SolutionButton" id="desafioSolutionButton-' + instance + '"   value="' + msgs.msgSubmit + '" />\
+                        <a href="#" id="desafioSolutionButton-' + instance + '" title="' + msgs.msgSubmit + '">\
+                            <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
+                            <div class="exeQuextIcons-Submit"></div>\
+                        </a>\
                     </div>\
                     <div class="desafio-CodeAccessDiv" id="desafioCodeAccessDiv-' + instance + '">\
                         <div class="desafio-MessageCodeAccessE" id="desafioMesajeAccesCodeE-' + instance + '"></div>\
@@ -284,19 +287,40 @@ var $eXeDesafio = {
         if (type == 0) {
             imgDesafio = "desafioIcon1.png";
         }
-        imgDesafio = "url(" + $eXeDesafio.idevicePath + imgDesafio + ") no-repeat 0 0";
+        imgDesafio = "url(" + $eXeDesafio.idevicePath + imgDesafio + ") no-repeat";
         $('#desafioDesafio-' + instance).find(".desafio-GameDesafio").css({
-            "background": imgDesafio
-        })
+            "background": imgDesafio,
+            "background-size":"cover"
+        });
         var $buttonChalleng = $('#desafioGameChallenges-' + instance).find('.desafio-LinkChallenge')
+        var l=34,
+            t=34,
+            file="exeRetosIcons.png";
+        if($('#desafioGameContainer-'+instance).width()<450){
+            l=17;
+            t=17;
+            file="exeRetosIcons17.png";
+        }
+
+        $('#desafioDesafio-' + instance).find(".desafio-GameDesafio").css({
+            "background": imgDesafio,
+            "background-size":"cover",
+            "width":l,
+            "height":t,
+        });
+
         $buttonChalleng.each(function (i) {
             if (i < mOptions.stateChallenges.length) {
                 var state = mOptions.stateChallenges[i].state,
-                    left = (-34 * i) + "px",
-                    top = (-34 * state) + 'px';
-                mcss = "url(" + $eXeDesafio.idevicePath + "exeRetosIcons.png) no-repeat " + left + " " + top;
+                    left = (-l * i) + "px",
+                    top = (-t * state) + 'px';
+                mcss = "url(" + $eXeDesafio.idevicePath + file+") no-repeat " + left + " " + top;
                 $(this).find(".exeQuextRetos").css({
-                    "background": mcss
+                    "background": mcss,
+                    "width":l,
+                    "height":t,
+                    "flex-glow":0
+
                 })
             }
         });
@@ -568,7 +592,10 @@ var $eXeDesafio = {
             "width": "560px",
             "margin": "auto"
         };
-        $eXeDesafio.fontSize = "18px";
+        $eXeDesafio.fontSize = "1rem";
+        if($('#desafioGameContainer-' + instance).width()<450){
+            $eXeDesafio.fontSize = "0.6rem";
+        }
         if (maximize) {
             var h = window.innerHeight - 365 > 750 ? 750 : window.innerHeight - 365;
             h = window.innerHeight <= 768 ? window.innerHeight - 345 : h;
@@ -581,7 +608,7 @@ var $eXeDesafio = {
             };
             p = p > 1.5 ? 1.5 : p;
             hQ = 45 * p;
-            $eXeDesafio.fontSize = "24px";
+            $eXeDesafio.fontSize = "1.2rem";
         }
         $('#desafioMultimedia-' + instance).css(css);
         $eXeDesafio.refreshImageActive(instance);
@@ -736,9 +763,10 @@ var $eXeDesafio = {
             return;
         };
         var imgDesafio = "desafioIcon0.png";
-        imgDesafio = "url(" + $eXeDesafio.idevicePath + imgDesafio + ") no-repeat 0 0";
+        imgDesafio = "url(" + $eXeDesafio.idevicePath + imgDesafio + ") no-repeat";
         $('desafioDesafio-' + instance).css({
-            "background": imgDesafio
+            "background": imgDesafio,
+            "background-size":"cover"
         });
         $('#desafioDescription-' + instance).show();
         $('#desafioTitle-' + instance).show();
@@ -898,4 +926,6 @@ var $eXeDesafio = {
 $(function () {
 
     $eXeDesafio.init();
+
+    
 });

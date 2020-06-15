@@ -252,15 +252,23 @@ var $eXeRosco = {
 						<p id="roscoPDefinition-' + instance + '">' + msgs.msgWrote + '.</p>\
 					</div>\
 					<div  class="rosco-AnswerButtons"  id="roscoAnswerButtons-' + instance + '">\
-						<input type="button" value="' + msgs.msgHappen + '" id="roscoBtnPass-' + instance + '">\
+						<a href="#" id="roscoBtnPass-' + instance + '" title="' + msgs.msgHappen + '">\
+							<strong><span class="sr-av">' + msgs.msgHappen + '</span></strong>\
+							<div class="exeQuextIcons-MoveOne"></div>\
+						</a>\
 						<input type="text" class="rosco-AnswerEdit" id="roscoEdAnswer-' + instance + '">\
-						<input type="button" value="' + msgs.msgReply + '"  id="roscoBtnAnswer-' + instance + '">\
+							<a href="#" id="roscoBtnAnswer-' + instance + '" title="' + msgs.msgAnswer + '">\
+							<strong><span class="sr-av">' + msgs.msgAnswer + '</span></strong>\
+							<div class="exeQuextIcons-Submit"></div>\
+						</a>\
 					</div>\
 					<div  class="rosco-CodeAccess"  id="roscoCodeAccess-' + instance + '">\
 						<label for="roscoEdCodeAccess-' + instance + '" id="labelMessageAccess">' + msgs.msgCodeAccess + '</label>\
-						<h3 class="sr-av">' + msgs.msgAnswer + ':</h3>\
-						<input type="text" class="rosco-AnswerEdit" id="roscoEdCodeAccess-' + instance + '" autocomplete="false">\
-						<input type="button" value="' + msgs.msgSubmit + '" id="roscoBtnSubmitCodeAccess-' + instance + '">\
+						<input type="text" class="rosco-AccesCodeEdit" id="roscoEdCodeAccess-' + instance + '" autocomplete="false">\
+							<a href="#" id="roscoBtnSubmitCodeAccess-' + instance + '" title="' + msgs.msgReply + '">\
+							<strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
+							<div class="exeQuextIcons-Submit"></div>\
+						</a>\
 					</div>\
 				</div>\
 				<div id="roscoGame-' + instance + '"class="rosco-Game">\
@@ -385,7 +393,8 @@ var $eXeRosco = {
 				$eXeRosco.startGame(instance);
 			});
 		}
-		$('#roscoBtnSubmitCodeAccess-' + instance).on('click', function () {
+		$('#roscoBtnSubmitCodeAccess-' + instance).on('click', function (e) {
+			e.preventDefault();
 			var keyIntroduced = $.trim($('#roscoEdCodeAccess-' + instance).val()).toUpperCase(),
 				correctKey = $.trim(mOptions.itinerary.codeAccess).toUpperCase();
 			if (keyIntroduced == correctKey) {
@@ -438,10 +447,12 @@ var $eXeRosco = {
 		}
 		$('#roscoNumberRoundsSpan-' + instance).text(altTurn);
 		$('#roscoPTime-' + instance).text(sTime);
-		$('#roscoBtnPass-' + instance).on('click', function () {
+		$('#roscoBtnPass-' + instance).on('click', function (e) {
+			e.preventDefault();
 			$eXeRosco.passWord(instance);
 		});
-		$('#roscoBtnAnswer-' + instance).on('click', function () {
+		$('#roscoBtnAnswer-' + instance).on('click', function (e) {
+			e.preventDefault();
 			$eXeRosco.answerQuetion(instance);
 		});
 		$('#roscoEdAnswer-' + instance).on("keydown", function (event) {

@@ -103,7 +103,10 @@ var $eXeCandado = {
                     </div>\
                     <div class="candado-SolutionDiv" id="candadoSolutionDiv-' + instance + '">\
                         <label for="candadoSolution-' + instance + '" class="labelSolution">'+msgs.msgCodeAccess+':</label><input type="text" class="candado-Solution"  id="candadoSolution-' + instance + '">\
-                        <input type="button" class="candado-SolutionButton" id="candadoSolutionButton-' + instance + '"   value="' + msgs.msgOk + '" />\
+                        <a href="#" id="candadoSolutionButton-' + instance + '" title="' + msgs.msgSubmit + '">\
+                            <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
+                            <div class="exeQuextIcons-Submit"></div>\
+                        </a>\
                     </div>\
                     <div class="candado-SolutionDiv" id="candadoNavigator-' + instance + '">\
                         <input type="button" class="candado-ShowIntro" id="candadoShowIntro-' + instance + '"   value="'+msgs.msgInstructions+'" />\

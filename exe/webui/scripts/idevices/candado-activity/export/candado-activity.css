@@ -197,6 +197,13 @@
     border-radius: 5px;
 }
 
+.exeQuextIcons-Submit{
+    background: url(exeQuExtReply.png) no-repeat;
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+}
+
 .candado-GameContainer input[type=button] {
     min-width: 70px;
     height: 30px;
