@@ -986,31 +986,31 @@ div:-moz-full-screen .exeSeleccionaIcons-FullScreen {
         line-height: 14px;
         font-size: 0.7rem;
     }
-    .exeQuextIcons {
+    .exeSeleccionaIcons {
         width: 15px;
         height: 15px;
         margin-right: 0px;
     }
-    .exeQuextIcons-Life {
-        background: url(exeQuextIcons13.png) no-repeat -45px 0px;
+    .exeSeleccionaIcons-Life {
+        background: url(exeSeleccionaIcons13.png) no-repeat -45px 0px;
     }
-    .exeQuextIcons-Hit {
-        background: url(exeQuextIcons13.png) no-repeat 0 0;
+    .exeSeleccionaIcons-Hit {
+        background: url(exeSeleccionaIcons13.png) no-repeat 0 0;
     }
-    .exeQuextIcons-Error {
-        background: url(exeQuextIcons13.png) no-repeat -15px 0px;
+    .exeSeleccionaIcons-Error {
+        background: url(exeSeleccionaIcons13.png) no-repeat -15px 0px;
     }
-    .exeQuextIcons-Score {
-        background: url(exeQuextIcons13.png) no-repeat -31px 0px;
+    .exeSeleccionaIcons-Score {
+        background: url(exeSeleccionaIcons13.png) no-repeat -31px 0px;
     }
-    .exeQuextIcons-Time {
-        background: url(exeQuextIcons13.png) no-repeat 0 -15px;
+    .exeSeleccionaIcons-Time {
+        background: url(exeSeleccionaIcons13.png) no-repeat 0 -15px;
     }
-    .exeQuextIcons-Number {
-        background: url(exeQuextIcons13.png) no-repeat -15px -15px;
+    .exeSeleccionaIcons-Number {
+        background: url(exeSeleccionaIcons13.png) no-repeat -15px -15px;
     }
-    .exeQuextIcons-Video {
-        background: url(exeQuextIcons13.png) no-repeat -45px -30px;
+    .exeSeleccionaIcons-Video {
+        background: url(exeSeleccionaIcons13.png) no-repeat -45px -30px;
     }
     .selecciona-DivReply {
         margin: 0px;
