@@ -45,7 +45,6 @@ var $eXeVideoQuExt = {
     youtubeLoaded: false,
     hasSCORMbutton: false,
     isInExe: false,
-    fontSize: '0.9rem',
     init: function () {
         this.activities = $('.vquext-IDevice');
         if (this.activities.length == 0) return;
@@ -243,21 +242,15 @@ var $eXeVideoQuExt = {
                         <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
                         <div class="exeQuextIcons exeQuextIcons-Minimize"></div>\
                     </a>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
-                        <div class="exeQuextIcons exeQuextIcons-Hit"></div>\
-                        <p id="vquextPHits-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-Error"></div>\
-                        <p id="vquextPErrors-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-Score"></div>\
-                        <p id="vquextPScore-' + instance + '">0</p>\
-                    </div>\
+                    <strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
+                    <div class="exeQuextIcons exeQuextIcons-Hit"></div>\
+                    <p id="vquextPHits-' + instance + '">0</p>\
+                    <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Error"></div>\
+                    <p id="vquextPErrors-' + instance + '">0</p>\
+                    <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Score"></div>\
+                    <p id="vquextPScore-' + instance + '">0</p>\
                 </div>\
                 <div class="vquext-LifesGame" id="vquextLifesGame-' + instance + '">\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
@@ -277,17 +270,13 @@ var $eXeVideoQuExt = {
                     <p id="vquextPLifes-' + instance + '">0</p>\
                 </div>\
                 <div class="vquext-TimeNumber">\
-                    <div class="vquext-TimeQuestion">\
-                        <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-Time"></div>\
-                        <p id="vquextPTime-' + instance + '">00:00</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-Number"></div>\
-                        <p id="vquextPNumber-' + instance + '">0</p>\
-                    </div>\
-                    	<a href="#" class="vquext-LinkFullScreen" id="vquextLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
+                    <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Time"></div>\
+                    <p id="vquextPTime-' + instance + '" class="vquext-PTime">00:00</p>\
+                    <strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Number"></div>\
+                    <p id="vquextPNumber-' + instance + '">0</p>\
+                    <a href="#" class="vquext-LinkFullScreen" id="vquextLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
                         <strong><span class="sr-av">' + msgs.msgFullScreen + ':</span></strong>\
                         <div class="exeQuextIcons exeQuextIcons-FullScreen" id="vquextFullScreen-' + instance + '">\
                         </div>\
@@ -337,8 +326,8 @@ var $eXeVideoQuExt = {
             <a href="#" class="vquext-StarGame" id="vquextStarGame-' + instance + '">\</a>\
             <div class="vquext-QuestionDiv" id="vquextQuestionDiv-' + instance + '">\
                 <div class="sr-av">' + msgs.msgQuestions + ':</div>\
-                <h2 class="vquext-Question" id="vquextQuestion-' + instance + '">\
-                </h2>\
+                <div class="vquext-Question" id="vquextQuestion-' + instance + '">\
+                </div>\
                 <div class="vquext-DivReply" id="vquextDivReply-' + instance + '">\
                     <label class="sr-av">' + msgs.msgIndicateSolution + ':</label><input type="text" value="" class="vquext-EdReply" id="vquextEdAnswer-' + instance + '" autocomplete="false">\
                     <a href="#" id="vquextBtnReply-' + instance + '" title="' + msgs.msgReply + '">\
@@ -360,7 +349,7 @@ var $eXeVideoQuExt = {
             <div class="vquext-ReloadContainer" id="vquextVideoReloadContainer-' + instance + '">\
                 <a href="#" class="vquext-LinkReload" id="vquextReeload-' + instance + '" title="' + msgs.msgReloadVideo + '">\
                     <strong><span class="sr-av">' + msgs.msgReloadVideo + ':</span></strong>\
-                    <div class="vquext-Reload vquext-IconReload"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Reload"></div>\
                 </a>\
                 <a href="#" class="vquext-LinkPauseVideo" id="vquextPauseVideo-' + instance + '" title="' + msgs.msgPauseVideo + '">\
                     <strong><span class="sr-av">' + msgs.msgPauseVideo + ':</span></strong>\
@@ -509,6 +498,7 @@ var $eXeVideoQuExt = {
         window.addEventListener('unload', function () {
             $eXeVideoQuExt.endScorm();
         });
+
         $('videovquextGamerOver-' + instance).css('display', 'flex');
         $('#vquextLinkMaximize-' + instance).on('click touchstart', function (e) {
             e.preventDefault();
@@ -648,6 +638,10 @@ var $eXeVideoQuExt = {
         $('meta[name=author]').attr('content', mOptions.author);
         $('#vquextPShowClue-' + instance).hide();
         mOptions.gameOver = false;
+        window.addEventListener('resize', function () {
+            $eXeVideoQuExt.createPointsVideo(instance);
+            $eXeVideoQuExt.refreshImageActive(instance);
+        });
     },
     pauseVideoQuestion: function (instance, pause) {
         var mOptions = $eXeVideoQuExt.options[instance];
@@ -696,11 +690,8 @@ var $eXeVideoQuExt = {
                 "height": "315px",
                 "width": "560px",
                 "margin": "auto"
-            },
-            hQ = 45;
-        $eXeVideoQuExt.fontSize = "0.9rem";
-
-        if (maximize) {
+            };
+           if (maximize) {
             var h = window.innerHeight - 365 > 750 ? 750 : window.innerHeight - 365;
             h = window.innerHeight <= 768 ? window.innerHeight - 345 : h;
             var p = (h / 315),
@@ -710,23 +701,7 @@ var $eXeVideoQuExt = {
                 "width": w + 'px',
                 "margin": "auto"
             };
-            p = p > 1.5 ? 1.5 : p;
-            hQ = 45 * p;
-            $eXeVideoQuExt.fontSize = "1.1rem";
         }
-        $('#vquextQuestion-' + instance).css({
-            "height": hQ + "px",
-            "font-size": $eXeVideoQuExt.fontSize,
-            "font-weight": "bold"
-        });
-        $('#vquextOptionsDiv-' + instance + '>.vquext-Options').css({
-            "height": hQ + "px",
-            "font-size": $eXeVideoQuExt.fontSize,
-            "font-weight": "bold"
-        });
-        $('#vquextPAuthor-' + instance).css({
-            'font-size': $eXeVideoQuExt.fontSize
-        });
         $('#vquextMultimedia-' + instance).css(css);
         $eXeVideoQuExt.refreshImageActive(instance);
     },
@@ -833,21 +808,11 @@ var $eXeVideoQuExt = {
         mOptions.obtainedClue = false;
         $('#vquextPShowClue-' + instance).hide();
         $('#vquextPShowClue-' + instance).text("");
-        $('#vquextQuestion-' + instance).css({
-            'color': $eXeVideoQuExt.colors.black,
-            'text-align': 'center',
-            'vertical-align': 'middle',
-            'cursor': 'default',
-            'font-weight': 'bold',
-            'font-size': $eXeVideoQuExt.fontSize
-        });
         $('#vquextStarGame-' + instance).hide();
         $('#vquextStarGameSRAV-' + instance).hide();
         $('#vquextQuestionDiv-' + instance).show();
         $('#vquextQuestion-' + instance).text('');
-        if (window.innerWidth > 560) {
-            $('#vquextProgressBar-' + instance).show();
-        }
+        $('#vquextProgressBar-' + instance).show();
         if (mOptions.reloadQuestion || mOptions.previewQuestions || mOptions.pauseVideo) {
             $('#vquextVideoReloadContainer-' + instance).show();
             if (mOptions.previewQuestions) {
@@ -937,13 +902,6 @@ var $eXeVideoQuExt = {
             }
         }, 1000);
         $eXeVideoQuExt.uptateTime(0, instance);
-        $('#vquextQuestion-' + instance).css({
-            'color': $eXeVideoQuExt.borderColors.black,
-            'text-align': 'center',
-            'cursor': 'default',
-            'font-weight': '600',
-            'vertical-align': 'middle',
-        });
         $('#vquextGamerOver-' + instance).hide();
         $('#vquextPHits-' + instance).text(mOptions.hits);
         $('#vquextPErrors-' + instance).text(mOptions.errors);
@@ -1127,7 +1085,6 @@ var $eXeVideoQuExt = {
                 $('#vquextPShowClue-' + instance).text(mOptions.msgs.msgInformation + ": " + mOptions.itinerary.clueGame);
             }
         }
-      
         mOptions.counter = 1;
 
         if (mOptions.useLives && mOptions.livesLeft <= 0) {
@@ -1176,12 +1133,10 @@ var $eXeVideoQuExt = {
     showMessage: function (type, message, instance) {
         var colors = ['#555555', $eXeVideoQuExt.borderColors.red, $eXeVideoQuExt.borderColors.green, $eXeVideoQuExt.borderColors.blue, $eXeVideoQuExt.borderColors.yellow];
         color = colors[type];
-        var weight = type == 0 ? 'normal' : 'bold';
+        var weight = type == 0 ? 'normal' : 'normal';
         $('#vquextPAuthor-' + instance).text(message);
         $('#vquextPAuthor-' + instance).css({
             'color': color,
-            'font-weight': weight,
-            'font-size': $eXeVideoQuExt.fontSize
         });
     },
     drawImage: function (image, mData) {
@@ -1252,7 +1207,8 @@ var $eXeVideoQuExt = {
                 $(this).css({
                     'border-color': bordeColors[index],
                     'background-color': colors[index],
-                    'cursor': 'pointer'
+                    'cursor': 'pointer',
+                    "text-aling":"center"
                 }).text(option);
                 if (option) {
                     $(this).show();
@@ -1274,13 +1230,15 @@ var $eXeVideoQuExt = {
                     $(this).css({
                         'border-color': '#00ff00',
                         'background-color': '#dcffdc',
-                        'cursor': 'default'
+                        'cursor': 'default',
+                        "text-aling":"center"
                     });
                 } else {
                     $(this).css({
                         'border-color': '#cccccc',
                         'background-color': 'transparent',
-                        'cursor': 'default'
+                        'cursor': 'default',
+                        "text-aling":"center"
                     });
                 }
             });
@@ -1294,7 +1252,8 @@ var $eXeVideoQuExt = {
             $(this).css({
                 'border-color': bordeColors[index],
                 'background-color': colors[index],
-                'cursor': 'default'
+                'cursor': 'default',
+                'text-aling':'center'
             }).text('');
         });
         $('#vquextQuestion-' + instance).text("");
