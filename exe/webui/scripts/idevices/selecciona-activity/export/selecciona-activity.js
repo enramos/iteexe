@@ -44,7 +44,6 @@ var $eXeSelecciona = {
     msgs:'',
     youtubeLoaded: false,
     hasSCORMbutton: false,
-    fontSize:'14px',
     isInExe: false,
     init: function () {
         this.activities = $('.selecciona-IDevice');
@@ -236,56 +235,46 @@ var $eXeSelecciona = {
                 <div class="selecciona-GameScores">\
                     <a href="#" class="selecciona-LinkMinimize" id="seleccionaLinkMinimize-' + instance + '" title="Minimizar">\
                         <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
-                        <div class="exeSeleccionaIcons exeSeleccionaIcons-Minimize"></div>\
+                        <div class="exeQuextIcons exeQuextIcons-Minimize"></div>\
                     </a>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
-                        <div class="exeSeleccionaIcons exeSeleccionaIcons-Hit"></div>\
-                        <p id="seleccionaPHits-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
-                        <div class="exeSeleccionaIcons  exeSeleccionaIcons-Error"></div>\
-                        <p id="seleccionaPErrors-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
-                        <div class="exeSeleccionaIcons  exeSeleccionaIcons-Score"></div>\
-                        <p id="seleccionaPScore-' + instance + '">0</p>\
-                    </div>\
+                    <strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
+                    <div class="exeQuextIcons exeQuextIcons-Hit"></div>\
+                    <p id="seleccionaPHits-' + instance + '">0</p>\
+                    <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Error"></div>\
+                    <p id="seleccionaPErrors-' + instance + '">0</p>\
+                    <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Score"></div>\
+                    <p id="seleccionaPScore-' + instance + '">0</p>\
                 </div>\
                 <div class="selecciona-LifesGame" id="seleccionaLifesGame-' + instance + '">\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Life"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Life"></div>\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Life"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Life"></div>\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Life"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Life"></div>\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Life"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Life"></div>\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Life"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Life"></div>\
                 </div>\
                 <div class="selecciona-NumberLifesGame" id="seleccionaNumberLivesGame-' + instance + '">\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Life"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Life"></div>\
                     <p id="seleccionaPLifes-' + instance + '">0</p>\
                 </div>\
                 <div class="selecciona-TimeNumber">\
-                    <div class="selecciona-TimeQuestion">\
-                        <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
-                        <div class="exeSeleccionaIcons  exeSeleccionaIcons-Time"></div>\
-                        <p id="seleccionaPTime-' + instance + '">00:00</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
-                        <div class="exeSeleccionaIcons  exeSeleccionaIcons-Number"></div>\
-                        <p id="seleccionaPNumber-' + instance + '">0</p>\
-                    </div>\
-                    	<a href="#" class="selecciona-LinkFullScreen" id="seleccionaLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
+                    <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Time"></div>\
+                    <p id="seleccionaPTime-' + instance + '" class="selecciona-PTime">00:00</p>\
+                    <strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Number"></div>\
+                    <p id="seleccionaPNumber-' + instance + '">0</p>\
+                    <a href="#" class="selecciona-LinkFullScreen" id="seleccionaLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
                         <strong><span class="sr-av">' + msgs.msgFullScreen + ':</span></strong>\
-                        <div class="exeSeleccionaIcons exeSeleccionaIcons-FullScreen" id="seleccionaFullScreen-' + instance + '">\
-                        </div>\
+                        <div class="exeQuextIcons exeQuextIcons-FullScreen" id="seleccionaFullScreen-' + instance + '">\
+                     </div>\
                     </a>\
                 </div>\
             </div>\
@@ -328,11 +317,10 @@ var $eXeSelecciona = {
                 </div>\
             </div>\
             <div class="sr-av" id="seleccionaStarGameSRAV-' + instance + '">' + msgs.msgPlayStart + ':</div>\
-            <a href="#" class="selecciona-StarGame" id="seleccionaStarGame-' + instance + '">\</a>\
+            <div class="selecciona-StartGame"><a href="#" id="seleccionaStarGame-' + instance + '"></a></div>\
             <div class="selecciona-QuestionDiv" id="seleccionaQuestionDiv-' + instance + '">\
                 <div class="sr-av">' + msgs.msgQuestion + ':</div>\
-                <h2 class="selecciona-Question" id="seleccionaQuestion-' + instance + '">\
-                </h2>\
+                <div class="selecciona-Question" id="seleccionaQuestion-' + instance + '"></div>\
                 <div class="selecciona-OptionsDiv" id="seleccionaOptionsDiv-' + instance + '">\
                     <div class="sr-av">' + msgs.msgOption + ' A:</div>\
                     <a href="#" class="selecciona-Option1 selecciona-Options" id="seleccionaOption1-' + instance + '" data-number="0"></a>\
@@ -344,19 +332,22 @@ var $eXeSelecciona = {
                     <a href="#" class="selecciona-Option4 selecciona-Options" id="seleccionaOption4-' + instance + '" data-number="3"></a>\
                 </div>\
             </div>\
-            <div class="selecciona-BottonContainer" id="seleccionaBottonContainer-' + instance + '">\
+            <div class="selecciona-BottonContainerDiv" id="seleccionaBottonContainer-' + instance + '">\
                 <a href="#" class="selecciona-LinkVideoIntroShow" id="seleccionaLinkVideoIntroShow-' + instance + '" title="' + msgs.msgVideoIntro + '">\
                     <strong><span class="sr-av">' + msgs.msgVideoIntro + ':</span></strong>\
-                    <div class="exeSeleccionaIcons exeSeleccionaIcons-Video"></div>\
+                    <div class="exeQuextIcons exeQuextIcons-Video"></div>\
                 </a>\
                 <div class="selecciona-AnswersDiv" id="seleccionaAnswerDiv-' + instance + '">\
                     <div class="selecciona-Answers" id="seleccionaAnswers-' + instance + '"></div>\
-                    <input type="button" id="seleccionaButtonAnswer-' + instance + '" value="' + msgs.msgAnswer + '"/>\
+                    <a href="#" id="seleccionaButtonAnswer-' + instance + '" title="' + msgs.msgAnswer + '">\
+                        <strong><span class="sr-av">' + msgs.msgAnswer + '</span></strong>\
+                        <div class="exeQuextIcons-Submit"></div>\
+                    </a>\
                 </div>\
             </div>\
              <div class="selecciona-VideoIntroDiv" id="seleccionaVideoIntroDiv-' + instance + '">\
                 <div class="selecciona-VideoIntro" id="seleccionaVideoIntro-' + instance + '"></div>\
-                <input type="button" class="selecciona-VideoIntroClose" id="seleccionaVideoIntroClose-' + instance + '" value="' + msgs.msgClose + '"/>\
+                <input type="button" class="selecciona-VideoIntroClose feedbackbutton" id="seleccionaVideoIntroClose-' + instance + '" value="' + msgs.msgClose + '"/>\
             </div>\
         </div>\
     </div>\
@@ -458,7 +449,6 @@ var $eXeSelecciona = {
                 }
             });
             $('#seleccionaStarGame-' + i).text(mOptions.msgs.msgStartGame);
-            $('#seleccionaStarGame-' + i).css('color',$eXeSelecciona.borderColors.red);
             if ($eXeSelecciona.getIDYoutube($eXeSelecciona.options[i].idVideo) !== '') {
                 $('#seleccionaVideoIntroContainer-' + i).css('display', 'flex');
                 $('#seleccionaVideoIntroContainer-' + i).show();
@@ -535,6 +525,9 @@ var $eXeSelecciona = {
         window.addEventListener('unload', function () {
             $eXeSelecciona.endScorm();
         });
+        window.addEventListener('resize', function () {
+            $eXeSelecciona.refreshImageActive(instance);
+        });
         $('videoseleccionaGamerOver-' + instance).css('display', 'flex');
         $('#seleccionaLinkMaximize-' + instance).on('click touchstart', function (e) {
             e.preventDefault();
@@ -581,8 +574,6 @@ var $eXeSelecciona = {
         });
         mOptions.livesLeft = mOptions.numberLives;
         $('#seleccionaStarGame-' + instance).text(mOptions.msgs.msgLoading);
-        $('#seleccionaStarGame-' + instance).css('color',$eXeSelecciona.borderColors.blue);
-
         $('#seleccionaStarGame-' + instance).on('click touchstart', function (e) {
             e.preventDefault();
             $eXeSelecciona.startGame(instance);
@@ -600,20 +591,16 @@ var $eXeSelecciona = {
         $('#seleccionaInstructions-' + instance).text(mOptions.instructions);
 
         $('#seleccionaPNumber-' + instance).text(mOptions.numberQuestions);
-        $('#seleccionaStarGame-' + instance).show();
-        $('#seleccionaStarGameSRAV-' + instance).show();
+        $('#seleccionaGameContainer-' + instance+' .selecciona-StartGame').show();
         $('#seleccionaQuestionDiv-' + instance).hide();
-        $('#seleccionaBottonContainer-' + instance).addClass('selecciona-BottonContainerEnd');
+        $('#seleccionaBottonContainer-' + instance).addClass('selecciona-BottonContainerDivEnd');
 
         if (mOptions.itinerary.showCodeAccess) {
             $('#seleccionaAnswerDiv-' + instance).hide();
             $('#seleccionaMesajeAccesCodeE-' + instance).text(mOptions.itinerary.messageCodeAccess);
             $('#seleccionaMesajeAccesCodeE-' + instance).text(mOptions.itinerary.messageCodeAccess);
             $('#seleccionaCodeAccessDiv-' + instance).show();
-            $('#seleccionaStarGame-' + instance).hide();
-            $('#seleccionaStarGameSRAV-' + instance).hide();
-
-
+            $('#seleccionaGameContainer-' + instance+' .selecciona-StartGame').hide();
         }
         $(document).on("webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange", function (e) {
             var fullScreenElement =
@@ -649,6 +636,7 @@ var $eXeSelecciona = {
             $eXeSelecciona.startVideoIntro('', 0, 0, instance);
         });
         $('#seleccionaButtonAnswer-' + instance).on('click touchstart', function (e) {
+            e.preventDefault();
             $eXeSelecciona.answerQuestion(instance);
         });
     },
@@ -702,7 +690,7 @@ var $eXeSelecciona = {
                 $('#seleccionaAnswers-' + instance).append('<div class="selecciona-AnswersOptions selecciona-Answer4"></div>');
             }
         }
-        return css;
+
     },
     maximizeMultimedia: function (maximize, instance) {
         var css = {
@@ -711,7 +699,6 @@ var $eXeSelecciona = {
                 "margin": "auto"
             },
             hQ = 45;
-            $eXeSelecciona.fontSize="14px";
 
         if (maximize) {
             var h = window.innerHeight - 365 > 750 ? 750 : window.innerHeight - 365;
@@ -725,17 +712,14 @@ var $eXeSelecciona = {
             };
             p = p > 1.5 ? 1.5 : p;
             hQ = 45 * p;
-            $eXeSelecciona.fontSize="14px";
         }
         $('#seleccionaQuestion-' + instance).css({
             "height": hQ + "px",
-            "font-size": $eXeSelecciona.fontSize,
-            "font-weight": "bold"
+            'text-aling':'center'
         });
         $('#seleccionaOptionsDiv-' + instance + '>.selecciona-Options').css({
             "height": hQ + "px",
-            "font-size": $eXeSelecciona.fontSize,
-            "font-weight": "bold"
+            'text-aling':'center'
         });
         $('#seleccionaMultimedia-' + instance).css(css);
         $eXeSelecciona.refreshImageActive(instance);
@@ -880,16 +864,7 @@ var $eXeSelecciona = {
         $('#seleccionaLinkVideoIntroShow-' + instance).hide();
         $('#seleccionaShowClue-' + instance).hide();
         $('#seleccionaPShowClue-' + instance).text("");
-        $('#seleccionaQuestion-' + instance).css({
-            'color': $eXeSelecciona.colors.black,
-            'text-align': 'center',
-            'vertical-align': 'middle',
-            'cursor': 'default',
-            'font-weight': 'bold',
-            'font-size': $eXeSelecciona.fontSize
-        });
-        $('#seleccionaStarGame-' + instance).hide();
-        $('#seleccionaStarGameSRAV-' + instance).hide();
+        $('#seleccionaGameContainer-' + instance+' .selecciona-StartGame').hide();
         $('#seleccionaQuestionDiv-' + instance).show();
         $('#seleccionaQuestion-' + instance).text('');
         $('#seleccionaAnswerDiv-' + instance).show();
@@ -979,8 +954,7 @@ var $eXeSelecciona = {
         $eXeSelecciona.uptateTime(0, instance);
         $('#seleccionaPNumber-' + instance).text('0');
         $('#seleccionaStarGame-' + instance).text(mOptions.msgs.msgNewGame);
-        $('#seleccionaStarGame-' + instance).show();
-        $('#seleccionaStarGameSRAV-' + instance).show();
+        $('#seleccionaGameContainer-' + instance+' .selecciona-StartGame').show();
         $('#seleccionaQuestionDiv-' + instance).hide();
         $('#seleccionaAnswerDiv-' + instance).hide();
         if ($eXeSelecciona.getIDYoutube(mOptions.idVideo) !== '') {
@@ -1057,7 +1031,7 @@ var $eXeSelecciona = {
         } else if (mQuextion.type === 3) {
             var text = unescape(mQuextion.eText);
             if (window.innerWidth < 401) {
-                text = $eXeSelecciona.reduceText(texto);
+                //text = $eXeSelecciona.reduceText(text);
             }
             $('#seleccionaEText-'+instance).html(text);
             $('#seleccionaCover-'+instance).hide();
@@ -1128,7 +1102,7 @@ var $eXeSelecciona = {
     updateLives: function (instance) {
         var mOptions = $eXeSelecciona.options[instance];
         $('#seleccionaPLifes-' + instance).text(mOptions.livesLeft);
-        $('#seleccionaLifesGame-' + instance).find('.exeSeleccionaIcons-Life').each(function (index) {
+        $('#seleccionaLifesGame-' + instance).find('.exeQuextIcons-Life').each(function (index) {
             $(this).hide();
             if (mOptions.useLives) {
                 $(this).show();
@@ -1284,7 +1258,6 @@ var $eXeSelecciona = {
         $('#seleccionaPAuthor-' + instance).css({
             'color': color,
             'font-weight': weight,
-            'font-size':$eXeSelecciona.fontSize
         });
     },
     drawImage: function (image, mData) {

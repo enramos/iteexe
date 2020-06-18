@@ -308,14 +308,14 @@ var $eXeVideoQuExt = {
             <div class="vquext-ProgressBar" id="vquextProgressBar-' + instance + '">\
                 <div class="vquext-InterBar" id="vquextInterBar-' + instance + '"></div>\
             </div>\
-            <div class="vquext-AutorLicence" id="vquextAutorLicence-' + instance + '">\
+            <div class="vquext-AuthorLicence" id="vquextAuthorLicence-' + instance + '">\
                 <div class="sr-av">' + msgs.msgAuthor + ':</div>\
                 <p id="vquextPAuthor-' + instance + '"></p>\
             </div>\
             <div class="vquext-CodeAccessDiv" id="vquextCodeAccessDiv-' + instance + '">\
-                <div class="vquext-MessageCodeAccessE" id="vquextMesajeAccesCodeE-' + instance + '"></div>\
+                <p class="vquext-MessageCodeAccessE" id="vquextMesajeAccesCodeE-' + instance + '"></p>\
                 <div class="vquext-DataCodeAccessE">\
-                    <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="vquext-CodeAccessE"  id="vquextCodeAccessE-' + instance + '" readonly>\
+                    <label for="vquextCodeAccessE">' + msgs.msgCodeAccess + ':</label><input type="text" class="vquext-CodeAccessE"  id="vquextCodeAccessE-' + instance + '" readonly>\
                     <a href="#" id="vquextCodeAccessButton-' + instance + '" title="' + msgs.msgSubmit + '">\
                         <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
                         <div class="exeQuextIcons-Submit"></div>\
@@ -323,7 +323,7 @@ var $eXeVideoQuExt = {
                 </div>\
             </div>\
             <div class="sr-av" id="vquextStarGameSRAV-' + instance + '">' + msgs.msgPlayStart + ':</div>\
-            <a href="#" class="vquext-StarGame" id="vquextStarGame-' + instance + '">\</a>\
+            <div class="vquext-StartGame"><a href="#" id="vquextStarGame-' + instance + '"></a></div>\
             <div class="vquext-QuestionDiv" id="vquextQuestionDiv-' + instance + '">\
                 <div class="sr-av">' + msgs.msgQuestions + ':</div>\
                 <div class="vquext-Question" id="vquextQuestion-' + instance + '">\
@@ -363,7 +363,7 @@ var $eXeVideoQuExt = {
             <div class="vquext-previewQuestionsDiv" id="vquextpreviewQuestionsDiv-' + instance + '">\
                 <p class="vquext-PreviewQuestionsTitle">' + msgs.msgQuestions + '</p>\
                 <strong><span class="sr-av">' + msgs.msgQuestions + ':</span></strong>\
-                <input type="button" class="vquext-previewQuestionsClose" id="vquextpreviewQuestionsClose-' + instance + '" value="' + msgs.msgClose + '" />\
+                <input type="button" class="vquext-previewQuestionsClose feedbackbutton"  id="vquextpreviewQuestionsClose-' + instance + '" value="' + msgs.msgClose + '" />\
             </div>\
         </div>\
     </div>\
@@ -381,7 +381,7 @@ var $eXeVideoQuExt = {
                     this.hasSCORMbutton = true;
                     fB += '<div class="vquext-GetScore">';
                     if (!this.isInExe) fB += '<form action="#" onsubmit="return false">';
-                    fB += '<p><input type="button" id="vquextSendScore-' + instance + '" value="' + buttonText + '" class="feedbackbutton" /> <span class="vquext-RepeatActivity" id="vquextRepeatActivity-' + instance + '"></span></p>';
+                    fB += '<p><input type="button" id="vquextSendScore-' + instance + '" value="' + buttonText + '" class="feedbackbutton vquext-SendScore" /> <span class="vquext-RepeatActivity" id="vquextRepeatActivity-' + instance + '"></span></p>';
                     if (!this.isInExe) fB += '</form>';
                     fB += '</div>';
                     butonScore = fB;
@@ -441,7 +441,6 @@ var $eXeVideoQuExt = {
                 }
             });
             $('#vquextStarGame-' + i).text(mOptions.msgs.msgStartGame);
-            $('#vquextStarGame-' + i).css('color', $eXeVideoQuExt.borderColors.red);
             $('#vquextCodeAccessE-' + i).prop("readonly", false);
 
 
@@ -586,8 +585,6 @@ var $eXeVideoQuExt = {
         });
         mOptions.livesLeft = mOptions.numberLives;
         $('#vquextStarGame-' + instance).text(mOptions.msgs.msgLoading);
-        $('#vquextStarGame-' + instance).css('color', $eXeVideoQuExt.borderColors.blue);
-
         $('#vquextStarGame-' + instance).on('click', function (e) {
             e.preventDefault();
             $eXeVideoQuExt.startGame(instance);
@@ -608,15 +605,13 @@ var $eXeVideoQuExt = {
         $('#vquextInstructions-' + instance).text(mOptions.instructions);
 
         $('#vquextPNumber-' + instance).text(mOptions.numberQuestions);
-        $('#vquextStarGame-' + instance).show();
-        $('#vquextStarGameSRAV-' + instance).show();
+        $('#vquextGameContainer-' + instance+' .vquext-StartGame').show();
         $('#vquextQuestionDiv-' + instance).hide();
         if (mOptions.itinerary.showCodeAccess) {
             $('#vquextMesajeAccesCodeE-' + instance).text(mOptions.itinerary.messageCodeAccess);
             $('#vquextMesajeAccesCodeE-' + instance).text(mOptions.itinerary.messageCodeAccess);
             $('#vquextCodeAccessDiv-' + instance).show();
-            $('#vquextStarGame-' + instance).hide();
-            $('#vquextStarGameSRAV-' + instance).hide();
+            $('#vquextGameContainer-' + instance+' .vquext-StartGame').hide();
             $('#vquextQuestionDiv-' + instance).hide();
 
         }
@@ -690,7 +685,8 @@ var $eXeVideoQuExt = {
                 "height": "315px",
                 "width": "560px",
                 "margin": "auto"
-            };
+            },
+            hQ = 45;
            if (maximize) {
             var h = window.innerHeight - 365 > 750 ? 750 : window.innerHeight - 365;
             h = window.innerHeight <= 768 ? window.innerHeight - 345 : h;
@@ -701,7 +697,17 @@ var $eXeVideoQuExt = {
                 "width": w + 'px',
                 "margin": "auto"
             };
+            p = p > 1.5 ? 1.5 : p;
+            hQ = 45 * p;
         }
+        $('#vquextQuestion-' + instance).css({
+            "height": hQ + "px",
+            'text-aling':'center'
+        });
+        $('#vquextOptionsDiv-' + instance + '>.vquext-Options').css({
+            "height": hQ + "px",
+            'text-aling':'center'
+        });
         $('#vquextMultimedia-' + instance).css(css);
         $eXeVideoQuExt.refreshImageActive(instance);
     },
@@ -808,8 +814,7 @@ var $eXeVideoQuExt = {
         mOptions.obtainedClue = false;
         $('#vquextPShowClue-' + instance).hide();
         $('#vquextPShowClue-' + instance).text("");
-        $('#vquextStarGame-' + instance).hide();
-        $('#vquextStarGameSRAV-' + instance).hide();
+        $('#vquextGameContainer-' + instance+' .vquext-StartGame').hide();
         $('#vquextQuestionDiv-' + instance).show();
         $('#vquextQuestion-' + instance).text('');
         $('#vquextProgressBar-' + instance).show();
@@ -943,14 +948,13 @@ var $eXeVideoQuExt = {
         $('#vquextCursor-' + instance).hide();
         $('#vquextCover-' + instance).hide();
         var message = type === 0 ? mOptions.msgs.mgsAllQuestions : mOptions.msgs.msgLostLives;
-        $eXeVideoQuExt.showMessage(2, message, instance);
+        $eXeVideoQuExt.showMessage(0, message, instance);
         $eXeVideoQuExt.showScoreGame(type, instance);
         $eXeVideoQuExt.clearQuestions(instance);
         $eXeVideoQuExt.uptateTime(0, instance);
         $('#vquextPNumber-' + instance).text('0');
         $('#vquextStarGame-' + instance).text(mOptions.msgs.msgNewGame);
-        $('#vquextStarGame-' + instance).show();
-        $('#vquextStarGameSRAV-' + instance).show();
+        $('#vquextGameContainer-' + instance+' .vquext-StartGame').show();
         $('#vquextQuestionDiv-' + instance).hide();
         mOptions.gameOver = true;
         if (mOptions.isScorm === 1) {
@@ -1133,10 +1137,11 @@ var $eXeVideoQuExt = {
     showMessage: function (type, message, instance) {
         var colors = ['#555555', $eXeVideoQuExt.borderColors.red, $eXeVideoQuExt.borderColors.green, $eXeVideoQuExt.borderColors.blue, $eXeVideoQuExt.borderColors.yellow];
         color = colors[type];
-        var weight = type == 0 ? 'normal' : 'normal';
+        var weight = type == 0 ? 'normal' : 'bold';
         $('#vquextPAuthor-' + instance).text(message);
         $('#vquextPAuthor-' + instance).css({
             'color': color,
+            'font-weight': weight
         });
     },
     drawImage: function (image, mData) {
