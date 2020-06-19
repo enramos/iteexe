@@ -178,8 +178,8 @@ var $eXeRosco = {
 		mOptions.gameOver = false;
 		imgsLink.each(function (index) {
 			mOptions.wordsGame[index].url = $(this).attr('href');
-			if(mOptions.wordsGame[index].url.length<10){
-				 mOptions.wordsGame[index].url="";
+			if (mOptions.wordsGame[index].url.length < 10) {
+				mOptions.wordsGame[index].url = "";
 			}
 		});
 
@@ -193,7 +193,7 @@ var $eXeRosco = {
 			html = '',
 			path = $eXeRosco.idevicePath;
 		html += '<div class="rosco-Main">\
-				<div class="rosco-MainContainer">\
+				<div class="rosco-MainContainer" id="roscoMainContainer-' + instance + '">\
 				<div class="rosco-GameMinimize" id="roscoGameMinimize-' + instance + '">\
 				<a href="#" class="rosco-LinkMaximize" id="roscoLinkMaximize-' + instance + '" title="' + msgs.msgMaximize + '"><img src="' + path + 'rosco-icon.png" class="rosco-Icon" id="roscoIcon-' + instance + '" alt="' + msgs.msgMinimize + '">\
 					<div  class="rosco-MessageMaximize" id="roscoMessageMaximize-' + instance + '">' + msgs.msgPlayStart + '</div></a>\
@@ -205,30 +205,24 @@ var $eXeRosco = {
 								<strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
 								<div class="exeQuextIcons exeQuextIcons-Minimize"></div>\
 							</a>\
-							<div class="exeQuext-ResultGame">\
-								<strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
-								<div class="exeQuextIcons exeQuextIcons-Hit"></div>\
-								<p  id="roscotPHits-' + instance + '">0</p>\
-							</div>\
-							<div class="exeQuext-ResultGame">\
-								<strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
-								<div class="exeQuextIcons  exeQuextIcons-Error"></div>\
-								<p id="roscotPErrors-' + instance + '">0</p>\
-							</div>\
+							<strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
+							<div class="exeQuextIcons exeQuextIcons-Hit"></div>\
+							<p  id="roscotPHits-' + instance + '">0</p>\
+							<strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
+							<div class="exeQuextIcons  exeQuextIcons-Error"></div>\
+							<p id="roscotPErrors-' + instance + '">0</p>\
 						</div>\
 						<div class="rosco-TimeTurn">\
-							<div  class="rosco-DurationGame">\
-								<strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
+					  	 <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
 								<div class="exeQuextIcons  exeQuextIcons-Time"></div>\
 								<p  id="roscoPTime-' + instance + '">' + sTime + '</p>\
+								<div class="exeQuextIcons  exeQuextIcons-OneRound" id="roscoNumberRounds-' + instance + '"></div>\
+								<strong><span class="sr-av"  id="roscoNumberRoundsSpan-' + instance + '">' + msgs.msgOneRound + ':</span></strong>\
+						    	<a href="#" class="rosco-LinkTypeGame" id="roscoLinkTypeGame-' + instance + '" title="' + msgs.msgHideRoulette + '">\
+									<strong><span class="sr-av">' + msgs.msgHideRoulette + ':</span></strong>\
+									<div class="exeQuextIcons exeQuextIcons-RoscoRows" id="roscoTypeGame-' + instance + '"></div>\
+								</a>\
 							</div>\
-							<strong><span class="sr-av"  id="roscoNumberRoundsSpan-' + instance + '">' + msgs.msgOneRound + ':</span></strong>\
-							<div class="exeQuextIcons  exeQuextIcons-OneRound" id="roscoNumberRounds-' + instance + '"></div>\
-						    <a href="#" class="rosco-LinkTypeGame" id="roscoLinkTypeGame-' + instance + '" title="' + msgs.msgHideRoulette + '">\
-								<strong><span class="sr-av">' + msgs.msgHideRoulette + ':</span></strong>\
-								<div class="exeQuextIcons exeQuextIcons-RoscoRows" id="roscoTypeGame-' + instance + '"></div>\
-							</a>\
-						</div>\
 					</div>\
 					<div class="rosco-Letters" id="roscoLetters-' + instance + '">' + aLetters + '</div>\
 					<div class="rosco-ShowClue" id="roscoShowClue-' + instance + '">\
@@ -376,7 +370,7 @@ var $eXeRosco = {
 		$('#roscoBtnPass-' + instance).prop('disabled', true);
 		$('#roscoEdAnswer-' + instance).prop('disabled', true);
 		$('#roscoHomeImage-' + instance).hide();
-	  $('#roscoCursor-' + instance).hide();
+		$('#roscoCursor-' + instance).hide();
 		if (mOptions.itinerary.showCodeAccess) {
 			$('#roscoAnswerButtons-' + instance).hide();
 			$('#roscoCodeAccess-' + instance).show();
@@ -507,7 +501,7 @@ var $eXeRosco = {
 			}
 		});
 		$('#roscoTypeGame-' + instance).show();
-		if (window.innerWidth < 800) {
+		if ($('#roscoMainContainer-' + instance).width() < 670) {
 			$('#roscoTypeGame-' + instance).addClass('exeQuextIcons-RoscoRows');
 			$('#roscoTypeGame-' + instance).removeClass('exeQuextIcons-RoscoCanvas');
 			$('#roscoLetters-' + instance).show();
@@ -515,6 +509,19 @@ var $eXeRosco = {
 			$('#roscoGame-' + instance).hide();
 			$('#roscoTypeGame-' + instance).hide();
 		}
+
+		window.addEventListener('resize', function () {
+			$('#roscoTypeGame-' + instance).show();
+			if ($('#roscoMainContainer-' + instance).width() < 670) {
+				$('#roscoTypeGame-' + instance).addClass('exeQuextIcons-RoscoRows');
+				$('#roscoTypeGame-' + instance).removeClass('exeQuextIcons-RoscoCanvas');
+				$('#roscoLetters-' + instance).show();
+				$('#roscoSolution-' + instance).show();
+				$('#roscoGame-' + instance).hide();
+				$('#roscoTypeGame-' + instance).hide();
+			}
+			$eXeRosco.refreshImageActive(instance);
+		});
 	},
 
 	startGame: function (instance) {
@@ -798,6 +805,19 @@ var $eXeRosco = {
 		}
 	},
 
+	refreshImageActive: function (instance) {
+		var mOptions = $eXeRosco.options[instance],
+		 mWord = mOptions.wordsGame[mOptions.activeWord];
+	
+		 $eXeRosco.showImage('', 0, 0, '', '', instance)
+		 if (typeof mWord == "undefined") {
+				return;
+		}
+		if(mWord.url.length>3){
+			$eXeRosco.showImage(mWord.url, mWord.x, mWord.y, mWord.author, mWord.alt, instance);
+		}
+		
+	},
 	updateNumberWord: function (quextion, instance) {
 		var end = true,
 			numActiveWord = quextion,
@@ -1010,17 +1030,17 @@ var $eXeRosco = {
 
 	checkWord: function (word, answord) {
 
-		var sWord=$.trim(word).replace(/\s+/g, " ").toUpperCase().replace(/\.$/,"").replace(/\,$/,"").replace(/\;$/,""),
-				sAnsWord=$.trim(answord).replace(/\s+/g, " ").toUpperCase().replace(/\.$/,"").replace(/\,$/,"").replace(/\;$/,"");
-				sWord=$.trim(sWord);
-				sAnsWord=$.trim(sAnsWord);
+		var sWord = $.trim(word).replace(/\s+/g, " ").toUpperCase().replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, ""),
+			sAnsWord = $.trim(answord).replace(/\s+/g, " ").toUpperCase().replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, "");
+		sWord = $.trim(sWord);
+		sAnsWord = $.trim(sAnsWord);
 		if (sWord.indexOf('|') == -1) {
 			return sWord == sAnsWord;
 		}
 		var words = sWord.split('|');
 		for (var i = 0; i < words.length; i++) {
-			var mword=$.trim(words[i]).replace(/\.$/,"").replace(/\,$/,"").replace(/\;$/,"");
-			if ( mword == sAnsWord) {
+			var mword = $.trim(words[i]).replace(/\.$/, "").replace(/\,$/, "").replace(/\;$/, "");
+			if (mword == sAnsWord) {
 				return true;
 			}
 		}
