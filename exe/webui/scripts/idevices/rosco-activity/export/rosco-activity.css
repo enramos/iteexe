@@ -333,6 +333,7 @@
 
 .rosco-GetScore input[type=button]{
     font-size: 0.9em;
+    width: auto;
 }
 
 .rosco-Definition {
@@ -363,9 +364,6 @@
 
 
 
-.rosco-GetScore input[type=button] {
-    width: auto;
-}
 
 
 .rosco-LetterBlack {
@@ -745,7 +743,7 @@
         padding: 0;
         margin: 1px;
     }
-    .rosco-BottonContainer button {
+    .rosco-BottonContainer input[type=button] {
         font-size: 0.7em;
     }
     .rosco-HistGGame, .rosco-LostGGame {

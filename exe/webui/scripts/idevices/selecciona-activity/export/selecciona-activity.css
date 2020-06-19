@@ -632,8 +632,11 @@
     justify-content: flex-end;
 }
 
-.selecciona-BottonContainerDiv button {
-    font-size: 0.8em;
+
+.selecciona-GetScore input[type=button]
+{
+ font-size: 0.9;
+ width: auto;
 }
 .selecciona-GetScore {
     width: 100%;
@@ -886,6 +889,7 @@
     }
     .selecciona-instructions p {
         margin:0 auto;
+        font-size: 0.8em;
 
     }
     .selecciona-LinkMinimize, .selecciona-LinkFullScreen {
@@ -900,15 +904,12 @@
         padding: 0;
         margin: 1px;
     }
-   .selecciona-BottonContainer button {
-        font-size: 0.7em;
-    }
     .selecciona-HistGGame, .selecciona-LostGGame {
         width: 30%;
         height: 56%;
         margin-right: 5px;
     }
-    .selecciona-RepeatActivity, .selecciona-SendScore {
+    .selecciona-RepeatActivity, .selecciona-SendScore, .selecciona-GetScore input[type=button] {
         font-size: 0.9em;
     }
 
@@ -943,7 +944,7 @@
     .selecciona-LinkFullScreen {
         display: none;
     }
-    .selecciona-RepeatActivity, .selecciona-SendScore {
+    .selecciona-RepeatActivity, .selecciona-SendScore, .selecciona-GetScore input[type=button] {
         font-size: 0.8em;
     }
     .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
@@ -1004,7 +1005,7 @@
     .selecciona-ProgressBar {
         width: 221px;
     }
-    .selecciona-RepeatActivity, .selecciona-SendScore{
+    .selecciona-RepeatActivity, .selecciona-SendScore, .selecciona-GetScore input[type=button]{
         font-size: 0.8em;
     }
     .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
@@ -1028,7 +1029,7 @@
     .selecciona-LinkMinimize, .selecciona-LinkFullScreen, .exeQuextIcons-Time {
         display: none;
     }
-    .selecciona-RepeatActivity, .selecciona-SendScore {
+    .selecciona-RepeatActivity, .selecciona-SendScore, .selecciona-GetScore input[type=button] {
         font-size: 0.7em;
     }
 
@@ -1053,7 +1054,7 @@
         width: 100%;
         margin: 3px auto;
     }
-    .selecciona-RepeatActivity, .selecciona-SendScore {
+    .selecciona-RepeatActivity, .selecciona-SendScore, .selecciona-GetScore input[type=button] {
         font-size: 0.6em;
     }
 }

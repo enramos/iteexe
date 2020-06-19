@@ -579,11 +579,6 @@
     justify-content: flex-end;
     align-items: center;
 }
-
-.vquext-BottonContainer button {
-    font-size: 0.8em;
-}
-
 .vquext-GetScore {
     width: 100%;
     padding: 0;
@@ -591,6 +586,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.vquext-GetScore input[type=button]
+{
+ font-size: 0.9;
+ width: auto;
 }
 
 .vquext-GetScore p {
@@ -799,15 +799,12 @@
         padding: 0;
         margin: 1px;
     }
-    .vquext-BottonContainer button {
-        font-size: 0.7em;
-    }
     .vquext-HistGGame, .vquext-LostGGame {
         width: 30%;
         height: 56%;
         margin-right: 5px;
     }
-    .vquext-RepeatActivity, .vquext-SendScore {
+    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
         font-size: 0.9em;
     }
     .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
@@ -836,7 +833,7 @@
     .vquext-LinkFullScreen {
         display: none;
     }
-    .vquext-RepeatActivity, .vquext-SendScore {
+    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
         font-size: 0.8em;
     }
     
@@ -878,7 +875,7 @@
     .vquext-ProgressBar {
         width: 221px;
     }
-    .vquext-RepeatActivity, .vquext-SendScore{
+    .vquext-RepeatActivity, .vquext-,.vquext-GetScore input[type=button]{
         font-size: 0.8em;
     }
     .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
@@ -902,7 +899,7 @@
     .vquext-LinkMinimize, .vquext-LinkFullScreen, .exeQuextIcons-Time {
         display: none;
     }
-    .vquext-RepeatActivity, .vquext-SendScore {
+    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
         font-size: 0.7em;
     }
 }
@@ -926,7 +923,7 @@
         width: 100%;
         margin: 3px auto;
     }
-    .vquext-RepeatActivity, .vquext-SendScore {
+    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
         font-size: 0.6em;
     }
 }

@@ -12,9 +12,6 @@
        align-items: center;
    }
 
-   .adivina-BottonContainer button {
-       font-size: 0.8em;
-   }
 
    .adivina-LinkMaximize {
        font: normal 1.2rem arial, sans-serif;
@@ -42,6 +39,11 @@
        user-select: none;
        cursor: pointer;
    }
+
+   .adivina-GetScore input[type=button]{
+    font-size: 0.9em;
+    width: auto;
+    }
 
    .adivina-Prhase {
        width: 95%;
@@ -313,33 +315,7 @@
        font-weight: bold;
    }
 
-   .adivina-GameContainer input[type=button], .adivina-GetScore input[type=button] {
-       width: 100px;
-       height: 30px;
-       background: white;
-       border: 2px solid #5877c6;
-       border-radius: 6px;
-       font-size: 0.8em;
-       -webkit-transition-duration: 0.4s;
-       transition-duration: 0.4s;
-       color: #1c1b1b;
-       cursor: pointer;
-       text-decoration: none;
-       font-weight: bold;
-       z-index: 40000;
-   }
-
-   .adivina-GetScore input[type=button] {
-       min-width: 90px;
-       width: 100%;
-   }
-
-   .adivina-GameContainer input[type=button]:hover, .adivina-GetScore input[type=button]:hover {
-       background-color: #5877c6;
-       color: white;
-       border: 1px solid #000;
-   }
-
+ 
    .adivina-GetScore {
        width: 100%;
        padding: 0;
@@ -843,15 +819,12 @@
            padding: 0;
            margin: 1px;
        }
-       .adivina-BottonContainer button {
-           font-size: 0.7em;
-       }
-       .adivina-HistGGame, .adivina-LostGGame {
+         .adivina-HistGGame, .adivina-LostGGame {
            width: 30%;
            height: 56%;
            margin-right: 5px;
        }
-       .adivina-RepeatActivity, .adivina-SendScore {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button] {
            font-size: 0.9em;
        }
        .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
@@ -898,7 +871,7 @@
        .adivina-LinkFullScreen {
            display: none;
        }
-       .adivina-RepeatActivity, .adivina-SendScore {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button]  {
            font-size: 0.8em;
        }
        .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
@@ -909,7 +882,7 @@
            font-size: 0.8em;
        }
        .adivina-Letter {
-           font-size: 0.0em;
+           font-size: 0.8em;
            font-weight: 600;
            width: 14px;
            height: 20px;
@@ -961,7 +934,7 @@
        .adivina-ProgressBar {
            width: 221px;
        }
-       .adivina-RepeatActivity, .adivina-SendScore {
+       .adivina-RepeatActivity, .adivina-,.adivina-GetScore input[type=button]  {
            font-size: 0.8em;
        }
        .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
@@ -981,7 +954,7 @@
        .adivina-LinkMinimize, .adivina-LinkFullScreen, .exeQuextIcons-Time {
            display: none;
        }
-       .adivina-RepeatActivity, .adivina-SendScore {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button]  {
            font-size: 0.7em;
        }
        .adivina-CodeAccessDiv label {
@@ -1001,7 +974,7 @@
            width: 100%;
            margin: 3px auto;
        }
-       .adivina-RepeatActivity, .adivina-SendScore {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button]  {
            font-size: 0.6em;
        }
    }

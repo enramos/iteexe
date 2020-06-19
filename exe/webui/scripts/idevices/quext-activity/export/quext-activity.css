@@ -7,12 +7,7 @@
     border-bottom: none;
 }
 
-.quext-LinkMaximize, .quext-LinkFullScreen, .quext-LinkVideoIntroShow {
-    width: 26px;
-    height: 26px;
-    margin-right: 5px;
-}
-
+-LinkFullScreen
 .quext-GameContainer:-webkit-full-screen {
     width: 100%;
     height: 100vh;
@@ -624,9 +619,7 @@
     justify-content: flex-end;
     align-items: center;
 }
-.quext-BottonContainer button {
-    font-size: 0.8em;
-}
+
 .quext-GetScore {
     width: 100%;
     padding: 0;
@@ -824,6 +817,7 @@
     }
     .quext-instructions p {
         margin:0 auto;
+        font-size: 0.8em;
 
     }
     .quext-LinkMinimize, .quext-LinkFullScreen {
@@ -838,15 +832,13 @@
         padding: 0;
         margin: 1px;
     }
-   .quext-BottonContainer button {
-        font-size: 0.7em;
-    }
+
     .quext-HistGGame, .quext-LostGGame {
         width: 30%;
         height: 56%;
         margin-right: 5px;
     }
-    .quext-RepeatActivity, .quext-SendScore {
+    .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.9em;
     }
 
@@ -881,7 +873,7 @@
     .quext-LinkFullScreen {
         display: none;
     }
-    .quext-RepeatActivity, .quext-SendScore {
+    .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.8em;
     }
     .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
@@ -927,7 +919,7 @@
     .quext-ProgressBar {
         width: 221px;
     }
-    .quext-RepeatActivity, .quext-SendScore{
+    .quext-RepeatActivity, .quext-SendScore,  .quext-GetScore input[type=button]{
         font-size: 0.8em;
     }
     .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
@@ -951,7 +943,7 @@
     .quext-LinkMinimize, .quext-LinkFullScreen, .exeQuextIcons-Time {
         display: none;
     }
-    .quext-RepeatActivity, .quext-SendScore {
+    .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.7em;
     }
 
@@ -976,7 +968,7 @@
         width: 100%;
         margin: 3px auto;
     }
-    .quext-RepeatActivity, .quext-SendScore {
+    .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.6em;
     }
 }
