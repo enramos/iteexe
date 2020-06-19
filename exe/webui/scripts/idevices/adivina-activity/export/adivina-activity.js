@@ -201,21 +201,15 @@ var $eXeAdivina = {
                         <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
                         <div class="exeQuextIcons exeQuextIcons-Minimize"></div>\
                     </a>\
-                    <div class="exeQuext-ResultGame">\
-						<strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
-						<div class="exeQuextIcons exeQuextIcons-Hit"></div>\
-					    <p  id="adivinaPHits-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame">\
-                        <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-Error"></div>\
-                        <p id="adivinaPErrors-' + instance + '">0</p>\
-                    </div>\
-                    <div class="exeQuext-ResultGame exeQuext-ResultGameScore">\
-                        <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
-                        <div class="exeQuextIcons  exeQuextIcons-Score"></div>\
-                        <p id="adivinaPScore-' + instance + '">0</p>\
-                    </div>\
+                    <strong><span class="sr-av">' + msgs.msgHits + ':</span></strong>\
+					<div class="exeQuextIcons exeQuextIcons-Hit"></div>\
+                    <p  id="adivinaPHits-' + instance + '">0</p>\
+                    <strong><span class="sr-av">' + msgs.msgErrors + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Error"></div>\
+                    <p id="adivinaPErrors-' + instance + '">0</p>\
+                    <strong><span class="sr-av">' + msgs.msgScore + ':</span></strong>\
+                    <div class="exeQuextIcons  exeQuextIcons-Score"></div>\
+                    <p id="adivinaPScore-' + instance + '">0</p>\
                 </div>\
                 <div class="adivina-LifesGame" id="adivinaLifesGame-' + instance + '">\
                     <strong><span class="sr-av">' + msgs.msgLive + ':</span></strong>\
@@ -235,20 +229,16 @@ var $eXeAdivina = {
                     <p id="adivinaPLifes-' + instance + '">0</p>\
                 </div>\
                 <div class="adivina-TimeNumber">\
-					<div  class="adivina-TimeQuestion">\
-						<strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
-						<div class="exeQuextIcons  exeQuextIcons-Time"></div>\
-						<p  id="adivinaPTime-' + instance + '">00:00</p>\
-                    </div>\
-                    <div  class="exeQuext-ResultGame">\
-						<strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
-						<div class="exeQuextIcons  exeQuextIcons-Number"></div>\
-						<p  id="adivinaPNumber-' + instance + '">0</p>\
-					</div>\
-                        <a href="#" class="adivina-LinkFullScreen" id="adivinaLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
-						    <strong><span class="sr-av">' + msgs.msgFullScreen + ':</span></strong>\
-							<div class="exeQuextIcons exeQuextIcons-FullScreen" id="adivinaFullScreen-' + instance + '"></div>\
-						</a>\
+                    <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
+					<div class="exeQuextIcons  exeQuextIcons-Time"></div>\
+                    <p  id="adivinaPTime-' + instance + '" class="adivina-PTime">00:00</p>\
+                    <strong><span class="sr-av">' + msgs.msgNumQuestions + ':</span></strong>\
+					<div class="exeQuextIcons  exeQuextIcons-Number"></div>\
+                    <p  id="adivinaPNumber-' + instance + '">0</p>\
+                    <a href="#" class="adivina-LinkFullScreen" id="adivinaLinkFullScreen-' + instance + '" title="' + msgs.msgFullScreen + '">\
+						<strong><span class="sr-av">' + msgs.msgFullScreen + ':</span></strong>\
+						<div class="exeQuextIcons exeQuextIcons-FullScreen" id="adivinaFullScreen-' + instance + '"></div>\
+					</a>\
 				</div>\
             </div>\
             <div class="adivina-ShowClue" id="adivinaShowClue-' + instance + '">\
@@ -557,7 +547,22 @@ var $eXeAdivina = {
         });
         $('#adivinaImage-' + instance).hide();
         $('#adivinaTextClueGGame-' + instance).hide();
+        window.addEventListener('resize', function () {
+			$eXeAdivina.refreshImageActive(instance);
+		});
 
+    },
+    refreshImageActive: function (instance) {
+		var mOptions = $eXeAdivina.options[instance],
+		 mWord = mOptions.wordsGame[mOptions.activeWord];
+	
+		 $eXeAdivina.showImage('', 0, 0, '', '', instance)
+		 if (typeof mWord == "undefined") {
+				return;
+		}
+		if(mWord.url.length>3){
+			$eXeAdivina.showImage(mWord.url, mWord.x, mWord.y, mWord.author, mWord.alt, instance);
+		}
     },
     enterCodeAccess: function (instance) {
         var mOptions = $eXeAdivina.options[instance];
@@ -766,17 +771,7 @@ var $eXeAdivina = {
          }
 
     },
-    refreshImageActive: function (instance) {
-        var mOptions = $eXeAdivina.options[instance];
-        if (mOptions.gameStarted) {
-            var q = mOptions.wordsGame[mOptions.activeQuestion];
-            $eXeAdivina.showImage(q.url, q.x, q.y, q.author, q.alt, instance);
-        } else {
-            $eXeAdivina.showImage("", 0, 0, '', '', instance);
-        }
-
-
-    },
+  
     showImage: function (url, x, y, author, alt, instance) {
         var $cursor = $('#adivinaCursor-' + instance),
             $noImage = $('#adivinaNoImage-' + instance),
@@ -985,17 +980,12 @@ var $eXeAdivina = {
     showMessage: function (type, message, instance) {
         var colors = ['#555555', $eXeAdivina.borderColors.red, $eXeAdivina.borderColors.green, $eXeAdivina.borderColors.blue, $eXeAdivina.borderColors.yellow],
             weight = type == 0 ? 'normal' : 'bold',
-            fontsize = type == 0 ? '1rem' : '1rem',
             color = colors[type];
-            if($('#adivinaGameContainer-' + instance).width()<540){
-                fontsize='0.8rem'
-            }
         $('#adivinaPAuthor-' + instance).text(message);
         $('#adivinaPAuthor-' + instance).css({
             'color': color,
             'font-weight': weight,
-            'font-size': fontsize,
-            'margin': 0
+             'margin': 0
         });
     },
     drawImage: function (image, mData) {
