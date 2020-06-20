@@ -27,12 +27,8 @@ var $eXeDesafio = {
     widthImage: 0,
     heightImage: 0,
     options: {},
-    userName: '',
-    scorm: '',
-    previousScore: '',
-    initialScore: '',
     msgs: '',
-    fontSize: '1rem',
+    fontSize: '1em',
     isInExe: false,
     init: function () {
         this.activities = $('.desafio-IDevice');
@@ -71,7 +67,6 @@ var $eXeDesafio = {
                 $('#desafioGameContainer-' + i).show();
             }
             $('#desafioMessageMaximize-' + i).text(msg);
-            
             $('#desafioDescription-' + i).append($(".desafio-EDescription", this));
             $('.desafio-ChallengeDescription', this).each(function () {
                 $('#desafioFeedBacks-' + i).append($(this));
@@ -89,7 +84,7 @@ var $eXeDesafio = {
             msgs = $eXeDesafio.options[instance].msgs;
         html += '<div class="desafio-MainContainer">\
                 <div class="desafio-GameMinimize" id="desafioGameMinimize-' + instance + '">\
-                    <a href="#" class="desafio-LinkMaximize" id="desafioLinkMaximize-' + instance + '" title="' + msgs.msgMaximize + '"><img src="' + path + 'desafioIcon.png" class="desafio-Icons desafio-IconMinimize" alt="Mostrar actividad">\
+                    <a href="#" class="desafio-LinkMaximize" id="desafioLinkMaximize-' + instance + '" title="' + msgs.msgMaximize + '"><img src="' + path + 'desafioicon.png" class="desafio-Icons desafio-IconMinimize" alt="Mostrar actividad">\
                         <div class="desafio-MessageMaximize" id="desafioMessageMaximize-' + instance + '"></div>\
                     </a>\
                 </div>\
@@ -151,16 +146,11 @@ var $eXeDesafio = {
                                 </a>\
                         </div>\
                     </div>\
-                    <div class="desafio-ShowClue" id="desafioShowClue-' + instance + '">\
-                        <div class="sr-av">' + msgs.msgClue + ':</div>\
-                        <p class="desafio-PShowClue" id="desafioPShowClue-' + instance + '"></p>\
-                    </div>\
                     <div class="desafio-Multimedia" id="desafioMultimedia-' + instance + '">\
                         <img class="desafio-Cursor" id="desafioCursor-' + instance + '" src="' + path + 'desafioCursor.gif" alt="Cursor" />\
                         <img  src="" class="desafio-Images" id="desafioImagen-' + instance + '" alt="' + msgs.msgNoImage + '" />\
                         <img src="' + path + 'desafioHome.png" class="desafio-Images" id="desafioCover-' + instance + '" alt="' + msgs.msImage + '" />\
                         <div class="desafio-GameOver" id="desafioGamerOver-' + instance + '">\
-                            <div class="desafio-TextClueGGame" id="desafioTextClueGGame-' + instance + '"></div>\
                             <div class="desafio-SolvedChallenges">\
                                     <p id="desafioOverScore-' + instance + '">Score: 0</p>\
                                 </div>\
@@ -183,13 +173,6 @@ var $eXeDesafio = {
                             <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
                             <div class="exeQuextIcons-Submit"></div>\
                         </a>\
-                    </div>\
-                    <div class="desafio-CodeAccessDiv" id="desafioCodeAccessDiv-' + instance + '">\
-                        <div class="desafio-MessageCodeAccessE" id="desafioMesajeAccesCodeE-' + instance + '"></div>\
-                        <div class="desafio-DataCodeAccessE">\
-                            <label>' + msgs.msgCodeAccess + ':</label><input type="text" class="desafio-CodeAccessE"  id="desafioCodeAccessE-' + instance + '">\
-                            <input type="button" class="desafio-CodeAccessButton" id="desafioCodeAccessButton-' + instance + '"   value="' + msgs.msgSubmit + '" />\
-                        </div>\
                     </div>\
                     <div class="desafio-StartGameDiv" id="desafioStartGameDiv-' + instance + '">\
                         <a href="#" class="desafio-StartGame"  id="desafioStartGame-' + instance + '" title="' + msgs.Play + '">' + msgs.msgStartGame + '</a>\
@@ -283,9 +266,9 @@ var $eXeDesafio = {
     },
     changeImageButtonState: function (instance, type) {
         var mOptions = $eXeDesafio.options[instance],
-            imgDesafio = "desafioIcon0.png";
+            imgDesafio = "desafioicon0.png";
         if (type == 0) {
-            imgDesafio = "desafioIcon1.png";
+            imgDesafio = "desafioicon1.png";
         }
         imgDesafio = "url(" + $eXeDesafio.idevicePath + imgDesafio + ") no-repeat";
         $('#desafioDesafio-' + instance).find(".desafio-GameDesafio").css({
@@ -296,10 +279,10 @@ var $eXeDesafio = {
         var l=34,
             t=34,
             file="exeRetosIcons.png";
-        if($('#desafioGameContainer-'+instance).width()<450){
-            l=17;
-            t=17;
-            file="exeRetosIcons17.png";
+        if($('#desafioGameContainer-'+instance).width()<650){
+            l=24;
+            t=24;
+            file="exeRetosIcons24.png";
         }
 
         $('#desafioDesafio-' + instance).find(".desafio-GameDesafio").css({
@@ -358,6 +341,9 @@ var $eXeDesafio = {
                $eXeDesafio.saveDataStorage(instance);
             }
         });
+        window.addEventListener('resize', function () {
+            $eXeDesafio.changeImageButtonState(instance, mOptions.typeQuestion);
+        });
         $("#desafioSolutionDiv-" + instance).hide();
         var $buttonChalleng = $('#desafioGameChallenges-' + instance).find('.desafio-LinkChallenge')
         $buttonChalleng.each(function (i) {
@@ -379,7 +365,6 @@ var $eXeDesafio = {
         });
 
         $('#desafioGamerOver-' + instance).hide();
-        $('#desafioCodeAccessDiv-' + instance).hide();
         $('#desafioVideo-' + instance).hide();
         $('#desafioImagen-' + instance).hide();
         $('#desafioCursor-' + instance).hide();
@@ -439,7 +424,6 @@ var $eXeDesafio = {
         $('#desafioSendScore-' + instance).hide();
         document.title = mOptions.title;
         $('meta[name=author]').attr('content', mOptions.author);
-        $('#desafioShowClue-' + instance).hide();
         mOptions.gameOver = false;
         mOptions.counter = parseInt(mOptions.desafioTime) * 60;
         mOptions.activeChallenge = 0;
@@ -451,6 +435,7 @@ var $eXeDesafio = {
                 $eXeDesafio.reloadGame(instance, dataDesafio);
              }
          }
+         $eXeDesafio.changeImageButtonState(instance, mOptions.typeQuestion);
 
     },
 
@@ -586,33 +571,6 @@ var $eXeDesafio = {
         var data = $eXeDesafio.isJsonString(localStorage.getItem('dataDesafio-' + instance));
         return data;
     },
-    maximizeMultimedia: function (maximize, instance) {
-        var css = {
-            "height": "315px",
-            "width": "560px",
-            "margin": "auto"
-        };
-        $eXeDesafio.fontSize = "1rem";
-        if($('#desafioGameContainer-' + instance).width()<450){
-            $eXeDesafio.fontSize = "0.6rem";
-        }
-        if (maximize) {
-            var h = window.innerHeight - 365 > 750 ? 750 : window.innerHeight - 365;
-            h = window.innerHeight <= 768 ? window.innerHeight - 345 : h;
-            var p = (h / 315),
-                w = p * 560;
-            css = {
-                "height": h + 'px',
-                "width": w + 'px',
-                "margin": "auto"
-            };
-            p = p > 1.5 ? 1.5 : p;
-            hQ = 45 * p;
-            $eXeDesafio.fontSize = "1.2rem";
-        }
-        $('#desafioMultimedia-' + instance).css(css);
-        $eXeDesafio.refreshImageActive(instance);
-    },
     refreshImageActive: function (instance) {
         var mOptions = $eXeDesafio.options[instance],
             mQuextion = mOptions.challengesGame[mOptions.activeChallenge];
@@ -691,17 +649,13 @@ var $eXeDesafio = {
             msgs = mOptions.msgs,
             $desafioHistGGame = $('#desafioHistGGame-' + instance),
             $desafioLostGGame = $('#desafioLostGGame-' + instance),
-            $desafioClueGGame = $('#desafioClueGGame-' + instance),
             $desafioOverPoint = $('#desafioOverScore-' + instance),
-            $desafioTextClueGGame = $('#desafioTextClueGGame-' + instance),
             $desafioGamerOver = $('#desafioGamerOver-' + instance),
             message = "",
             mtype = 2;
         $desafioHistGGame.hide();
         $desafioLostGGame.hide();
-        $desafioClueGGame.hide();
         $desafioOverPoint.show();
-        $desafioTextClueGGame.hide();
         switch (parseInt(type)) {
             case 0:
                 message = $eXeDesafio.getRetroFeedMessages(true, instance) + ' ' +mOptions.msgs.msgDesafioSolved;
@@ -715,13 +669,10 @@ var $eXeDesafio = {
             case 2:
                 message = msgs.msgInformationLooking
                 $desafioOverPoint.hide();
-                $desafioClueGGame.show();
-                $desafioTextClueGGame.show();
                 break;
             default:
                 break;
         }
-        $('#desafioShowClue-' + instance).hide();
         $eXeDesafio.showMessage(mtype, message, instance);
         $desafioOverPoint.text(msgs.msgChallengesCompleted + ': ' + mOptions.solvedsChallenges.length );
         $desafioGamerOver.show();
@@ -762,7 +713,7 @@ var $eXeDesafio = {
         if (mOptions.gameStarted) {
             return;
         };
-        var imgDesafio = "desafioIcon0.png";
+        var imgDesafio = "desafioicon0.png";
         imgDesafio = "url(" + $eXeDesafio.idevicePath + imgDesafio + ") no-repeat";
         $('desafioDesafio-' + instance).css({
             "background": imgDesafio,
@@ -770,9 +721,6 @@ var $eXeDesafio = {
         });
         $('#desafioDescription-' + instance).show();
         $('#desafioTitle-' + instance).show();
-        mOptions.obtainedClue = false;
-        $('#desafioShowClue-' + instance).hide();
-        $('#desafioPShowClue-' + instance).text("");
         $('#desafioMultimedia-' + instance).hide();
         $('#desafioStartGameDiv-' + instance).hide();
         mOptions.gameActived = false;
@@ -848,7 +796,6 @@ var $eXeDesafio = {
             challengeGame = mOptions.challengesGame[mOptions.activeChallenge],
             active = mOptions.activeChallenge,
             answord = $('#desafioSolution-' + instance).val().toUpperCase(),
-            solution = "",
             message = "",
             typeMessage = 0;
         answord = answord.replace(/\s+/g, " ").trim();
