@@ -7,10 +7,6 @@
     border-bottom: none;
 }
 
-.vquext-GameMinimize a:link, .vquext-GameMinimize a:link, .vquext-GameMinimize a:visited, .vquext-GameMinimize a:focus {
-    color: #b3092f;
-}
-
 .vquext-GameContainer:-webkit-full-screen {
     width: 100%;
     height: 100vh;
@@ -33,6 +29,28 @@
     width: 100%;
     height: 100vh;
     background-color: white;
+}
+
+.vquext-LinkMaximize {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.vquext-IconMinimize:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.vquext-GameMinimize {
+    width: auto;
+    margin: 5px auto;
+    display: none;
 }
 
 .exeQuextIcons-Reload, .exeQuextIcons-Preview, .exeQuextIcons-PauseVideo, .exeQuextIcons-PlayVideo, .exeQuextIcons-FullScreenExit, .exeQuextIcons-FullScreen, .exeQuextIcons-Minimize {
@@ -61,12 +79,6 @@
     clip: rect(0 0 0 0);
     clip: rect(0, 0, 0, 0);
     height: 0
-}
-
-.vquext-GameMinimize {
-    width: 350px;
-    margin: 5px auto;
-    display: none;
 }
 
 .vquext-GameContainer {
@@ -579,6 +591,7 @@
     justify-content: flex-end;
     align-items: center;
 }
+
 .vquext-GetScore {
     width: 100%;
     padding: 0;
@@ -587,10 +600,10 @@
     justify-content: center;
     align-items: center;
 }
-.vquext-GetScore input[type=button]
-{
- font-size: 0.9;
- width: auto;
+
+.vquext-GetScore input[type=button] {
+    font-size: 0.9;
+    width: auto;
 }
 
 .vquext-GetScore p {
@@ -607,6 +620,12 @@
     -webkit-animation-duration: 1s;
     -webkit-animation-timing-function: linear;
     -webkit-animation-iteration-count: 5;
+}
+.vquext-IconMinimize {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
 @-moz-keyframes vquext-parpadeo {
@@ -676,6 +695,10 @@
         text-align: left;
         margin-left: 3px;
     }
+    .vquext-IconMinimize {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width:650px) {
@@ -698,25 +721,22 @@
     .vquext-GameContainer {
         font-size: 0.9rem;
     }
-    .vquext-GameContainer input[type="text"]
-    {
+    .vquext-GameContainer input[type="text"] {
         padding: 3px 2px;
         display: inline-block;
         box-sizing: border-box;
         line-height: 18px;
         font-size: 0.9em;
         background: #fdfdfd;
-        border: 1px solid  #828282;
+        border: 1px solid #828282;
         border-radius: 4px;
-
     }
-    .vquext-GameContainer input[type="text"]:active,  .vquext-GameContainer input[type="text"]:focus
-    {
+    .vquext-GameContainer input[type="text"]:active, .vquext-GameContainer input[type="text"]:focus {
         background: #fdfdfd;
-        border: 1px solid  #398ee7;
+        border: 1px solid #398ee7;
         border-radius: 4px;
     }
-    .exeQuextIcons-Submit{
+    .exeQuextIcons-Submit {
         height: 20px;
         width: 20px;
     }
@@ -804,12 +824,16 @@
         height: 56%;
         margin-right: 5px;
     }
-    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
+    .vquext-RepeatActivity, .vquext-SendScore, .vquext-GetScore input[type=button] {
         font-size: 0.9em;
     }
-    .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
+    .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
         height: 20px;
         width: 20px;
+    }
+    .vquext-IconMinimize {
+        width: 32px;
+        height: 32px;
     }
 }
 
@@ -828,15 +852,14 @@
         margin: 3px auto;
     }
     .vquext-MessageCodeAccessE {
-          margin: 3px auto;
+        margin: 3px auto;
     }
     .vquext-LinkFullScreen {
         display: none;
     }
-    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
+    .vquext-RepeatActivity, .vquext-SendScore, .vquext-GetScore input[type=button] {
         font-size: 0.8em;
     }
-    
 }
 
 @media screen and (max-width:370px) {
@@ -844,7 +867,7 @@
         font-size: 0.8rem;
     }
     .vquext-GameScoreBoard p {
-        font-size:0.9em;
+        font-size: 0.9em;
     }
     .vquext-GameScoreBoard p {
         width: 12px;
@@ -875,14 +898,17 @@
     .vquext-ProgressBar {
         width: 221px;
     }
-    .vquext-RepeatActivity, .vquext-,.vquext-GetScore input[type=button]{
+    .vquext-RepeatActivity, .vquext-, .vquext-GetScore input[type=button] {
         font-size: 0.8em;
     }
-    .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
+    .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
         height: 20px;
         width: 20px;
     }
-
+    .vquext-IconMinimize {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width:300px) {
@@ -899,7 +925,7 @@
     .vquext-LinkMinimize, .vquext-LinkFullScreen, .exeQuextIcons-Time {
         display: none;
     }
-    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
+    .vquext-RepeatActivity, .vquext-SendScore, .vquext-GetScore input[type=button] {
         font-size: 0.7em;
     }
 }
@@ -923,7 +949,7 @@
         width: 100%;
         margin: 3px auto;
     }
-    .vquext-RepeatActivity, .vquext-SendScore,.vquext-GetScore input[type=button] {
+    .vquext-RepeatActivity, .vquext-SendScore, .vquext-GetScore input[type=button] {
         font-size: 0.6em;
     }
 }

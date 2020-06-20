@@ -84,12 +84,10 @@ var $eXeCandado = {
                 <div class="candado-GameContainer" id="candadoGameContainer-' + instance + '">\
                     <div class="candado-GameScoreBoard">\
                         <div class="candado-TimeNumber" id="candadoTimeNumber-' + instance + '">\
-                            <div class="candado-TimeQuestion" id="candadoTimeQuestion-' + instance + '">\
-                                <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
-                                <div class="exeQuextIcons34  exeQuextIcons34-Time"></div>\
-                                <p id="candadoPTime-' + instance + '">00:00</p>\
-                            </div>\
-                            <a href="#" class="candado-LinkMinimize" id="candadoLinkMinimize-' + instance + '" title="' + msgs.msgMinimize + '">\
+                        <strong><span class="sr-av">' + msgs.msgTime + ':</span></strong>\
+                        <div class="exeQuextIcons34  exeQuextIcons34-Time"></div>\
+                        <p id="candadoPTime-' + instance + '">00:00</p>\
+                        <a href="#" class="candado-LinkMinimize" id="candadoLinkMinimize-' + instance + '" title="' + msgs.msgMinimize + '">\
                                 <strong><span class="sr-av">' + msgs.msgMinimize + ':</span></strong>\
                                 <div class="exeQuextIcons34 exeQuextIcons34-Minimize"></div>\
                             </a>\
@@ -109,8 +107,8 @@ var $eXeCandado = {
                         </a>\
                     </div>\
                     <div class="candado-SolutionDiv" id="candadoNavigator-' + instance + '">\
-                        <input type="button" class="candado-ShowIntro" id="candadoShowIntro-' + instance + '"   value="'+msgs.msgInstructions+'" />\
-                        <input type="button" class="candado-ShowRetro" id="candadoShowRetro-' + instance + '"   value="'+msgs.msgFeedback+'" />\
+                        <input type="button" class="candado-ShowIntro feedbackbutton" id="candadoShowIntro-' + instance + '"   value="'+msgs.msgInstructions+'" />\
+                        <input type="button" class="candado-ShowRetro feedbackbutton" id="candadoShowRetro-' + instance + '"   value="'+msgs.msgFeedback+'" />\
                     </div>\
                 </div>\
             </div>'

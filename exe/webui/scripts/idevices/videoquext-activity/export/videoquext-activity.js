@@ -174,9 +174,7 @@ var $eXeVideoQuExt = {
             $('#vquextGameMinimize-' + i).hide();
             $('#vquextGameContainer-' + i).hide();
             if (mOption.showMinimize) {
-                $('#vquextGameMinimize-' + i).css({
-                    'cursor': 'pointer'
-                }).show();
+                $('#vquextGameMinimize-' + i).show();
             } else {
                 $('#vquextGameContainer-' + i).show();
             }

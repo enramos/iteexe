@@ -12,38 +12,32 @@
        align-items: center;
    }
 
-
    .adivina-LinkMaximize {
-       font: normal 1.2rem arial, sans-serif;
-       width: 300px;
-       padding: 0;
+       width: 100%;
        display: flex;
-       margin: 0 auto;
        justify-content: center;
        align-items: center;
-       text-decoration: none;
+       overflow: hidden;
    }
 
-   .adivina-MessageMaximize {
-       width: 100%;
-       text-align: left;
-       color: #b3092f;
-       font-weight: bold;
-       font-size: 1em;
-       margin: 10px auto;
-       -webkit-touch-callout: none;
-       -webkit-user-select: none;
-       -khtml-user-select: none;
-       -moz-user-select: none;
-       -ms-user-select: none;
-       user-select: none;
-       cursor: pointer;
+   .adivina-GameMinimize {
+       width: auto;
+       margin: 5px auto;
+       display: none;
    }
 
-   .adivina-GetScore input[type=button]{
-    font-size: 0.9em;
-    width: auto;
-    }
+   .adivina-IconMinimize:hover {
+       -moz-transform: scale(1.1);
+       -webkit-transform: scale(1.1);
+       -o-transform: scale(1.1);
+       -ms-transform: scale(1.1);
+       transform: scale(1.1);
+   }
+
+   .adivina-GetScore input[type=button] {
+       font-size: 0.9em;
+       width: auto;
+   }
 
    .adivina-Prhase {
        width: 95%;
@@ -197,11 +191,6 @@
        margin-right: 5px;
    }
 
-   .adivina-IconMinimize {
-       width: 32px;
-       height: 32px;
-   }
-
    .adivina-AutorLicence {
        width: 100%;
        margin-bottom: 10px;
@@ -315,7 +304,6 @@
        font-weight: bold;
    }
 
- 
    .adivina-GetScore {
        width: 100%;
        padding: 0;
@@ -680,6 +668,13 @@
        }
    }
 
+   .adivina-IconMinimize {
+       width: 32px;
+       height: 32px;
+       margin-right: 5px;
+       cursor: pointer;
+   }
+
    @media screen and (max-width: 800px) {
        .adivina-Multimedia {
            width: 470px;
@@ -707,6 +702,12 @@
            width: 15px;
            text-align: left;
            margin-left: 3px;
+       }
+       .adivina-IconMinimize {
+           width: 32px;
+           height: 32px;
+           margin-right: 5px;
+           cursor: pointer;
        }
    }
 
@@ -819,7 +820,7 @@
            padding: 0;
            margin: 1px;
        }
-         .adivina-HistGGame, .adivina-LostGGame {
+       .adivina-HistGGame, .adivina-LostGGame {
            width: 30%;
            height: 56%;
            margin-right: 5px;
@@ -871,7 +872,7 @@
        .adivina-LinkFullScreen {
            display: none;
        }
-       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button]  {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button] {
            font-size: 0.8em;
        }
        .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
@@ -934,7 +935,7 @@
        .adivina-ProgressBar {
            width: 221px;
        }
-       .adivina-RepeatActivity, .adivina-,.adivina-GetScore input[type=button]  {
+       .adivina-RepeatActivity, .adivina-, .adivina-GetScore input[type=button] {
            font-size: 0.8em;
        }
        .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
@@ -954,7 +955,7 @@
        .adivina-LinkMinimize, .adivina-LinkFullScreen, .exeQuextIcons-Time {
            display: none;
        }
-       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button]  {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button] {
            font-size: 0.7em;
        }
        .adivina-CodeAccessDiv label {
@@ -974,7 +975,7 @@
            width: 100%;
            margin: 3px auto;
        }
-       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button]  {
+       .adivina-RepeatActivity, .adivina-SendScore, .adivina-GetScore input[type=button] {
            font-size: 0.6em;
        }
    }

@@ -1,4 +1,4 @@
-.desafio-LinkMaximize, .desafio-LinkFullScreen {
+ .desafio-LinkFullScreen {
     width: 34px;
     height: 34px;
     margin-right: 5px;
@@ -169,21 +169,39 @@
     border-bottom: none;
 }
 
+
+.desafio-LinkMaximize {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.desafio-GameMinimize {
+    width: auto;
+    margin: 5px auto;
+    display: none;
+}
+
+
 .desafio-IconMinimize {
     width: 32px;
     height: 32px;
+    margin-right: 5px;
+    cursor: pointer;
 }
 
-.desafio-LinkMaximize {
-    font-size: 1em;
-    width: 350px;
-    padding: 0;
-    display: flex;
-    margin: 15px auto;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
+.desafio-IconMinimize:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
+
+
+
+
 
 .exeQuextIcons34 {
     margin-right: 5px;

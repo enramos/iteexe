@@ -1,13 +1,5 @@
 /* Rosco  export */
 
-#roscoIdeviceForm label {
-    display: inline;
-    font-weight: bold;
-    font-size: 1em;
-    padding: 0;
-    margin: 0;
-}
-
 .rosco-instructions {
     margin: 2px auto;
 }
@@ -87,53 +79,31 @@
 }
 
 .rosco-LinkMaximize {
-    font: normal 14pt arial, sans-serif;
-    width: 300px;
-    padding: 0;
+    width: 100%;
     display: flex;
-    margin: 0 auto;
     justify-content: center;
     align-items: center;
-    text-decoration: none;
+}
+
+.rosco-GameMinimize {
+    width: auto;
+    margin: 5px auto;
+    display: none;
 }
 
 .rosco-Icon {
     width: 32px;
     height: 32px;
-    margin-right: 10px;
+    margin-right: 5px;
     cursor: pointer;
 }
 
-.rosco-GameMinimize {
-    margin: 0 auto;
-    font: normal 11pt arial, sans-serif;
-    width: 100%;
-    border-radius: 10px;
-    margin: 0 auto;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.rosco-MessageMaximize {
-    width: 100%;
-    text-align: left;
-    color: #b3092f;
-    font-weight: bold;
-    font-size: 13pt;
-    margin: 10px auto;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    cursor: pointer;
-}
-
-.rosco-MessageMaximize:hover {
-    color: #5877c6;
+.rosco-UpArrow:hover, .rosco-TypeGame:hover, .rosco-Icon:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .rosco-GameContainer {
@@ -149,11 +119,6 @@
 
 .rosco-GameContainer a:link, .rosco-GameContainer a:link, .rosco-GameContainer a:visited, .rosco-GameContainer a:focus {
     text-decoration: none;
-}
-
-.rosco-GameContainer * {
-    margin: 0;
-    padding: 0;
 }
 
 .rosco-Canvas {
@@ -184,14 +149,14 @@
 }
 
 .rosco-GameScores {
-    width: 140px;
+    width: 155px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
 .rosco-TimeTurn {
-    width: 140px;
+    width: 160px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -250,7 +215,7 @@
     font-size: 1.1em;
     font-weight: bold;
     border-radius: 50%;
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     margin: 3px;
 }
 
@@ -358,6 +323,7 @@
     justify-content: center;
     height: 24px;
     margin: 15px auto;
+    width: 100%;
 }
 
 .rosco-LetterBlack {
@@ -390,7 +356,8 @@
     text-align: center;
     vertical-align: middle;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    width: 210px;
+    max-width: 210px;
+    width: 70%;
 }
 
 .rosco-AccesCodeEdit {
@@ -419,20 +386,20 @@
     font-size: 1em;
 }
 
-.exeQuextIcons {
+.rosco-Main .exeQuextIcons {
     width: 26px;
     height: 26px;
     margin-right: 5px;
 }
 
-.exeQuextIcons-Submit {
+.rosco-Main .exeQuextIcons-Submit {
     background: url(exequextreply.png) no-repeat;
     background-size: cover;
     height: 30px;
     width: 30px;
 }
 
-.exeQuextIcons-MoveOne {
+.rosco-Main .exeQuextIcons-MoveOne {
     background: url(exequextmoveon.png) no-repeat;
     background-size: cover;
     height: 30px;
@@ -538,7 +505,7 @@
     margin-left: 5px;
 }
 
-.exeQuextIcons-Time {
+.rosco-Main .exeQuextIcons-Time {
     margin: 0;
     margin-right: 6px;
 }
@@ -604,6 +571,7 @@
     }
     .rosco-GameContainer {
         width: 100%;
+        overflow: hidden;
     }
     .rosco-canvas {
         display: none;
@@ -615,7 +583,7 @@
         width: 470px;
         height: 250px;
     }
-    .exeQuextIcons, .rosco-LinkArrowMinimize {
+    .rosco-Main .exeQuextIcons, .rosco-LinkArrowMinimize {
         width: 24px;
         height: 24px;
         margin-right: 3px;
@@ -623,6 +591,16 @@
     .rosco-GameScoreBoard p {
         width: 13px;
         margin-right: 2px;
+    }
+    .rosco-TimeTurn>p {
+        width: 50px;
+        margin-right: 3px;
+    }
+    .rosco-GameScores {
+        width: 150px;
+    }
+    .rosco-TimeTurn {
+        width: 150px;
     }
 }
 
@@ -643,8 +621,18 @@
         width: 437px;
         height: 246px;
     }
-    .rosco-ProgressBar {
-        width: 437px;
+    .rosco-TimeTurn>p {
+        width: 50px;
+        margin-right: 3px;
+    }
+    .rosco-GameScores {
+        width: 150px;
+    }
+    .rosco-TimeTurn {
+        width: 150px;
+    }
+    .rosco-Letter {
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2), 0 1px 3px 0 rgba(0, 0, 0, 0.19);
     }
 }
 
@@ -693,7 +681,7 @@
         height: 20px;
         line-height: 20px;
     }
-    .exeQuextIcons, .rosco-LinkArrowMinimize {
+    .rosco-Main .exeQuextIcons, .rosco-LinkArrowMinimize {
         width: 20px;
         height: 20px;
         margin-right: 2px;
@@ -743,9 +731,10 @@
     .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button] {
         font-size: 0.9em;
     }
-}
-
-@media screen and (max-width:450px) {
+    .rosco-Main .exeQuextIcons-Submit, .rosco-GameContainer .exeQuextIcons-MoveOne {
+        height: 20px;
+        width: 20px;
+    }
     .rosco-TimeTurn>p {
         width: 50px;
         margin-right: 3px;
@@ -754,6 +743,22 @@
         width: 100px;
     }
     .rosco-TimeTurn {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width:450px) {
+    .rosco-GameContainer {
+        font-size: 0.8rem;
+    }
+    .rosco-TimeTurn>p {
+        width: 50px;
+        margin-right: 3px;
+    }
+    .rosco-TimeTurn {
+        width: 150px;
+    }
+    .rosco-GameScores {
         width: 150px;
     }
     .rosco-StartGame {
@@ -812,6 +817,16 @@
     .rosco-Image {
         width: 216px;
         height: 120px;
+    }
+    .rosco-TimeTurn>p {
+        width: 40px;
+        margin-right: 3px;
+    }
+    .rosco-GameScores {
+        width: 120px;
+    }
+    .rosco-TimeTurn {
+        width: 120px;
     }
 }
 

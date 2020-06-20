@@ -251,7 +251,7 @@ var $eXeRosco = {
 							<div class="exeQuextIcons-MoveOne"></div>\
 						</a>\
 						<input type="text" class="rosco-AnswerEdit" id="roscoEdAnswer-' + instance + '">\
-							<a href="#" id="roscoBtnAnswer-' + instance + '" title="' + msgs.msgAnswer + '">\
+						<a href="#" id="roscoBtnAnswer-' + instance + '" title="' + msgs.msgAnswer + '">\
 							<strong><span class="sr-av">' + msgs.msgAnswer + '</span></strong>\
 							<div class="exeQuextIcons-Submit"></div>\
 						</a>\

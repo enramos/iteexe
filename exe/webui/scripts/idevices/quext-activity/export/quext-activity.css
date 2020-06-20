@@ -7,8 +7,7 @@
     border-bottom: none;
 }
 
--LinkFullScreen
-.quext-GameContainer:-webkit-full-screen {
+-LinkFullScreen .quext-GameContainer:-webkit-full-screen {
     width: 100%;
     height: 100vh;
     background-color: white;
@@ -32,22 +31,19 @@
     background-color: white;
 }
 
-
-
-.exeQuextIcons-Reload,.exeQuextIcons-Preview, .exeQuextIcons-PauseVideo, .exeQuextIcons-PlayVideo,  .exeQuextIcons-FullScreenExit, .exeQuextIcons-FullScreen, .exeQuextIcons-Minimize {
+.exeQuextIcons-Reload, .exeQuextIcons-Preview, .exeQuextIcons-PauseVideo, .exeQuextIcons-PlayVideo, .exeQuextIcons-FullScreenExit, .exeQuextIcons-FullScreen, .exeQuextIcons-Minimize {
     -webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
     filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
     cursor: pointer;
 }
 
-.exeQuextIcons-Reload:hover, .exeQuextIcons-Preview:hover, .exeQuextIcons-PauseVideo:hover, .exeQuextIcons-PlayVideo:hover,  .exeQuextIcons-Minimize:hover, .exeQuextIcons-FullScreenExit:hover, .exeQuextIcons-FullScreen:hover {
+.exeQuextIcons-Reload:hover, .exeQuextIcons-Preview:hover, .exeQuextIcons-PauseVideo:hover, .exeQuextIcons-PlayVideo:hover, .exeQuextIcons-Minimize:hover, .exeQuextIcons-FullScreenExit:hover, .exeQuextIcons-FullScreen:hover {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
 }
-
 
 .quext-MainContainer {
     width: 100%;
@@ -61,12 +57,6 @@
     clip: rect(0 0 0 0);
     clip: rect(0, 0, 0, 0);
     height: 0
-}
-
-.quext-GameMinimize {
-    width: 350px;
-    margin: 5px auto;
-    display: none;
 }
 
 .quext-GameContainer {
@@ -125,6 +115,34 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.quext-LinkMaximize {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quext-GameMinimize {
+    width: auto;
+    margin: 5px auto;
+    display: none;
+}
+
+.quext-IconMinimize {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.quext-IconMinimize:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .quext-TimeNumber .quext-PTime {
@@ -198,6 +216,7 @@
     background: url(exequextreload.png) no-repeat;
     background-size: cover;
 }
+
 .exeQuextIcons-Video {
     background: url(exequextvideo.png) no-repeat;
     background-size: cover;
@@ -212,7 +231,7 @@
 .quext-PShowClue {
     font-size: 1em;
     color: #5877c6;
-    margin:0;
+    margin: 0;
     padding: 0;
     text-align: center;
     font-weight: bold;
@@ -333,6 +352,7 @@
     width: 100%;
     margin: 5px auto;
 }
+
 .quext-instructions p {
     font-size: 1em;
 }
@@ -379,7 +399,7 @@
     border-radius: 5px;
     text-align: center;
     padding: 5px;
-   -webkit-user-select: none;
+    -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -455,7 +475,8 @@
     align-items: center;
     justify-content: center;
 }
-.quext-VideoIntroContainer{
+
+.quext-VideoIntroContainer {
     width: 98%;
     padding: 0;
     display: flex;
@@ -463,27 +484,27 @@
     justify-content: flex-end;
     align-items: center;
     display: none;
-
 }
 
-.quext-VideoIntroDiv{
+.quext-VideoIntroDiv {
     width: 100%;
     height: 100%;
     position: absolute;
     left: 0;
-    top:0;
+    top: 0;
     background-color: white;
     border-radius: 10px;
     display: none;
     z-index: 20000;
     overflow: hidden;
 }
-.quext-VideoIntroClose{
+
+.quext-VideoIntroClose {
     position: absolute;
     top: 5px;
     right: 5px;
-
 }
+
 .quext-Cursor {
     width: 24px;
     height: 24px;
@@ -583,9 +604,6 @@
     right: 10px;
 }
 
-
-
-
 .quext-RepeatActivity {
     padding: 0;
     margin: 0;
@@ -610,6 +628,7 @@
     color: #ffffff;
     font-size: 0.9em;
 }
+
 .quext-BottonContainer {
     width: 98%;
     height: 100px;
@@ -628,12 +647,20 @@
     justify-content: center;
     align-items: center;
 }
+
 .quext-GetScore p {
     padding: 0;
     margin: 0;
- }
+}
 
- .quext-parpadea {
+.quext-IconMinimize {
+    width: 32px;
+    height: 32px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.quext-parpadea {
     animation-name: quext-parpadeo;
     animation-duration: 1s;
     animation-timing-function: linear;
@@ -680,7 +707,6 @@
     }
 }
 
-
 @media screen and (max-width: 800px) {
     .quext-Multimedia {
         width: 470px;
@@ -689,7 +715,6 @@
     .quext-ProgressBar {
         width: 470px;
     }
-
     .exeQuextIcons {
         width: 20px;
         height: 20px;
@@ -710,10 +735,13 @@
         text-align: left;
         margin-left: 3px;
     }
+    .quext-IconMinimize {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width:650px) {
-
     .quext-StartGame {
         margin: 15px auto;
     }
@@ -727,32 +755,31 @@
     .quext-ProgressBar {
         width: 437px;
     }
-
+    .quext-IconMinimize {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width:550px) {
     .quext-GameContainer {
         font-size: 0.9rem;
     }
-    .quext-GameContainer input[type="text"]
-    {
+    .quext-GameContainer input[type="text"] {
         padding: 3px 2px;
         display: inline-block;
         box-sizing: border-box;
         line-height: 18px;
         font-size: 0.9em;
         background: #fdfdfd;
-        border: 1px solid  #828282;
+        border: 1px solid #828282;
         border-radius: 4px;
-
     }
-    .quext-GameContainer input[type="text"]:active,  .quext-GameContainer input[type="text"]:focus
-    {
+    .quext-GameContainer input[type="text"]:active, .quext-GameContainer input[type="text"]:focus {
         background: #fdfdfd;
-        border: 1px solid  #398ee7;
+        border: 1px solid #398ee7;
         border-radius: 4px;
     }
-
     .quext-StartGame {
         margin: 10px auto;
     }
@@ -795,7 +822,6 @@
         width: 30px;
         margin-left: 3px;
     }
-
     .quext-Question {
         min-height: 35px;
         margin: 0 auto;
@@ -812,13 +838,11 @@
         margin: 2px auto;
     }
     .quext-instructions {
-
         margin: 2px auto;
     }
     .quext-instructions p {
-        margin:0 auto;
+        margin: 0 auto;
         font-size: 0.8em;
-
     }
     .quext-LinkMinimize, .quext-LinkFullScreen {
         display: none;
@@ -827,12 +851,10 @@
         margin: 1px auto;
         padding: 0;
     }
-
     .quext-BottonContainer {
         padding: 0;
         margin: 1px;
     }
-
     .quext-HistGGame, .quext-LostGGame {
         width: 30%;
         height: 56%;
@@ -841,8 +863,7 @@
     .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.9em;
     }
-
-    .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
+    .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
         height: 20px;
         width: 20px;
     }
@@ -876,11 +897,14 @@
     .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.8em;
     }
-    .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
+    .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
         height: 20px;
         width: 20px;
     }
-
+    .quext-IconMinimize {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width:370px) {
@@ -888,7 +912,7 @@
         font-size: 0.8rem;
     }
     .quext-GameScoreBoard p {
-        font-size:0.9em;
+        font-size: 0.9em;
     }
     .quext-GameScoreBoard p {
         width: 12px;
@@ -919,14 +943,17 @@
     .quext-ProgressBar {
         width: 221px;
     }
-    .quext-RepeatActivity, .quext-SendScore,  .quext-GetScore input[type=button]{
+    .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.8em;
     }
-    .exeQuextIcons-PlayVideo,.exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo,.exeQuextIcons-Preview   {
+    .exeQuextIcons-PlayVideo, .exeQuextIcons-Reload, .exeQuextIcons-Video, .exeQuextIcons-PauseVideo, .exeQuextIcons-Preview {
         height: 20px;
         width: 20px;
     }
-
+    .quext-IconMinimize {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 @media screen and (max-width:300px) {
@@ -946,7 +973,6 @@
     .quext-RepeatActivity, .quext-SendScore, .quext-GetScore input[type=button] {
         font-size: 0.7em;
     }
-
 }
 
 @media screen and (max-width:250px) {
