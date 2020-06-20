@@ -153,7 +153,7 @@ var $eXeDesafio = {
                         <div class="desafio-GameOver" id="desafioGamerOver-' + instance + '">\
                             <div class="desafio-SolvedChallenges">\
                                     <p id="desafioOverScore-' + instance + '">Score: 0</p>\
-                                </div>\
+                            </div>\
                             <div class="desafio-DataImageGameOver">\
                                 <img src="' + path + 'quextGameWon.png" class="desafio-HistGGame" id="desafioHistGGame-' + instance + '" alt="' + msgs.mgsAllQuestions + '" />\
                                 <img src="' + path + 'quextGameLost.png" class="desafio-LostGGame" id="desafioLostGGame-' + instance + '"  alt="' + msgs.msgLostLives + '" />\
@@ -168,7 +168,8 @@ var $eXeDesafio = {
                     <p id="desafioPInformation-' + instance + '"></p>\
                     </div>\
                     <div class="desafio-SolutionDiv" id="desafioSolutionDiv-' + instance + '">\
-                        <label>' + msgs.mgsSolution + ':<input type="text" class="desafio-Solution"  id="desafioSolution-' + instance + '"></label>\
+                        <label for="desafioSolution-' + instance + '">' + msgs.mgsSolution + ':</label>\
+                        <input type="text" class="desafio-Solution"  id="desafioSolution-' + instance + '">\
                         <a href="#" id="desafioSolutionButton-' + instance + '" title="' + msgs.msgSubmit + '">\
                             <strong><span class="sr-av">' + msgs.msgSubmit + '</span></strong>\
                             <div class="exeQuextIcons-Submit"></div>\
@@ -851,10 +852,7 @@ var $eXeDesafio = {
                 $('#desafioSolution-' + instance).val('');
             }
         }
-
         $eXeDesafio.showMessage(typeMessage, message, instance);
-
-
     },
     showMessageAlert: function (tmsg) {
         window.alert(tmsg)

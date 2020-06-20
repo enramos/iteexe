@@ -8,16 +8,14 @@
     margin: 0;
 }
 
-.rosco-instructions { 
+.rosco-instructions {
     margin: 2px auto;
-  
 }
+
 .rosco-instructions p {
     margin: 0 auto;
     font-size: 1em;
-
 }
-
 
 .rosco-GameMinimize a:link, .rosco-GameMinimize a:link, .rosco-GameMinimize a:visited, .rosco-GameMinimize a:focus {
     text-decoration: none;
@@ -331,7 +329,7 @@
     font-weight: bold;
 }
 
-.rosco-GetScore input[type=button]{
+.rosco-GetScore input[type=button] {
     font-size: 0.9em;
     width: auto;
 }
@@ -361,10 +359,6 @@
     height: 24px;
     margin: 15px auto;
 }
-
-
-
-
 
 .rosco-LetterBlack {
     background-color: #1c1b1b;
@@ -608,7 +602,6 @@
     #rosocoIdeviceForm .roscoIdevice {
         padding: 5px;
     }
-
     .rosco-GameContainer {
         width: 100%;
     }
@@ -655,7 +648,6 @@
     }
 }
 
-
 @media screen and (max-width:550px) {
     .rosco-GameContainer {
         font-size: 0.9rem;
@@ -696,12 +688,10 @@
         width: 370px;
         height: 207px;
     }
-
     .rosco-GameScoreBoard p {
         width: 20px;
         height: 20px;
         line-height: 20px;
-
     }
     .exeQuextIcons, .rosco-LinkArrowMinimize {
         width: 20px;
@@ -728,7 +718,6 @@
         margin: 2px;
         border-radius: 3px;
     }
-
     .rosco-instructions p {
         font-size: 0.8em;
     }
@@ -754,8 +743,6 @@
     .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button] {
         font-size: 0.9em;
     }
-
-
 }
 
 @media screen and (max-width:450px) {
@@ -763,9 +750,8 @@
         width: 50px;
         margin-right: 3px;
     }
-    .rosco-GameScores{
+    .rosco-GameScores {
         width: 100px;
-
     }
     .rosco-TimeTurn {
         width: 150px;
@@ -788,7 +774,7 @@
     .rosco-LinkFullScreen {
         display: none;
     }
-    .rosco-RepeatActivity, .rosco-SendScore,.rosco-GetScore input[type=button] {
+    .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button] {
         font-size: 0.9em;
     }
     .rosco-Answers {
@@ -807,7 +793,6 @@
     }
     .rosco-Author {
         margin: 4px auto;
-
     }
 }
 
@@ -821,15 +806,13 @@
         line-height: 22px;
         text-decoration: none;
     }
-    .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button]{
+    .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button] {
         font-size: 0.8em;
     }
-
     .rosco-Image {
         width: 216px;
         height: 120px;
     }
-
 }
 
 @media screen and (max-width:300px) {
@@ -843,7 +826,7 @@
     .rosco-ProgressBar {
         width: 224px;
     }
-    .rosco-RepeatActivity, .rosco-SendScore,.rosco-GetScore input[type=button] {
+    .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button] {
         font-size: 0.7em;
     }
 }
@@ -864,7 +847,7 @@
         width: 100%;
         margin: 3px auto;
     }
-    .rosco-RepeatActivity, .rosco-SendScore,.rosco-GetScore input[type=button] {
+    .rosco-RepeatActivity, .rosco-SendScore, .rosco-GetScore input[type=button] {
         font-size: 0.6em;
     }
 }

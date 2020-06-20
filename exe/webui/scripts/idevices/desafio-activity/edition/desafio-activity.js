@@ -96,8 +96,8 @@ var $exeDevice = {
         "msgDesafioReboot":_("Esto reiniciará el juego y modificará su hora de inicio. ¿Deseas continuar?"),
         "msgCompleteAllChallenged":_("Debes completar todos los retos antes de resolver el desafío"),
         "msgSolvedChallenge":_("Ya has completado este reto"),
-        "msgWriteChallenge":_("Resuelve este reto e indica su solución"),
-        "msgEndTimeRestart":_("Tu tiempo ha finalizado y no has resuelt el desafío. Pulsa sobre reiniciar para intentarlo de nuevo"),
+        "msgWriteChallenge":_("Completa este reto e indica su solución"),
+        "msgEndTimeRestart":_("Tu tiempo ha finalizado y no has resuelto el desafío. Pulsa sobre reiniciar para intentarlo de nuevo"),
         "msgReboot":_("Reiniciar")
    },
 
