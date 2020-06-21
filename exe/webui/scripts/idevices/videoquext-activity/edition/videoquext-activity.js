@@ -90,8 +90,6 @@ var $exeDevice = {
         "msgQuestions": _("Preguntas"),
         "msgIndicateSolution": _("Escribe una palabra o frase en la respuesta"),
         "msgIndicateSolution": _("Escribe una palabra o frase en el cuadro solución")
-        
-
     },
 
     init: function () {
@@ -752,7 +750,7 @@ var $exeDevice = {
         $('#vquextENumberLives').val(game.numberLives);
         $('#vquextEVideoIntro').val(game.idVideoQuExt);
         $('#vquextShowSolutions').prop('checked', game.showSolution);
-        $('#vquextTimeShowSolutions').val(game.timeShowSolution)
+        $('#vquextETimeShowSolution').val(game.timeShowSolution)
         $('#vquextETimeShowSolution').prop('disabled', !game.showSolution);
         $('#vquextENumberLives').prop('disabled', !game.useLives);
         $('#vquextEVIURL').val(game.idVideoQuExt);
@@ -1082,7 +1080,7 @@ var $exeDevice = {
         });
         $('#vquextShowSolutions').on('change', function () {
             var marcado = $(this).is(':checked');
-            $('#vquextTimeShowSolutions').prop('disabled', !marcado);
+            $('#vquextETimeShowSolution').prop('disabled', !marcado);
         });
 
         $('#vquextShowCodeAccess').on('change', function () {
@@ -1154,7 +1152,7 @@ var $exeDevice = {
         $('#vquextPoint, #vquextEVIStart, #vquextEVIEnd').on('focusout', function () {
            if (!$exeDevice.validTime(this.value)){
                   $(this).css({'background-color':'red', 'color':'white'});
-           } 
+           }
         });
         $('#vquextPoint, #vquextEVIStart, #vquextEVIEnd').on('click', function () {
             $(this).css({'background-color':'white','color':'#2c6d2c'});

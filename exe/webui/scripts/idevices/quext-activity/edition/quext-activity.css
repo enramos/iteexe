@@ -98,7 +98,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 5px 0;
+    margin-top: 5px;
   }
 
   #quextIdeviceForm .quext-EInputMedias label, #quextIdeviceForm .quext-EInputNumbers label, #quextIdeviceForm .quext-EInputVideo label, #quextIdeviceForm .quext-EInputOptionsVideo label, #quextIdeviceForm .quext-EInputTimes label, #quextIdeviceForm .quext-EInputImage label {

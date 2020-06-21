@@ -129,7 +129,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 5px 0;
+    margin: 5px 0;
   }
 
   #vquextIdeviceForm .vquext-EPointDiv label, #vquextIdeviceForm .vquext-EInputNumbers label,  #vquextIdeviceForm .vquext-EInputOptionsVideo label, #vquextIdeviceForm .vquext-EInputTimes label {

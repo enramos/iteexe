@@ -352,7 +352,6 @@
        justify-content: center;
        align-items: center;
        background-color: transparent;
-       flex: wrap;
        width: 100%;
    }
 
@@ -445,7 +444,7 @@
        font-size: 1.5em;
    }
 
-   .exeQuextIcons {
+   .adivina-MainContainer .exeQuextIcons {
        width: 26px;
        height: 26px;
        margin-right: 5px;
@@ -527,7 +526,7 @@
        text-align: center;
    }
 
-   .exeQuextIcons-MoveOne, .exeQuextIcons-Submit {
+   .adivina-MainContainer .exeQuextIcons-MoveOne, .adivina-MainContainer .exeQuextIcons-Submit {
        flex-basis: 30px;
        width: 30px;
        height: 30px;
@@ -547,32 +546,40 @@
    /* Fullscreen */
 
    div:fullscreen .exeQuextIcons-FullScreen {
-       background: url(exeQuextIcons.png) no-repeat -26px -78px
+       background: url(exequextnormal.png) no-repeat;
    }
 
    div:-webkit-full-screen .exeQuextIcons-FullScreen {
-       background: url(exeQuextIcons.png) no-repeat -26px -78px
+       background: url(exequextnormal.png) no-repeat;
    }
 
    div:-moz-full-screen .exeQuextIcons-FullScreen {
-       background: url(exeQuextIcons.png) no-repeat -26px -78px
+       background: url(exequextnormal.png) no-repeat;
    }
 
-   .exeQuextIcons-RoscoRows {
-       background: url(exeQuextIcons.png) no-repeat -26px -52px;
+   div:fullscreen .adivina-Multimedia {
+       width: 56%;
+       height: 56%;
    }
 
-   .exeQuextIcons-RoscoCanvas {
-       background: url(exeQuextIcons.png) no-repeat -52px -52px;
+   div:-webkit-full-screen .adivina-Multimedia {
+    width: 56%;
+    height: 56%;
    }
 
-   .exeQuextIcons-RoscoCanvas, .exeQuextIcons-RoscoRows, .exeQuextIcons-FullScreenExit, .exeQuextIcons-FullScreen, .exeQuextIcons-Minimize {
+   div:-moz-full-screen .adivina-Multimedia {
+    width: 56%;
+    height: 56%;
+   }
+
+
+   .exeQuextIcons-FullScreenExit, .exeQuextIcons-FullScreen, .exeQuextIcons-Minimize {
        -webkit-filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
        filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
        cursor: pointer;
    }
 
-   .exeQuextIcons-RoscoRows:hover, .exeQuextIcons-RoscoCanvas:hover, .exeQuextIcons-Minimize:hover, .exeQuextIcons-FullScreenExit:hover, .exeQuextIcons-FullScreen:hover {
+     .exeQuextIcons-FullScreen:hover {
        -moz-transform: scale(1.1);
        -webkit-transform: scale(1.1);
        -o-transform: scale(1.1);
@@ -588,7 +595,7 @@
        margin-left: 5px;
    }
 
-   .exeQuextIcons-Time {
+   .adivina-MainContainer .exeQuextIcons-Time {
        margin: 0;
        margin-right: 6px;
    }
@@ -683,7 +690,7 @@
        .adivina-ProgressBar {
            width: 470px;
        }
-       .exeQuextIcons {
+       .adivina-MainContainer .exeQuextIcons {
            width: 20px;
            height: 20px;
            margin-right: 3px;
@@ -766,7 +773,7 @@
            line-height: 17px;
            font-weight: normal;
        }
-       .exeQuextIcons {
+       .adivina-MainContainer .exeQuextIcons {
            width: 17px;
            height: 17px;
            margin-right: 2px;
@@ -912,7 +919,7 @@
            height: 12px;
            margin-right: 1px;
        }
-       .exeQuextIcons {
+       .adivina-MainContainer .exeQuextIcons {
            width: 12px;
            height: 12px;
            margin-right: 1px;

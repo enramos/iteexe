@@ -100,7 +100,7 @@
     text-align: center;
 }
 
-.exeQuextIcons34 {
+.candado-MainContainer .exeQuextIcons34 {
     width: 34px;
     height: 34px;
 }
@@ -109,12 +109,12 @@
     display: none;
 }
 
-.exeQuextIcons34-Time {
+.candado-MainContainer  .exeQuextIcons34-Time {
     background: url(exequexttime.png) no-repeat;
     background-size: cover;
 }
 
-.exeQuextIcons34-Minimize {
+.candado-MainContainer  .exeQuextIcons34-Minimize {
     background: url(exequextmin.png) no-repeat;
     background-size: cover;
 }
@@ -125,7 +125,7 @@
     cursor: pointer;
 }
 
-.exeQuextIcons34-Minimize:hover {
+.candado-MainContainer  .exeQuextIcons34-Minimize:hover {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     -o-transform: scale(1.1);
@@ -133,7 +133,7 @@
     transform: scale(1.1);
 }
 
-.exeQuextIcons34-Time {
+.candado-MainContainer .exeQuextIcons34-Time {
     margin: 0;
 }
 
@@ -178,7 +178,7 @@
     border-radius: 5px;
 }
 
-.exeQuextIcons-Submit {
+.candado-MainContainer  .exeQuextIcons-Submit {
     background: url(exequextreply.png) no-repeat;
     background-size: cover;
     height: 30px;
@@ -200,7 +200,7 @@
         width: 470px;
         height: 250px;
     }
-    .exeQuextIcons34, .candado-LinkMinimize {
+    .candado-MainContainer  .exeQuextIcons34, .candado-LinkMinimize {
         width: 24px;
         height: 24px;
     }
@@ -210,7 +210,7 @@
     .candado-TimeNumber p {
         width: 55px;
     }
-    .exeQuextIcons-Submit {
+    .candado-MainContainer  .exeQuextIcons-Submit {
         height: 24px;
         width: 24px;
     }

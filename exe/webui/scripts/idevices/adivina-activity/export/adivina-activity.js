@@ -553,16 +553,13 @@ var $eXeAdivina = {
 
     },
     refreshImageActive: function (instance) {
-		var mOptions = $eXeAdivina.options[instance],
-		 mWord = mOptions.wordsGame[mOptions.activeWord];
-	
-		 $eXeAdivina.showImage('', 0, 0, '', '', instance)
-		 if (typeof mWord == "undefined") {
-				return;
-		}
-		if(mWord.url.length>3){
-			$eXeAdivina.showImage(mWord.url, mWord.x, mWord.y, mWord.author, mWord.alt, instance);
-		}
+        var mOptions = $eXeAdivina.options[instance];
+        if (mOptions.gameStarted) {
+            var q = mOptions.wordsGame[mOptions.activeQuestion];
+            $eXeAdivina.showImage(q.url, q.x, q.y, q.author, q.alt, instance);
+        } else {
+            $eXeAdivina.showImage("", 0, 0, '', '', instance);
+        }
     },
     enterCodeAccess: function (instance) {
         var mOptions = $eXeAdivina.options[instance];

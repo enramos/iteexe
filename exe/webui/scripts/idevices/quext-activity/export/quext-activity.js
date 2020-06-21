@@ -256,7 +256,7 @@ var $eXeQuExt = {
                 <img class="quext-Cursor" id="quextCursor-' + instance + '" src="' + path + 'quextCursor.gif" alt="Cursor" />\
                 <img  src="" class="quext-Images" id="quextImagen-' + instance + '" alt="' + msgs.msgNoImage + '" />\
                 <div class="quext-EText" id="quextEText-' + instance + '"></div>\
-                <img src="' + path + 'quextHome.png" class="quext-Images" id="quextCover-' + instance + '" alt="' + msgs.msImage + '" />\
+                <img src="' + path + 'quextHome.png" class="quext-Images" id="quextCover-' + instance + '" alt="' + msgs.msgNoImage + '" />\
                 <div class="quext-Video" id="quextVideo-' + instance + '"></div>\
                 <div class="quext-Protector" id="quextProtector-' + instance + '"></div>\
                 <div class="quext-GameOver" id="quextGamerOver-' + instance + '">\

@@ -257,7 +257,6 @@
     top: 0;
     z-index: 10010;
     display: flex;
-    flex-direction: colum;
     justify-content: center;
     align-items: center;
     display: none;
@@ -273,7 +272,7 @@
 
 .selecciona-DataGame p {
     font-size: 0.9em;
-    font-weight: none;
+    font-weight: normal;
 }
 
 .selecciona-HistGGame, .selecciona-LostGGame {
@@ -629,7 +628,7 @@
 }
 
 .selecciona-GetScore input[type=button] {
-    font-size: 0.9;
+    font-size: 0.9em;
     width: auto;
 }
 

@@ -97,7 +97,7 @@
     justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 5px 0;
+    margin: 5px 0;
   }
 
   #desafioIdeviceForm .desafio-EInputMedias label, #desafioIdeviceForm .desafio-EInputNumbers label, #desafioIdeviceForm .desafio-EInputVideo label, #desafioIdeviceForm .desafio-EInputOptionsVideo label, #desafioIdeviceForm .desafio-EInputTimes label, #desafioIdeviceForm .desafio-EInputImage label {
